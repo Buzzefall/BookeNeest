@@ -1,2 +1,2 @@
 # BookeNest
-Book review service
+Book search and review portal powered by ASP.NET MVC
