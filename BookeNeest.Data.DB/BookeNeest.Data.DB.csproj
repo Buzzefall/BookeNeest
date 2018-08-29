@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80403494-F95F-4C3F-A462-795BAF32A69F}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ContextTest</RootNamespace>
-    <AssemblyName>ContextTest</AssemblyName>
+    <ProjectGuid>{653D86DE-868C-435B-8FF2-6C75D289BEEB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BookeNeest.Data.DB</RootNamespace>
+    <AssemblyName>BookeNeest.Data.DB</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -55,22 +53,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Context\BookeNeestDbContext.cs" />
+    <Compile Include="DbInitializer.cs" />
+    <Compile Include="Maps\BookMap.cs" />
+    <Compile Include="Maps\ReviewMap.cs" />
+    <Compile Include="Maps\UserMap.cs" />
+    <Compile Include="Migrations\201808291421402_Initial.cs" />
+    <Compile Include="Migrations\201808291421402_Initial.Designer.cs">
+      <DependentUpon>201808291421402_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repositories\AuthorRepository.cs" />
+    <Compile Include="Repositories\TagRepository.cs" />
+    <Compile Include="Repositories\BookRepository.cs" />
+    <Compile Include="Repositories\GenreRepository.cs" />
+    <Compile Include="Migrations\Seeds\AdminSeed.cs" />
+    <Compile Include="Repositories\Base\RepositoryBase.cs" />
+    <Compile Include="Repositories\ReviewRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookeNeest.Data.DB\BookeNeest.Data.DB.csproj">
-      <Project>{653d86de-868c-435b-8ff2-6c75d289beeb}</Project>
-      <Name>BookeNeest.Data.DB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookeNeest.Domain\BookeNeest.Domain.csproj">
       <Project>{c41c9483-dc4a-426a-a13b-69d9de68ec87}</Project>
       <Name>BookeNeest.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808291421402_Initial.resx">
+      <DependentUpon>201808291421402_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

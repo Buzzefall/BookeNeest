@@ -1,6 +1,6 @@
-﻿using BookeNest.Domain.Models;
-using BookeNest.Data.DB;
-using BookeNest.Data.DB.Context;
+﻿using BookeNeest.Domain.Models;
+using BookeNeest.Data.DB;
+using BookeNeest.Data.DB.Context;
 
 using System;
 using System.Diagnostics;
@@ -14,7 +14,7 @@ namespace ContextTest
     {
         public static void Main(string[] args)
         {
-            BookeNestDbContext dbContext = new BookeNestDbContext();
+            BookeNeestDbContext dbContext = new BookeNeestDbContext();
 
             //dbContext.Database.Delete();
             //dbContext.Database.
