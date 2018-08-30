@@ -23,13 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookeNeest.Data.DB", "Booke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookeNeest.Domain", "BookeNeest.Domain\BookeNeest.Domain.csproj", "{C41C9483-DC4A-426A-A13B-69D9DE68EC87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextTest", "ContextTest\ContextTest.csproj", "{80403494-F95F-4C3F-A462-795BAF32A69F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextTest", "Tests\ContextTest\ContextTest.csproj", "{80403494-F95F-4C3F-A462-795BAF32A69F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{51EB9BB9-ABB7-4406-978D-3D313B4514ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookeNeest.Web", "BookeNeest.Web\BookeNeest.Web.csproj", "{D0EFB53C-2392-4D88-B27F-3CDF960809F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTests", "AsyncTests\AsyncTests.csproj", "{DA35F248-21BA-4566-8F25-2B5C6E99BA47}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncTests", "Tests\AsyncTests\AsyncTests.csproj", "{DA35F248-21BA-4566-8F25-2B5C6E99BA47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

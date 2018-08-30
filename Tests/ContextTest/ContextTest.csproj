@@ -63,11 +63,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookeNeest.Data.DB\BookeNeest.Data.DB.csproj">
+    <ProjectReference Include="..\..\BookeNeest.Data.DB\BookeNeest.Data.DB.csproj">
       <Project>{653d86de-868c-435b-8ff2-6c75d289beeb}</Project>
       <Name>BookeNeest.Data.DB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BookeNeest.Domain\BookeNeest.Domain.csproj">
+    <ProjectReference Include="..\..\BookeNeest.Domain\BookeNeest.Domain.csproj">
       <Project>{c41c9483-dc4a-426a-a13b-69d9de68ec87}</Project>
       <Name>BookeNeest.Domain</Name>
     </ProjectReference>
