@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BookeNeest.Web.Models;
+using Unity.Attributes;
 
 namespace BookeNeest.Web.Controllers
 {
@@ -16,6 +17,7 @@ namespace BookeNeest.Web.Controllers
         private BookeNeestSignInManager _signInManager;
         private BookeNeestUserManager _userManager;
 
+        [InjectionConstructor]
         public ManageController()
         {
         }

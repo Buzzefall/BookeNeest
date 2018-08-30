@@ -27,8 +27,12 @@ namespace BookeNeest.Data.DB
         //}
 
         [InjectionConstructor]
-        public UnitOfWork(IBookRepository bookRepository, IGenreRepository genreRepository,
-            IAuthorRepository authorRepository, IReviewRepository reviewRepository, ITagRepository tagRepository)
+        public UnitOfWork(
+            IBookRepository bookRepository,
+            IGenreRepository genreRepository,
+            IAuthorRepository authorRepository,
+            IReviewRepository reviewRepository,
+            ITagRepository tagRepository)
         {
             _dbContext = BookeNeestDbContext.Create();
 
