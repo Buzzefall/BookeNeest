@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-
 using BookeNeest.Domain;
 using BookeNeest.Data.DB.Context;
 using BookeNeest.Data.DB.Repositories;
 using BookeNeest.Domain.Contracts.Repositories;
+using Unity.Attributes;
 
 namespace BookeNeest.Data.DB
 {
@@ -13,26 +13,30 @@ namespace BookeNeest.Data.DB
     {
         private readonly BookeNeestDbContext _dbContext;
 
-        private BookRepository _bookRepository;
-        private GenreRepository _genreRepository;
-        private AuthorRepository _authorRepository;
-        private ReviewRepository _reviewRepository;
-        private TagRepository _tagRepository;
+        public IBookRepository BookRepository { get; }
+        public IGenreRepository GenreRepository { get; }
+        public IAuthorRepository AuthorRepository { get; }
+        public IReviewRepository ReviewRepository { get; }
+        public ITagRepository TagRepository { get; }
 
-        public IBookRepository BookRepository => _bookRepository ?? (_bookRepository = new BookRepository(_dbContext));
-        public IGenreRepository GenreRepository => _genreRepository ?? (_genreRepository = new GenreRepository(_dbContext));
-        public IAuthorRepository AuthorRepository => _authorRepository ?? (_authorRepository = new AuthorRepository(_dbContext));
-        public IReviewRepository ReviewRepository => _reviewRepository ?? (_reviewRepository = new ReviewRepository(_dbContext));
-        public ITagRepository TagRepository => _tagRepository ?? (_tagRepository = new TagRepository(_dbContext));
+        //public IBookRepository BookRepository => _bookRepository ?? (_bookRepository = new BookRepository(_dbContext));
 
-        public UnitOfWork()
+        //public UnitOfWork(BookeNeestDbContext dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
+
+        [InjectionConstructor]
+        public UnitOfWork(IBookRepository bookRepository, IGenreRepository genreRepository,
+            IAuthorRepository authorRepository, IReviewRepository reviewRepository, ITagRepository tagRepository)
         {
             _dbContext = BookeNeestDbContext.Create();
-        }
 
-        public UnitOfWork(BookeNeestDbContext dbContext)
-        {
-            _dbContext = dbContext;
+            BookRepository = bookRepository;
+            GenreRepository = genreRepository;
+            AuthorRepository = authorRepository;
+            ReviewRepository = reviewRepository;
+            TagRepository = tagRepository;
         }
 
         public void Commit()
@@ -42,8 +46,7 @@ namespace BookeNeest.Data.DB
 
         public void Discard()
         {
-            foreach (var entry in _dbContext.ChangeTracker.Entries().
-                        Where(e => e.State != EntityState.Unchanged))
+            foreach (var entry in _dbContext.ChangeTracker.Entries().Where(e => e.State != EntityState.Unchanged))
             {
                 switch (entry.State)
                 {
@@ -57,10 +60,10 @@ namespace BookeNeest.Data.DB
                 }
             }
         }
+
         public void Dispose()
         {
             _dbContext.Dispose();
         }
-
     }
 }

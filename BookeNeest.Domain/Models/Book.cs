@@ -1,6 +1,6 @@
-﻿using BookeNeest.Domain.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using BookeNeest.Domain.Models.Identity;
 
 namespace BookeNeest.Domain.Models
 {

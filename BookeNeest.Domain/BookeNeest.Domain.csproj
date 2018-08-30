@@ -57,11 +57,12 @@
     <Compile Include="Contracts\Repositories\IGenreRepository.cs" />
     <Compile Include="Contracts\Repositories\IReviewRepository.cs" />
     <Compile Include="Contracts\Repositories\ITagRepository.cs" />
-    <Compile Include="Identity\Role.cs" />
-    <Compile Include="Identity\User.cs" />
-    <Compile Include="Identity\UserClaim.cs" />
-    <Compile Include="Identity\UserLogin.cs" />
-    <Compile Include="Identity\UserRole.cs" />
+    <Compile Include="Contracts\Services\IBookService.cs" />
+    <Compile Include="Models\Identity\Role.cs" />
+    <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Identity\UserClaim.cs" />
+    <Compile Include="Models\Identity\UserLogin.cs" />
+    <Compile Include="Models\Identity\UserRole.cs" />
     <Compile Include="Contracts\Repositories\Base\IRepositoryBase.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Models\Author.cs" />

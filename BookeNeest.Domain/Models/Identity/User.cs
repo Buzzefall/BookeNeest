@@ -1,13 +1,11 @@
-﻿using BookeNeest.Domain.Models;
-
-using System;
-using System.Threading.Tasks;
+﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Security.Claims;
 
-namespace BookeNeest.Domain.Identity
+namespace BookeNeest.Domain.Models.Identity
 {
     public class User : IdentityUser<Guid, UserLogin, UserRole, UserClaim>
     {

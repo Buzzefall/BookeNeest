@@ -1,5 +1,5 @@
-﻿using BookeNeest.Domain.Identity;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
+using BookeNeest.Domain.Models.Identity;
 
 namespace BookeNeest.Data.DB.Maps
 {

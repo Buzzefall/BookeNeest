@@ -1,9 +1,9 @@
-﻿using BookeNeest.Domain.Identity;
-using BookeNeest.Domain.Models;
+﻿using BookeNeest.Domain.Models;
 using BookeNeest.Data.DB.Maps;
 
 using System;
 using System.Data.Entity;
+using BookeNeest.Domain.Models.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BookeNeest.Data.DB.Context
@@ -23,12 +23,9 @@ namespace BookeNeest.Data.DB.Context
             // DO NOT DO this. This prevents process of migration, migration itself creates context instance.
             // Hence, if here database is created, either initial snapshot of DB model being created or something else goes wrong... 
             //this.Database.CreateIfNotExists();
-            
             Configuration.LazyLoadingEnabled = true;
             Configuration.AutoDetectChangesEnabled= true;
         }
-
-        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

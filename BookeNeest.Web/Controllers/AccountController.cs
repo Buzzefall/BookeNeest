@@ -3,11 +3,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BookeNeest.Domain.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BookeNeest.Web.Models;
-using BookeNeest.Domain.Identity;
 
 namespace BookeNeest.Web.Controllers
 {
