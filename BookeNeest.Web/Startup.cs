@@ -1,4 +1,8 @@
 ﻿using Microsoft.Owin;
+using NLog;
+using NLog.Config;
+using NLog.Fluent;
+using NLog.Targets;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(BookeNeest.Web.Startup))]

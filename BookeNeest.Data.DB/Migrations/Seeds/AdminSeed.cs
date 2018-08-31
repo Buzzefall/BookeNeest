@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using BookeNeest.Data.DB.Context;
-using BookeNeest.Domain.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+
+using BookeNeest.Domain.Models.Identity;
+using BookeNeest.Data.DB.Context;
+
 
 namespace BookeNeest.Data.DB.Migrations
 {

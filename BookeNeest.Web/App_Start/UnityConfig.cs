@@ -1,11 +1,12 @@
 using System;
-using BookeNeest.Data.DB;
-using BookeNeest.Data.DB.Repositories;
+using Unity;
+
 using BookeNeest.Domain;
 using BookeNeest.Domain.Contracts.Repositories;
 using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.Data.DB;
+using BookeNeest.Data.DB.Repositories;
 using BookeNeest.LogicLayer.Services;
-using Unity;
 
 namespace BookeNeest.Web
 {
@@ -48,6 +49,8 @@ namespace BookeNeest.Web
             container.RegisterType<IAuthorRepository, AuthorRepository>();
             container.RegisterType<IReviewRepository, ReviewRepository>();
             container.RegisterType<ITagRepository, TagRepository>();
+
+
 
             container.RegisterType<IBookService, BookService>();
             // NOTE: To load from web.config uncomment the line below.

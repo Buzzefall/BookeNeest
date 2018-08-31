@@ -1,63 +1,89 @@
-﻿using System.Web.Mvc;
-using Unity.Attributes;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace BookeNeest.Web.Controllers
 {
-    public interface IBookService
-    {
-        object GetGenreNames();
-        object GetGenreByName(string genre);
-    }
-
     public class BookController : Controller
     {
-        private IBookService service;
-
-        [InjectionConstructor]
-        public BookController(IBookService service)
+        // GET: Book1
+        public ActionResult Index()
         {
-            this.service = service;
+            return View();
         }
 
-        //
-        // GET: /Store/
-        //public ActionResult Index()
-        //{
-        //    // Create list of genres
-        //    var genres = this.service.GetGenreNames();
+        // GET: Book1/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
 
-        //    // Create your view model
-        //    var viewModel = new StoreIndexViewModel
-        //    {
-        //        Genres = genres.ToList(),
-        //        NumberOfGenres = genres.Count()
-        //    };
+        // GET: Book1/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-        //    return View(viewModel);
-        //}
+        // POST: Book1/Create
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add insert logic here
 
-        //
-        // GET: /Store/Browse?genre=Disco
-        //public ActionResult Browse(string genre)
-        //{
-        //    var genreModel = this.service.GetGenreByName(genre);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
-        //    var viewModel = new StoreBrowseViewModel()
-        //    {
-        //        Genre = genreModel,
-        //        Albums = genreModel.Albums.ToList()
-        //    };
+        // GET: Book1/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
 
-        //    return View(viewModel);
-        //}
+        // POST: Book1/Edit/5
+        [HttpPost]
+        public ActionResult Edit(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add update logic here
 
-        ////
-        //// GET: /Store/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    var album = this.service.GetAlbum(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
-        //    return View(album);
-        //}
+        // GET: Book1/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: Book1/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
