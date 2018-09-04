@@ -16,8 +16,6 @@ namespace BookeNeest.Domain.Models.Identity
         public virtual ICollection<Book> Books { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
 
-
-
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User, Guid> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

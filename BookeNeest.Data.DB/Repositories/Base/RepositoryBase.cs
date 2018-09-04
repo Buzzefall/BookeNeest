@@ -10,21 +10,21 @@ namespace BookeNeest.Data.DB.Repositories
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         where TEntity : EntityBase<Guid>
     {
-        private readonly BookeNeestDbContext _DbContext;
+        private readonly BookeNeestDbContext _dbContext;
 
-        private IDbSet<TEntity> _DbSet => _DbContext.Set<TEntity>();
-        public IQueryable<TEntity> Entities => _DbSet;
+        private IDbSet<TEntity> _dbSet => _dbContext.Set<TEntity>();
+        public IQueryable<TEntity> Entities => _dbSet;
 
         public RepositoryBase(BookeNeestDbContext dbContext)
         {
-            _DbContext = dbContext;
+            _dbContext = dbContext;
         }
 
         public void Add(TEntity entity)
         {
             if (entity != null)
             {
-                _DbSet.Add(entity);
+                _dbSet.Add(entity);
             }
         }
 
@@ -32,13 +32,13 @@ namespace BookeNeest.Data.DB.Repositories
         {
             if (entity != null)
             {
-                _DbSet.Remove(entity);
+                _dbSet.Remove(entity);
             }
         }
 
         public TEntity FindById(Guid id)
         {
-            return _DbSet.Find(id);
+            return _dbSet.Find(id);
         }
     }
 }

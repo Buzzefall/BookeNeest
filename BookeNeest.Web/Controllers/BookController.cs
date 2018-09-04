@@ -3,34 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
+using Unity;
+using Unity.Attributes;
+
+using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.LogicLayer.Services;
+using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Controllers
 {
     public class BookController : Controller
     {
+        private readonly IBookService bookService;
 
+        [InjectionConstructor]
+        public BookController(IBookService bookService)
+        {
+            this.bookService = bookService;
+        }
 
         // GET: Book
         public ActionResult Recents()
         {
-            return View();
+            var container = new UnityContainer();
+            
+            //bookService = (IBookService) container.Resolve(typeof(IBookService), "BookService");
+
+            // Dto
+            var books = bookService.GetRecentBooks(10);
+
+            // TODO: Autommaper dto -> view model
+
+            var model = Mapper.Map<IList<BookViewModel>>(books);
+            
+            return View(model);
         }
 
         // GET: Book/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string bookName)
         {
-            return View();
+            // TODO: Use services here?
+            //var container = new Unity.UnityContainer();
+            //var bookService = ;
+            var book = bookService.FindByName(bookName);
+
+            var model = Mapper.Map<BookViewModel>(book);
+
+            return View(model);
         }
 
         // GET: Book/Create
-        public ActionResult Create()
+        public ActionResult AddNewBook()
         {
-            return View();
+            return View("AddNewBook");
         }
 
         // POST: Book/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Add(FormCollection collection)
         {
             try
             {
@@ -40,14 +71,14 @@ namespace BookeNeest.Web.Controllers
             }
             catch
             {
-                return View();
+                return View("Recents");
             }
         }
 
         // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View("Recents");
         }
 
         // POST: Book/Edit/5
@@ -58,18 +89,18 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
-                return View();
+                return View("Recents");
             }
         }
 
         // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View("Recents");
         }
 
         // POST: Book/Delete/5
@@ -80,11 +111,11 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
-                return View();
+                return View("Recents");
             }
         }
     }

@@ -13,34 +13,21 @@ namespace BookeNeest.Data.DB
     {
         private readonly BookeNeestDbContext _dbContext;
 
-        public IBookRepository BookRepository { get; }
-        public IGenreRepository GenreRepository { get; }
-        public IAuthorRepository AuthorRepository { get; }
-        public IReviewRepository ReviewRepository { get; }
-        public ITagRepository TagRepository { get; }
+        private IBookRepository _bookRepository;
+        private IGenreRepository _genreRepository;
+        private IAuthorRepository _authorRepository;
+        private IReviewRepository _reviewRepository;
+        private ITagRepository _tagRepository;
 
-        //public IBookRepository BookRepository => _bookRepository ?? (_bookRepository = new BookRepository(_dbContext));
+        public IBookRepository BookRepository => _bookRepository ?? (_bookRepository = new BookRepository(_dbContext));
+        public IGenreRepository GenreRepository => _genreRepository ?? (_genreRepository= new GenreRepository(_dbContext));
+        public IAuthorRepository AuthorRepository => _authorRepository ?? (_authorRepository = new AuthorRepository(_dbContext));
+        public IReviewRepository ReviewRepository => _reviewRepository ?? (_reviewRepository = new ReviewRepository(_dbContext));
+        public ITagRepository TagRepository => _tagRepository ?? (_tagRepository = new TagRepository(_dbContext));
 
-        //public UnitOfWork(BookeNeestDbContext dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
-
-        [InjectionConstructor]
-        public UnitOfWork(
-            IBookRepository bookRepository,
-            IGenreRepository genreRepository,
-            IAuthorRepository authorRepository,
-            IReviewRepository reviewRepository,
-            ITagRepository tagRepository)
+        public UnitOfWork()
         {
-            _dbContext = BookeNeestDbContext.Create();
-
-            BookRepository = bookRepository;
-            GenreRepository = genreRepository;
-            AuthorRepository = authorRepository;
-            ReviewRepository = reviewRepository;
-            TagRepository = tagRepository;
+            _dbContext = new BookeNeestDbContext();
         }
 
         public void Commit()

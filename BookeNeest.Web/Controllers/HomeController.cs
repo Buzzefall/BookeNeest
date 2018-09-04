@@ -24,11 +24,5 @@ namespace BookeNeest.Web.Controllers
 
             return View();
         }
-        public ActionResult Book()
-        {
-            ViewBag.Message = "la la la";
-
-            return View();
-        }
     }
 }

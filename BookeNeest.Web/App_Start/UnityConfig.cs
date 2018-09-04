@@ -42,17 +42,20 @@ namespace BookeNeest.Web
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterType<IBookService, BookService>();
+
+            // TODO: To use these or not?
+            // TODO: anyway, MOVE these to Data Access Level
+            
             container.RegisterType<IUnitOfWork, UnitOfWork>();
 
-            container.RegisterType<IBookRepository, BookRepository>();
-            container.RegisterType<IGenreRepository, GenreRepository>();
-            container.RegisterType<IAuthorRepository, AuthorRepository>();
-            container.RegisterType<IReviewRepository, ReviewRepository>();
-            container.RegisterType<ITagRepository, TagRepository>();
+            //container.RegisterType<IBookRepository, BookRepository>();
+            //container.RegisterType<IGenreRepository, GenreRepository>();
+            //container.RegisterType<IAuthorRepository, AuthorRepository>();
+            //container.RegisterType<IReviewRepository, ReviewRepository>();
+            //container.RegisterType<ITagRepository, TagRepository>();
 
-
-
-            container.RegisterType<IBookService, BookService>();
+            
             // NOTE: To load from web.config uncomment the line below.
             // Make sure to add a Unity.Configuration to the using statements.
             // container.LoadConfiguration();

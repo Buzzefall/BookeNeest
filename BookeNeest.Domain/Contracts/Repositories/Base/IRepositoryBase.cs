@@ -11,12 +11,4 @@ namespace BookeNeest.Domain.Contracts.Repositories
         void Add(TEntity author);
         void Remove(TEntity author);
     }
-    //public interface IRepository<TEntity, TKey>
-    //{
-    //    IQueryable<TEntity> Entities { get; }
-    //    TEntity FindById(TKey id);
-        
-    //    void Add(TEntity author);
-    //    void Remove(TEntity author);
-    //}
 }
