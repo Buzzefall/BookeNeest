@@ -8,25 +8,27 @@ namespace BookeNeest.Web.Controllers
 {
     public class BookController : Controller
     {
-        // GET: Book1
-        public ActionResult Index()
+
+
+        // GET: Book
+        public ActionResult Recents()
         {
             return View();
         }
 
-        // GET: Book1/Details/5
+        // GET: Book/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Book1/Create
+        // GET: Book/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Book1/Create
+        // POST: Book/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -34,7 +36,7 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
@@ -42,13 +44,13 @@ namespace BookeNeest.Web.Controllers
             }
         }
 
-        // GET: Book1/Edit/5
+        // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Book1/Edit/5
+        // POST: Book/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -64,13 +66,13 @@ namespace BookeNeest.Web.Controllers
             }
         }
 
-        // GET: Book1/Delete/5
+        // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Book1/Delete/5
+        // POST: Book/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
