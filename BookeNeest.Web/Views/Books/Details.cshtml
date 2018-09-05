@@ -1,0 +1,20 @@
+﻿@using BookeNeest.Web.Models
+@model BookeNeest.Web.Models.BookViewModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>Book details: </h2>
+<p>
+    <div>
+        ID: @Model.Id <br/>
+        Name: @Model.Name <br/>
+        Author: @Model.Authors.ElementAt(0)<br/>
+    </div>
+</p>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new {/* id = Model.PrimaryKey */}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
