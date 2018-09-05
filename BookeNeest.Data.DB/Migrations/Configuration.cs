@@ -18,6 +18,7 @@ namespace BookeNeest.Data.DB.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
             SeedRolesAndUsers(dbContext);
+            this.SeedBooks(dbContext, 30);
         }
     }
 }

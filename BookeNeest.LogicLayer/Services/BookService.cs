@@ -38,38 +38,6 @@ namespace BookeNeest.LogicLayer.Services
 
         public IList<BookDto> GetRecentBooks(int amount)
         {
-            #region AddBooksForTest
-            var available = unitOfWork.BookRepository.Entities.Count();
-            if (available < amount)
-            {
-                var randomizer = new Random();
-                for (int i = 0; i < amount; i++)
-                {
-                    Book book = new Book
-                    {
-                        Id = Guid.NewGuid(),
-                        ISBN = Guid.NewGuid().ToString(),
-                        Name = $"[Book {randomizer.Next(10000, 99999)}] {Guid.NewGuid().ToString()}",
-                        Rating = randomizer.Next(11),
-                        Authors = new List<Author>()
-                    };
-
-                    for (int j = 0; j < book.Rating; j++)
-                    {
-                        book.Authors.Add(new Author
-                        {
-                            Id = Guid.NewGuid(),
-                            Name = $"Charles {randomizer.Next(10,99)}"
-                        });
-                    }
-                    unitOfWork.BookRepository.Add(book);
-                }
-
-                unitOfWork.Commit();
-            }
-
-            #endregion
-
             var books = unitOfWork.BookRepository.Entities.OrderBy(x => x.Id).Take(amount).ToList();
 
             return Mapper.Map<IList<BookDto>>(books);

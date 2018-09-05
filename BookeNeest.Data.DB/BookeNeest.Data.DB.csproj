@@ -70,6 +70,7 @@
       <DependentUpon>201809051249474_TagCategories.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Seeds\BookSeed.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
