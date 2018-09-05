@@ -10,7 +10,6 @@ namespace BookeNeest.Web.Controllers
         }
 
 
-
         public ActionResult About()
         {
             ViewBag.Message = "BookeNeest is the best place to find great books to digest! It was designed to share ideas between most passionate and pretentious readers all over the world!";

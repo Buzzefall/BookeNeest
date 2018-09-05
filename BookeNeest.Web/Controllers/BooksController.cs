@@ -24,7 +24,7 @@ namespace BookeNeest.Web.Controllers
         }
 
         // GET: Book
-        public ActionResult Index()
+        public ActionResult Recents()
         {
             var container = new UnityContainer();
             
@@ -67,18 +67,18 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
-                return View("Index");
+                return View("Recents");
             }
         }
 
         // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
-            return View("Index");
+            return View("Recents");
         }
 
         // POST: Book/Edit/5
@@ -89,18 +89,18 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
-                return View("Index");
+                return View("Recents");
             }
         }
 
         // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
-            return View("Index");
+            return View("Recents");
         }
 
         // POST: Book/Delete/5
@@ -111,11 +111,11 @@ namespace BookeNeest.Web.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Recents");
             }
             catch
             {
-                return View("Index");
+                return View("Recents");
             }
         }
     }

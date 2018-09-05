@@ -9,6 +9,13 @@ namespace BookeNeest.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // MapRoute() call order is IMPORTANT
+            routes.MapRoute(
+                name: "Books",
+                url: "Books/{action}/{id}",
+                defaults: new { controller = "Books", action = "Recents", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
