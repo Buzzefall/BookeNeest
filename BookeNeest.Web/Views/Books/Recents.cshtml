@@ -20,8 +20,6 @@
         {
             <p>
                 <div class="custom-book-pre">
-                    ID: @book.Id.ToString()<br/>
-                    Name: @book.Name<br/>
                     @{
                         StringBuilder authors = new StringBuilder();
                         foreach (var author in book.Authors)
@@ -33,7 +31,18 @@
                             authors.Remove(authors.Length - 2, 2).Append(".");
                         }
                     }
-                    Authors: @authors.ToString() <br/>
+                    <span class="custom-book-fld">
+                        ID:
+                    </span> @book.Id.ToString() <br/>
+
+
+                    <span class="custom-book-fld">
+                        Name:
+                    </span> @book.Name <br/>
+
+                    <span class="custom-book-fld">
+                        Authors:
+                    </span> @authors.ToString()
                 </div>
             </p>
         }

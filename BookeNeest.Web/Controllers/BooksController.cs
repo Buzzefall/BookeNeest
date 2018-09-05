@@ -31,7 +31,7 @@ namespace BookeNeest.Web.Controllers
             //bookService = (IBookService) container.Resolve(typeof(IBookService), "BookService");
 
             // Dto
-            var books = bookService.GetRecentBooks(15);
+            var books = bookService.GetRecentBooks(7);
 
             // TODO: Autommaper dto -> view model
 
