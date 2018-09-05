@@ -1,9 +1,9 @@
 using System;
 using Unity;
 
-using BookeNeest.Domain;
-using BookeNeest.Domain.Contracts.Repositories;
+using BookeNeest.Domain.Contracts;
 using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.Domain.Contracts.Repositories;
 using BookeNeest.Data.DB;
 using BookeNeest.Data.DB.Repositories;
 using BookeNeest.LogicLayer.Services;

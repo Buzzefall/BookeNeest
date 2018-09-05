@@ -6,8 +6,6 @@ using NLog;
 using NLog.Config;
 using NLog.Targets;
 
-using BookeNeest.Web.Map;
-
 namespace BookeNeest.Web
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -40,9 +38,6 @@ namespace BookeNeest.Web
             this.Error += (sender, args) => Logger.Info("Application Error");
             // End Setup logs
             ///////////////////////////////////////
-            
-            // Configure AutoMapper:
-            DtoMapper.Configure();
 
             AreaRegistration.RegisterAllAreas();
 

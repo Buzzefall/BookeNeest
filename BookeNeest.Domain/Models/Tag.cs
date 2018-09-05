@@ -6,8 +6,8 @@ namespace BookeNeest.Domain.Models
     public class Tag : EntityBase<Guid>
     {
         public string Text { get; set; }
+        public string Category { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
-
     }
 }

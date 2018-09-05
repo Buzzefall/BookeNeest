@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using BookeNeest.Domain;
+using Unity.Attributes;
+
+using BookeNeest.Domain.Contracts;
+using BookeNeest.Domain.Contracts.Repositories;
 using BookeNeest.Data.DB.Context;
 using BookeNeest.Data.DB.Repositories;
-using BookeNeest.Domain.Contracts.Repositories;
-using Unity.Attributes;
 
 namespace BookeNeest.Data.DB
 {

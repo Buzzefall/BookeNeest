@@ -1,4 +1,4 @@
-﻿namespace BookeNeest.Domain.DTOs.Base
+﻿namespace BookeNeest.Domain.DTOs
 {
     public class EntityBaseDto<TKey>
     {

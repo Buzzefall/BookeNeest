@@ -51,15 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\UserConstants.cs" />
     <Compile Include="Contracts\Repositories\IAuthorRepository.cs" />
     <Compile Include="Contracts\Repositories\IBookRepository.cs" />
     <Compile Include="Contracts\Repositories\IGenreRepository.cs" />
     <Compile Include="Contracts\Repositories\IReviewRepository.cs" />
     <Compile Include="Contracts\Repositories\ITagRepository.cs" />
     <Compile Include="Contracts\Services\IBookService.cs" />
+    <Compile Include="DTOs\AuthorDto.cs" />
     <Compile Include="DTOs\Base\EntityBaseDto.cs" />
     <Compile Include="DTOs\BookDto.cs" />
+    <Compile Include="DTOs\GenreDto.cs" />
+    <Compile Include="DTOs\ReviewDto.cs" />
+    <Compile Include="DTOs\TagDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
     <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
@@ -67,7 +70,7 @@
     <Compile Include="Models\Identity\UserLogin.cs" />
     <Compile Include="Models\Identity\UserRole.cs" />
     <Compile Include="Contracts\Repositories\Base\IRepositoryBase.cs" />
-    <Compile Include="IUnitOfWork.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Base\EntityBase.cs" />
     <Compile Include="Models\Book.cs" />

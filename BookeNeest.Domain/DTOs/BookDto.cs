@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using BookeNeest.Domain.DTOs.Base;
-
 namespace BookeNeest.Domain.DTOs
 {
     public class BookDto : EntityBaseDto<Guid>
@@ -15,8 +13,10 @@ namespace BookeNeest.Domain.DTOs
         public int? Rating { get; set; }
 
 
-        public List<string> Authors { get; set; }
-        public List<string> Genres { get; set; }
-        public List<string> Tags { get; set; }
+        public List<AuthorDto> Authors { get; set; }
+        public List<GenreDto> Genres { get; set; }
+        public List<TagDto> Tags { get; set; }
+
+        public override string ToString() => Name;
     }
 }
