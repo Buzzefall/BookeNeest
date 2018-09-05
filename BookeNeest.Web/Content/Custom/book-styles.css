@@ -1,5 +1,9 @@
 ﻿.custom-book-pre {
-    font-family: Arial, sans-serif;
+    font-family: Georgia, serif, sans-serif;
+    font-kerning: auto;
     text-rendering: geometricPrecision;
     text-shadow: black;
+}
+.custom-book-fld {
+    font-weight: bold;
 }

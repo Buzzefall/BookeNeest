@@ -8,7 +8,7 @@
 <h2>Some recent books on site:</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <p>
@@ -16,31 +16,40 @@
         {
             <p>
                 <div class="custom-book-pre">
-                    ID: @book.Id.ToString()<br/>
-                    Name: @book.Name<br/>
+
+                    <span class="custom-book-fld"> ID:
+                    </span> @book.Id.ToString() <br/>
+
+
+                    <span class="custom-book-fld"> Name:
+                    </span> @book.Name <br/>
+
                     @{
                         StringBuilder authors = new StringBuilder();
                         foreach (var author in book.Authors)
                         {
                             authors.Append(author).Append(", ");
                         }
-                        if (authors.Length > 2 && authors[authors.Length - 1] == ' ' )
+                        if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
                         {
                             authors.Remove(authors.Length - 2, 2).Append(".");
                         }
                     }
-                    Authors:  @authors.ToString() <br/>
+
+                    <span class="custom-book-fld"> Authors:
+                    </span> @authors.ToString() <br/>
+                    
                 </div>
             </p>
         }
     </p>
     <p>
         <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr/>
+            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
             <div class="form-group">
                 <div class="col-md-10">
-                    <input type="submit" value="Add new book" class="btn btn-default" />
+                    <input type="submit" value="Add new book" class="btn btn-default"/>
                     @*@Html.Action("AddNewBook");*@
                 </div>
             </div>
