@@ -13,5 +13,6 @@ namespace BookeNeest.Domain.Contracts.Services
         BookDto FindByName(string name);
         BookDto FindById(Guid id);
         IList<BookDto> GetRecentBooks(int amount);
+        void AddBook(BookDto bookDto);
     }
 }

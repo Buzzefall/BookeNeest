@@ -1,4 +1,5 @@
-﻿using BookeNeest.Domain.Contracts.Repositories;
+﻿using System.Threading.Tasks;
+using BookeNeest.Domain.Contracts.Repositories;
 
 namespace BookeNeest.Domain.Contracts
 {
@@ -11,6 +12,7 @@ namespace BookeNeest.Domain.Contracts
         ITagRepository TagRepository { get; }
 
         void Commit();
+        Task CommitAsync();
         void Discard();
     }
 }

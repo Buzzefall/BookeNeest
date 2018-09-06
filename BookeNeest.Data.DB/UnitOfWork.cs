@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using Unity.Attributes;
 
 using BookeNeest.Domain.Contracts;
@@ -34,6 +35,11 @@ namespace BookeNeest.Data.DB
         public void Commit()
         {
             _dbContext.SaveChanges();
+        }
+
+        public async Task CommitAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Discard()

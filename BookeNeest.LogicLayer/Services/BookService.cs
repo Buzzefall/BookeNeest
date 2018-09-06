@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using BookeNeest.Domain.Contracts;
 using BookeNeest.Domain.Contracts.Services;
@@ -19,6 +20,14 @@ namespace BookeNeest.LogicLayer.Services
         public BookService()
         {
             this.unitOfWork = new UnitOfWork();
+        }
+
+        public void AddBook(BookDto bookDto)
+        {
+            var book = Mapper.Map<Book>(bookDto);
+            
+            unitOfWork.BookRepository.Add(book);
+            unitOfWork.CommitAsync();
         }
 
         public BookDto FindByName(string name)

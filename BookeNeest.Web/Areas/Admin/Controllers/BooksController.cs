@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using Unity.Attributes;
 using AutoMapper;
-
+using BookeNeest.Data.DB;
 using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.Domain.DTOs;
 using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
@@ -56,16 +57,14 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Add(FormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            // TODO: Add correct mapping
+            BookViewModel fake = new BookViewModel();
 
-                return RedirectToAction("Recents");
-            }
-            catch
-            {
-                return View("Recents");
-            }
+            var bookDto = Mapper.Map<BookDto>(fake);
+
+            bookService.AddBook(bookDto);
+
+            return View("Recents");
         }
 
         // GET: Book/Edit/5
