@@ -1,20 +1,37 @@
-﻿@using BookeNeest.Web.Models
+﻿@using System.Text
+@using BookeNeest.Web.Models
 @model BookeNeest.Web.Models.BookViewModel
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Details";
+    Layout = null;
 }
 
-<h2>Book details: </h2>
-<p>
-    <div>
-        ID: @Model.Id <br/>
-        Name: @Model.Name <br/>
-        Author: @Model.Authors.ElementAt(0)<br/>
-    </div>
-</p>
+<h2>
+    <span class="custom-book-pre">Book details:</span>
+</h2>
 
-<p>
-    @Html.ActionLink("Edit", "Edit", new {/* id = Model.PrimaryKey */}) |
-    @Html.ActionLink("Back to List", "Recents")
-</p>
+<div class="custom-book-pre panel panel-primary panel-body panel-title" style="background-color: aliceblue">
+    @{
+        StringBuilder authors = new StringBuilder();
+        foreach (var author in Model.Authors)
+        {
+            authors.Append(author).Append(", ");
+        }
+        if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+        {
+            authors.Remove(authors.Length - 2, 2).Append(".");
+        }
+    }
+    <span class="custom-book-fld">
+        ID:
+    </span> @Model.Id.ToString() <br/>
+
+    <span class="custom-book-fld">
+        Name:
+    </span> @Model.Name <br/>
+
+    <span class="custom-book-fld">
+        Authors:
+    </span> @authors.ToString() <br/>
+</div>

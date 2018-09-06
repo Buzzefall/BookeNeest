@@ -14,47 +14,47 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    <p>
-        @foreach (var book in Model)
-        {
-            <p>
-                <div class="custom-book-pre">
-                    @{
-                        StringBuilder authors = new StringBuilder();
-                        foreach (var author in book.Authors)
-                        {
-                            authors.Append(author).Append(", ");
-                        }
-                        if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
-                        {
-                            authors.Remove(authors.Length - 2, 2).Append(".");
-                        }
+    Html.AntiForgeryToken();
+
+    foreach (var book in Model)
+    {
+        <div class="panel panel-primary">
+            <div class="custom-book-pre panel-body" style="background-color: aliceblue;">
+                @{
+                    StringBuilder authors = new StringBuilder();
+                    foreach (var author in book.Authors)
+                    {
+                        authors.Append(author).Append(", ");
                     }
-                    <span class="custom-book-fld">
-                        ID:
-                    </span> @book.Id.ToString() <br/>
+                    if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+                    {
+                        authors.Remove(authors.Length - 2, 2).Append(".");
+                    }
+                }
 
+                <span class="custom-book-fld">
+                    ID:
+                </span> @book.Id.ToString() <br/>
 
-                    <span class="custom-book-fld">
-                        Name:
-                    </span> @book.Name <br/>
+                <span class="custom-book-fld">
+                    Name:
+                </span> @book.Name <br/>
 
-                    <span class="custom-book-fld">
-                        Authors:
-                    </span> @authors.ToString()
-                </div>
-            </p>
-        }
-    </p>
+                <span class="custom-book-fld">
+                    Authors:
+                </span> @authors.ToString() <br/>
+
+            </div>
+        </div>
+    }
+
     <p>
         <div class="form-horizontal">
             <hr/>
             @Html.ValidationSummary(true, "", new {@class = "text-danger"})
             <div class="form-group">
                 <div class="col-md-10">
-                    <input type="submit" value="Add new book" class="btn btn-default"/>
-                    @*@Html.Action("AddNewBook");*@
+                        @Html.Action("Details", new {bookName = "[Book 85166] 48f7133c-cef0-4eba-a668-115bd8f3ff40"})
                 </div>
             </div>
         </div>

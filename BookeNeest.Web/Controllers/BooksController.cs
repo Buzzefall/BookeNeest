@@ -23,24 +23,19 @@ namespace BookeNeest.Web.Controllers
             this.bookService = bookService;
         }
 
-        // GET: Book
+        // GET: Books
         public ActionResult Recents()
         {
-            var container = new UnityContainer();
+            // TODO: Autommaper dto -> view model - DONE
             
-            //bookService = (IBookService) container.Resolve(typeof(IBookService), "BookService");
-
             // Dto
             var books = bookService.GetRecentBooks(7);
-
-            // TODO: Autommaper dto -> view model
-
             var model = Mapper.Map<IList<BookViewModel>>(books);
             
             return View(model);
         }
 
-        // GET: Book/Details/5
+        // GET: Books/Details/5
         public ActionResult Details(string bookName)
         {
             // TODO: Use services here?
@@ -51,72 +46,6 @@ namespace BookeNeest.Web.Controllers
             var model = Mapper.Map<BookViewModel>(book);
 
             return View(model);
-        }
-
-        // GET: Book/Create
-        public ActionResult AddNewBook()
-        {
-            return View("AddNewBook");
-        }
-
-        // POST: Book/Create
-        [HttpPost]
-        public ActionResult Add(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Recents");
-            }
-            catch
-            {
-                return View("Recents");
-            }
-        }
-
-        // GET: Book/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View("Recents");
-        }
-
-        // POST: Book/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Recents");
-            }
-            catch
-            {
-                return View("Recents");
-            }
-        }
-
-        // GET: Book/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View("Recents");
-        }
-
-        // POST: Book/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Recents");
-            }
-            catch
-            {
-                return View("Recents");
-            }
         }
     }
 }

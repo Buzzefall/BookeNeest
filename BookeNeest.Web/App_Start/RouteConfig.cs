@@ -13,13 +13,15 @@ namespace BookeNeest.Web
             routes.MapRoute(
                 name: "Books",
                 url: "Books/{action}/{id}",
-                defaults: new { controller = "Books", action = "Recents", id = UrlParameter.Optional }
+                defaults: new {controller = "Books", action = "Recents", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new {controller = "Home", action = "Index", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
         }
     }
