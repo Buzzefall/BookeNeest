@@ -76,7 +76,7 @@
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
-    <Compile Include="Migrations\Seeds\AdminSeed.cs" />
+    <Compile Include="Migrations\Seeds\RoleSeed.cs" />
     <Compile Include="Repositories\Base\RepositoryBase.cs" />
     <Compile Include="Repositories\ReviewRepository.cs" />
     <Compile Include="UnitOfWork.cs" />

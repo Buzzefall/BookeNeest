@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\BookeNeestUserRoles.cs" />
     <Compile Include="Contracts\Repositories\IAuthorRepository.cs" />
     <Compile Include="Contracts\Repositories\IBookRepository.cs" />
     <Compile Include="Contracts\Repositories\IGenreRepository.cs" />

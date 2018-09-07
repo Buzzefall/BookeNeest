@@ -27,7 +27,7 @@ namespace BookeNeest.LogicLayer.Services
             var book = Mapper.Map<Book>(bookDto);
             
             unitOfWork.BookRepository.Add(book);
-            unitOfWork.CommitAsync();
+            unitOfWork.Commit();
         }
 
         public BookDto FindByName(string name)

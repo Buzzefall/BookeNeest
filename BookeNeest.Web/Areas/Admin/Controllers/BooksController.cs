@@ -8,11 +8,12 @@ using AutoMapper;
 using BookeNeest.Data.DB;
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
+using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
-    public class BooksController : Controller
+    public class BooksController : AdminAreaControllerBase
     {
         private readonly IBookService bookService;
 
@@ -48,14 +49,14 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         }
 
         // GET: Book/Create
-        public ActionResult Add()
+        public ActionResult Create()
         {
             return View("AddNewBook");
         }
 
         // POST: Book/Create
         [HttpPost]
-        public ActionResult Add(AddBookViewModel book)
+        public ActionResult Create(AddBookViewModel book)
         {
             // TODO: Add correct mapping
 
@@ -69,7 +70,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             {
                 Id = Guid.NewGuid().ToString(),
                 ISBN = Guid.NewGuid().ToString(),
-                PublicationDate = "Today",
+                PublicationDate = DateTime.Today.ToLongTimeString(),
                 Authors = authors,
                 Genres = genres,
                 Name = book.Name,
@@ -80,13 +81,13 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
             bookService.AddBook(bookDto);
 
-            return View("Recents");
+            return RedirectToAction("Recents");
         }
 
         // GET: Book/Edit/5
         public ActionResult Edit(int id)
         {
-            return View("Recents");
+            return RedirectToAction("Recents");
         }
 
         // POST: Book/Edit/5
@@ -96,19 +97,18 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction("Recents");
             }
             catch
             {
-                return View("Recents");
+                return RedirectToAction("Recents");
             }
         }
 
         // GET: Book/Delete/5
         public ActionResult Delete(int id)
         {
-            return View("Recents");
+            return RedirectToAction("Recents");
         }
 
         // POST: Book/Delete/5
@@ -118,12 +118,11 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             try
             {
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Recents");
             }
             catch
             {
-                return View("Recents");
+                return RedirectToAction("Recents");
             }
         }
     }

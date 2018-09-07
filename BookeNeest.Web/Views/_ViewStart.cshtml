@@ -1,3 +1,28 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@using BookeNeest.Domain.Constants
+
+@{
+    // TODO: Validate user for use of specific layout here
+
+    //if (Request.IsAuthenticated)
+    //{
+    //    if (User.IsInRole(BookeNeestUserRoles.Reader))
+    //    {
+    //        Layout = "~/Views/Shared/_Layout.cshtml";
+    //    }
+
+    //    else if (User.IsInRole(BookeNeestUserRoles.Critic))
+    //    {
+    //        Layout = "~/Views/Shared/_Layout.cshtml";
+    //    }
+
+    //    else if (User.IsInRole(BookeNeestUserRoles.Admin))
+    //    {
+    //        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    //    }
+    //}
+
+    //else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
 }

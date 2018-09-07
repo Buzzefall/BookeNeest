@@ -28,7 +28,7 @@ namespace BookeNeest.Data.DB.Migrations
                     Name = $"[Book {RomanNumEx.ToRoman(randomizer.Next(10, 99))}-{RomanNumEx.ToRoman(randomizer.Next(100, 999))}]",
                     Rating = randomizer.Next(11),
                     PagesTotal = randomizer.Next(1500),
-                    PublicationDate = DateTime.Today.ToShortDateString(),
+                    PublicationDate = DateTime.Today.ToLongDateString(),
                     Description = "This book is amazing!!! Bla bla bla-a-a...",
                     Genres = new List<Genre>()
                     {

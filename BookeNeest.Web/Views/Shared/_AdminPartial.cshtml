@@ -1,0 +1,7 @@
+﻿@using BookeNeest.Domain.Constants;
+
+@if (Request.IsAuthenticated && User.IsInRole(BookeNeestUserRoles.Admin))
+{
+    <li>@Html.ActionLink("Upload Book", "Create", new { area = "Admin", controller = "Books" }, null)</li>
+    <li>@Html.ActionLink("Manage", "Create", new { area = "Admin", controller = "User" }, null)</li>
+}

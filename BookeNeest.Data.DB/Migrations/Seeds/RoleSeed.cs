@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 using BookeNeest.Domain.Models.Identity;
 using BookeNeest.Data.DB.Context;
+using BookeNeest.Domain.Constants;
 
 
 namespace BookeNeest.Data.DB.Migrations
@@ -21,17 +22,16 @@ namespace BookeNeest.Data.DB.Migrations
             var roleManager = new RoleManager<Role, Guid>(roleStore);
 
             // Seeding Roles:
+            if (!roleManager.RoleExists(BookeNeestUserRoles.Admin))
+                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = BookeNeestUserRoles.Admin});
 
-            if (!roleManager.RoleExists("Admin"))
-                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = "Admin"});
+            if (!roleManager.RoleExists(BookeNeestUserRoles.Critic))
+                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = BookeNeestUserRoles.Critic});
 
-            if (!roleManager.RoleExists("Critic"))
-                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = "Critic"});
+            if (!roleManager.RoleExists(BookeNeestUserRoles.Reader))
+                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = BookeNeestUserRoles.Reader});
 
-            if (!roleManager.RoleExists("Guest"))
-                roleManager.Create(new Role() {Id = Guid.NewGuid(), Name = "Guest"});
-
-            var adminRole = roleManager.FindByName("Admin");
+            var adminRole = roleManager.FindByName(BookeNeestUserRoles.Admin);
 
             // Seeding admin account: 
             var users = userManager.Users;
@@ -61,7 +61,7 @@ namespace BookeNeest.Data.DB.Migrations
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoles(admin.Id, "Admin", "Critic");
+                    userManager.AddToRoles(admin.Id, BookeNeestUserRoles.Admin, BookeNeestUserRoles.Critic);
                 }
                 else
                 {
