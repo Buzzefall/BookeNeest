@@ -15,13 +15,13 @@
 @using (Html.BeginForm())
 {
     Html.AntiForgeryToken();
-
     foreach (var book in Model)
     {
         <div class="panel panel-primary">
             <div class="custom-book-pre panel-body" style="background-color: aliceblue;">
                 @{
                     StringBuilder authors = new StringBuilder();
+
                     foreach (var author in book.Authors)
                     {
                         authors.Append(author).Append(", ");
@@ -47,14 +47,13 @@
             </div>
         </div>
     }
-
     <p>
         <div class="form-horizontal">
             <hr/>
             @Html.ValidationSummary(true, "", new {@class = "text-danger"})
             <div class="form-group">
                 <div class="col-md-10">
-                        @Html.Action("Details", new {bookName = "[Book 85166] 48f7133c-cef0-4eba-a668-115bd8f3ff40"})
+                    @Html.Action("Details", new {bookName = "[Book 85166] 48f7133c-cef0-4eba-a668-115bd8f3ff40"})
                 </div>
             </div>
         </div>

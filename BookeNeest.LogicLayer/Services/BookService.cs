@@ -48,7 +48,6 @@ namespace BookeNeest.LogicLayer.Services
         public IList<BookDto> GetRecentBooks(int amount)
         {
             var books = unitOfWork.BookRepository.Entities.OrderBy(x => x.Id).Take(amount).ToList();
-
             return Mapper.Map<IList<BookDto>>(books);
         }
     }

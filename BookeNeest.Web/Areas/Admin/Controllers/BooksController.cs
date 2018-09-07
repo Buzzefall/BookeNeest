@@ -26,11 +26,11 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         public ActionResult Recents()
         {
             // TODO: Autommaper dto -> view model - DONE
-            
+
             // Dto
             var books = bookService.GetRecentBooks(7);
             var model = Mapper.Map<IList<BookViewModel>>(books);
-            
+
             return View(model);
         }
 
@@ -55,12 +55,28 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         // POST: Book/Create
         [HttpPost]
-        public ActionResult Add(FormCollection collection)
+        public ActionResult Add(AddBookViewModel book)
         {
             // TODO: Add correct mapping
-            BookViewModel fake = new BookViewModel();
 
-            var bookDto = Mapper.Map<BookDto>(fake);
+            List<string> authors =
+                new List<string>(book.Authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
+
+            List<string> genres =
+                new List<string>(book.Genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
+
+            var bookVM = new BookViewModel
+            {
+                Id = Guid.NewGuid().ToString(),
+                ISBN = Guid.NewGuid().ToString(),
+                PublicationDate = "Today",
+                Authors = authors,
+                Genres = genres,
+                Name = book.Name,
+                Description = book.Id,
+            };
+
+            var bookDto = Mapper.Map<BookDto>(bookVM);
 
             bookService.AddBook(bookDto);
 

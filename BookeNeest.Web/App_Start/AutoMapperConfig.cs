@@ -14,10 +14,10 @@ namespace BookeNeest.Web
             {
                 // DAL Models to DTOs
                 LogicLayer.AutoMapperConfig.Configure(config);
-
                 // DTOs to View Models
-                config.CreateMap<BookDto, BookViewModel>();
-                config.CreateMap<UserDto, UserViewModel>();
+                // config.AllowNullCollections = true;
+                config.CreateMap<BookDto, BookViewModel>(MemberList.None).ReverseMap();
+                config.CreateMap<UserDto, UserViewModel>(MemberList.None).ReverseMap();
             });
 
             IsConfigured = true;

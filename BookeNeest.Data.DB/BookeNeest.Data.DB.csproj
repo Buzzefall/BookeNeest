@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Context\BookeNeestDbContext.cs" />
     <Compile Include="DbInitializer.cs" />
+    <Compile Include="Helpers\RomanNumEx.cs" />
     <Compile Include="Maps\BookMap.cs" />
     <Compile Include="Maps\ReviewMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
