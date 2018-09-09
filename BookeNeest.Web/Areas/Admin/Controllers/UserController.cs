@@ -8,12 +8,20 @@ using System.Web.Mvc;
 using System.Web.Services.Protocols;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Areas.Admin.Models;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
+    // TODO: CRUD(User) operations, etc.
     public class UserController : AdminAreaControllerBase
     {
-        // TODO: CRUD(User) operations, etc.
+        private BookeNeestUserManager _userManager;
+
+        public BookeNeestUserManager UserManager
+        {
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<BookeNeestUserManager>();
+            private set => _userManager = value;
+        }
 
         public ActionResult Create()
         {
@@ -24,6 +32,8 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         public ActionResult Create(CreateUserViewModel model)
         {
             // TODO: Add creation of user, then redirect..
+
+
 
             return RedirectToAction("Create");
         }

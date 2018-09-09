@@ -25,7 +25,7 @@ namespace BookeNeest.LogicLayer.Services
         public void AddBook(BookDto bookDto)
         {
             var book = Mapper.Map<Book>(bookDto);
-            
+
             unitOfWork.BookRepository.Add(book);
             unitOfWork.Commit();
         }
@@ -33,8 +33,7 @@ namespace BookeNeest.LogicLayer.Services
         public BookDto FindByName(string name)
         {
             var book = unitOfWork.BookRepository.FindByName(name);
-            
-            // TODO: Automapper
+
             return Mapper.Map<BookDto>(book);
         }
 

@@ -26,13 +26,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         // GET: Book
         public ActionResult Recents()
         {
-            // TODO: Autommaper dto -> view model - DONE
-
-            // Dto
-            var books = bookService.GetRecentBooks(7);
-            var model = Mapper.Map<IList<BookViewModel>>(books);
-
-            return View(model);
+            return RedirectToAction("Recents", new {area = "", controller = "Books"});
         }
 
         // GET: Book/Details/5

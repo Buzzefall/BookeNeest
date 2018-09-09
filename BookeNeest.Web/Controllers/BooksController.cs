@@ -29,7 +29,7 @@ namespace BookeNeest.Web.Controllers
             // TODO: Autommaper dto -> view model - DONE
             
             // Dto
-            var books = bookService.GetRecentBooks(7);
+            var books = bookService.GetRecentBooks(10);
             var model = Mapper.Map<IList<BookViewModel>>(books);
             
             return View(model);

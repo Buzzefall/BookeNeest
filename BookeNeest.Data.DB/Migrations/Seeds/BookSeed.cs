@@ -35,14 +35,14 @@ namespace BookeNeest.Data.DB.Migrations
                         new Genre
                         {
                             Id = Guid.NewGuid(),
-                            Name = $"Weirdo Genro №{randomizer.Next(10000, 99999)}",
+                            Name = $"Weirdo Genro",
                             Description = "Something re-e-ally weirdo!"
                         },
                         new Genre
                         {
                             Id = Guid.NewGuid(),
-                            Name = $"Mainstream Genre №{randomizer.Next(10000, 99999)}",
-                            Description = "You dare to ask for it?"
+                            Name = $"Mainstream Genre",
+                            Description = "Don't you know???"
                         },
                     },
 
