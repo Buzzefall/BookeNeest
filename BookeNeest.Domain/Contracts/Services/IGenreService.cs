@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BookeNeest.Domain.DTOs;
-using BookeNeest.Domain.Models;
 
 namespace BookeNeest.Domain.Contracts.Services
 {
-    public interface IBookService : IServiceBase<BookDto>
+    public interface IGenreService : IServiceBase<GenreDto>
     {
-        IList<BookDto> GetRecentBooks(int amount);
+        List<AuthorDto> GetGenresOrdered(int amount);
     }
 }

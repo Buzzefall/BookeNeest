@@ -57,6 +57,9 @@
     <Compile Include="Contracts\Repositories\IGenreRepository.cs" />
     <Compile Include="Contracts\Repositories\IReviewRepository.cs" />
     <Compile Include="Contracts\Repositories\ITagRepository.cs" />
+    <Compile Include="Contracts\Services\IGenreService.cs" />
+    <Compile Include="Contracts\Services\IAuthorService.cs" />
+    <Compile Include="Contracts\Services\Base\IServiceBase.cs" />
     <Compile Include="Contracts\Services\IBookService.cs" />
     <Compile Include="DTOs\AuthorDto.cs" />
     <Compile Include="DTOs\Base\EntityBaseDto.cs" />

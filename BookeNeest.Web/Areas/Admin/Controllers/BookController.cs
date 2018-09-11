@@ -13,12 +13,12 @@ using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
-    public class BooksController : AdminAreaControllerBase
+    public class BookController : AdminAreaControllerBase
     {
         private readonly IBookService bookService;
 
         [InjectionConstructor]
-        public BooksController(IBookService bookService)
+        public BookController(IBookService bookService)
         {
             this.bookService = bookService;
         }
@@ -26,7 +26,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         // GET: Book
         public ActionResult Recents()
         {
-            return RedirectToAction("Recents", new {area = "", controller = "Books"});
+            return RedirectToAction("Recents", "Books");
         }
 
         // GET: Book/Details/5
@@ -53,7 +53,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         public ActionResult Create(AddBookViewModel book)
         {
             // TODO: Add correct mapping
-
             List<string> authors =
                 new List<string>(book.Authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
 

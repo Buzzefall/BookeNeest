@@ -8,33 +8,26 @@ using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
 using BookeNeest.Data.DB;
+using BookeNeest.LogicLayer.Services.Base;
 using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
-    public class BookService : IBookService
+    public class BookService : ServiceBase<BookDto>, IBookService
     {
         private readonly IUnitOfWork unitOfWork;
 
         [InjectionConstructor]
-        public BookService()
+        public BookService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            this.unitOfWork = new UnitOfWork();
         }
 
-        public void AddBook(BookDto bookDto)
+        public void AddNew(BookDto bookDto)
         {
             var book = Mapper.Map<Book>(bookDto);
 
             unitOfWork.BookRepository.Add(book);
-            unitOfWork.Commit();
-        }
-
-        public BookDto FindByName(string name)
-        {
-            var book = unitOfWork.BookRepository.FindByName(name);
-
-            return Mapper.Map<BookDto>(book);
+            unitOfWork.CommitAsync();
         }
 
         public BookDto FindById(Guid id)
@@ -44,9 +37,17 @@ namespace BookeNeest.LogicLayer.Services
             return Mapper.Map<BookDto>(book);
         }
 
+        public IList<BookDto> FindByName(string name)
+        {
+            var book = unitOfWork.BookRepository.FindByName(name);
+
+            return Mapper.Map<IList<BookDto>>(book);
+        }
+
         public IList<BookDto> GetRecentBooks(int amount)
         {
-            var books = unitOfWork.BookRepository.Entities.OrderBy(x => x.Id).Take(amount).ToList();
+            var books = unitOfWork.BookRepository.GetBooksOrdered(amount);
+
             return Mapper.Map<IList<BookDto>>(books);
         }
     }

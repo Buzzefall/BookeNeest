@@ -13,12 +13,12 @@ using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Controllers
 {
-    public class BooksController : Controller
+    public class BookController : Controller
     {
         private readonly IBookService bookService;
 
         [InjectionConstructor]
-        public BooksController(IBookService bookService)
+        public BookController(IBookService bookService)
         {
             this.bookService = bookService;
         }
@@ -30,6 +30,7 @@ namespace BookeNeest.Web.Controllers
             
             // Dto
             var books = bookService.GetRecentBooks(10);
+
             var model = Mapper.Map<IList<BookViewModel>>(books);
             
             return View(model);
@@ -43,7 +44,7 @@ namespace BookeNeest.Web.Controllers
             //var bookService = ;
             var book = bookService.FindByName(bookName);
 
-            var model = Mapper.Map<BookViewModel>(book);
+            var model = Mapper.Map<IList<BookViewModel>>(book);
 
             return View(model);
         }

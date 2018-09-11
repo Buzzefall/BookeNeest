@@ -1,0 +1,53 @@
+﻿@using System.Text
+@model IList<BookeNeest.Web.Models.BookViewModel>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+
+@if (Model != null ) 
+{
+    <h2>
+        <span class="custom-book-pre">Book details:</span>
+    </h2>
+
+    foreach (var book in Model)
+    {
+        <div class="custom-book-pre panel panel-primary panel-body panel-title" style="background-color: aliceblue">
+            @{
+                StringBuilder authors = new StringBuilder();
+                foreach (var author in book.Authors)
+                {
+                    authors.Append(author).Append(", ");
+                }
+                if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+                {
+                    authors.Remove(authors.Length - 2, 2).Append(".");
+                }
+
+                <span class="custom-book-fld">
+                    ID:
+                </span> @book.Id.ToString() <br/>
+
+                <span class="custom-book-fld">
+                    Name:
+                </span> @book.Name <br/>
+
+                <span class="custom-book-fld">
+                    Authors:
+                </span> @authors.ToString() <br/>
+            }
+        </div>
+    }
+    
+}
+
+else
+
+{
+    <h2>
+        <span class="custom-book-pre text-danger">[Details] Such books doesn't exist.</span>
+    </h2>
+}

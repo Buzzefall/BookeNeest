@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BookeNeest.Data.DB.Context;
 using BookeNeest.Domain.Contracts.Repositories;
@@ -13,10 +14,23 @@ namespace BookeNeest.Data.DB.Repositories
 
         }
 
-        public Book FindByName(string name)
+        public IList<Book> FindByName(string name)
         {
-            var book = Entities.FirstOrDefault(x => x.Name == name);
+            var book = Entities
+                .Where(x => x.Name.Contains(name))
+                .OrderBy(x => x.Name)
+                .ToList();
+
             return book;
+        }
+
+        public IList<Book> GetBooksOrdered(int amount)
+        {
+            var books = Entities
+                .Take(amount)
+                .ToList();
+
+            return books;
         }
     }
 }
