@@ -44,7 +44,6 @@ namespace BookeNeest.Web
         {
             container.RegisterType<IBookService, BookService>();
             container.RegisterType<IAuthorService, AuthorService>();
-            container.RegisterType<IUserService, UserService>();
 
             // TODO: To use these or not?
             // TODO: anyway, MOVE these to Data Access Level

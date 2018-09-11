@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Unity.Attributes;
 
@@ -31,6 +32,16 @@ namespace BookeNeest.Data.DB
         {
             _dbContext = new BookeNeestDbContext();
         }
+
+        public IRepository GetRepository<IRepository>()
+        {
+            var propertyInfo = GetType()
+                .GetProperties(BindingFlags.Public)
+                .FirstOrDefault(p => p.PropertyType == typeof(IRepository));
+
+            return (IRepository) propertyInfo.GetValue(this);
+        }
+
 
         public void Commit()
         {

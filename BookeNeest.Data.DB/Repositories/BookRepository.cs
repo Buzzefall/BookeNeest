@@ -32,5 +32,15 @@ namespace BookeNeest.Data.DB.Repositories
 
             return books;
         }
+
+        //public IList<Book> FindByGenre(string name)
+        //{
+
+        //}
+        //public IList<Book> FindByGenre(Genre genre)
+        //{
+        //    var books = Entities
+        //        .Where(b => b.Genres.FirstOrDefault(g => g.Id == genre.Id) != null)
+        //}
     }
 }

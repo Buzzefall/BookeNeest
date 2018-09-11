@@ -2,6 +2,5 @@
 
 @if (Request.IsAuthenticated && User.IsInRole(BookeNeestUserRoles.Admin))
 {
-    <li>@Html.ActionLink("Upload Book", "Create", new { area = "Admin", controller = "Book" }, null)</li>
-    <li>@Html.ActionLink("Manage", "Create", new { area = "Admin", controller = "User" }, null)</li>
-}
+    <li>@Html.ActionLink("Manage", "Index", new { area = "Admin", controller = "Manage" }, null)</li>
+}   

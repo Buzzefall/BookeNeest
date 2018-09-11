@@ -15,7 +15,6 @@ namespace BookeNeest.LogicLayer.Services
 {
     public class AuthorService : ServiceBase<AuthorDto>, IAuthorService
     {
-
         [InjectionConstructor]
         public AuthorService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

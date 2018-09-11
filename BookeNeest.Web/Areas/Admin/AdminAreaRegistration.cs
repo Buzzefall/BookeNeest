@@ -9,7 +9,21 @@ namespace BookeNeest.Web.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
+                name: "Admin_Manage",
+                url: "Admin/Manage/{action}/{id}",
+                defaults: new {area = "Admin", controller = "Manage", action = "Index", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Areas.Admin.Controllers"}
+            );
+
+            context.MapRoute(
                 name: "Admin_Books",
+                url: "Admin/Books/Recents/{id}",
+                defaults: new {controller = "Book", action = "Recents", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Controllers"}
+            );
+
+            context.MapRoute(
+                name: "Admin_Books_Manage",
                 url: "Admin/Books/{action}/{id}",
                 defaults: new {controller = "Book", action = "Recents", id = UrlParameter.Optional},
                 namespaces: new [] {"BookeNeest.Web.Areas.Admin.Controllers"}

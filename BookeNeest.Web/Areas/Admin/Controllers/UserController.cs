@@ -27,11 +27,20 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             private set => _userManager = value;
         }
 
-
-
         public ActionResult Create()
         {
-            return View("CreateUser");
+
+            var model = new CreateUserViewModel
+            {
+                Name = "",
+                Email = "",
+                Password = "",
+                //Roles = BookeNeestUserRoles.ToSelectList()
+            };
+
+            //(ViewBag.RoleSelectList as SelectList).
+
+            return View("CreateUser", model);
         }
 
         [HttpPost]
@@ -39,31 +48,39 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         public async Task<ActionResult> Create(CreateUserViewModel model)
         {
             // TODO: Add creation of user, then redirect..
-            if (!ModelState.IsValid) return View("CreateUser", model);
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Model Validation Errors", "Model Validation Error");
+
+                return View("CreateUser", model);
+            }
 
             var user = new User
             {
                 Id = Guid.NewGuid(),
-                UserName = model.UserName
+                UserName = model.Email,
+                Email = model.Email
             };
 
             var result = await UserManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                result = await UserManager.AddToRoleAsync(user.Id, BookeNeestUserRoles.Reader);
+                result = await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles
+                    //.Where(role => role.Selected)
+                    //.Select(role => role.Text)
+                    .ToArray());
 
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Create");
                 }
-
             }
 
             else
 
             {
-                ModelState.AddModelError("AccountService error", "Failed to create user.");
+                ModelState.AddModelError("AccountService error", String.Join(", ", result.Errors));
                 return View("CreateUser", model);
             }
 

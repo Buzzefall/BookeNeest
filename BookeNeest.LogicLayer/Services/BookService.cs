@@ -8,15 +8,12 @@ using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
 using BookeNeest.Data.DB;
-using BookeNeest.LogicLayer.Services.Base;
 using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
     public class BookService : ServiceBase<BookDto>, IBookService
     {
-        private readonly IUnitOfWork unitOfWork;
-
         [InjectionConstructor]
         public BookService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {

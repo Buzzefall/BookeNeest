@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.Domain.DTOs;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Areas.Admin.Models;
 using Unity.Attributes;
@@ -33,6 +35,15 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         public ActionResult Create(AuthorCreateViewModel model)
         {
             if (ModelState.IsValid)
+            {
+                var authorDto = Mapper.Map<AuthorDto>(model);
+
+                authorService.AddNew(authorDto);
+
+                return RedirectToAction("Recents", "Book");
+            }
+
+            else
             {
 
             }

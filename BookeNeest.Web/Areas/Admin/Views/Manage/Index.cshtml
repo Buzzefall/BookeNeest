@@ -1,0 +1,22 @@
+﻿@{
+<div class="btn-group" align="center">
+
+    <button class="panel panel-primary panel-body btn btn-default">
+        @Html.ActionLink("Manage Books", "Create", "Book",
+                 new {area = "Admin"},
+                 new {type = "button", @class = "btn"})
+    </button>
+
+    <button class="panel panel-primary panel-body btn btn-default ">
+        @Html.ActionLink("Manage Authors", "Create", "Author",
+            new { area = "Admin" },
+            new { type = "button", @class = "btn" })
+    </button>
+
+    <button class="panel panel-primary panel-body btn btn-default ">
+        @Html.ActionLink("Manage Users", "Create", "User",
+            new { area = "Admin" },
+            new { type = "button", @class = "btn" })
+    </button>
+</div>
+}
