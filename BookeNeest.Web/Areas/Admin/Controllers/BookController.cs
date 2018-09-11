@@ -44,6 +44,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         // POST: Book/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(AddBookViewModel book)
         {
             // TODO: Add correct mapping
@@ -60,8 +61,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
                 PublicationDate = DateTime.Today.ToLongTimeString(),
                 Authors = authors,
                 Genres = genres,
-                Name = book.Name,
-                Description = book.Id,
+                Name = book.Name
             };
 
             var bookDto = Mapper.Map<BookDto>(bookVM);

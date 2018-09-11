@@ -9,22 +9,21 @@ namespace BookeNeest.Web.Areas.Admin.Models
 {
     public class UserDetailsViewModel
     {
-        [Display(Name = "Id")] 
+        [Display(Name = "Id", Order = 1)] 
         public string Id { get; set; }
         
-        [Display(Name = "Name")] 
-
-        public string Name { get; set; }
-        
-        [Display(Name = "UserName")] 
+        [Display(Name = "Username", Order = 2)] 
         public string UserName { get; set; }
+
+        [Display(Name = "Email", Order = 3)]
+        public string Email { get; set; }
 
     }
 
     public class CreateUserViewModel
     {
         [Required]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [EmailAddress]

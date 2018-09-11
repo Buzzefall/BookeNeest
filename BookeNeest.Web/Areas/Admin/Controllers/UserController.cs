@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -29,10 +30,9 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
-
             var model = new CreateUserViewModel
             {
-                Name = "",
+                UserName = "",
                 Email = "",
                 Password = "",
                 //Roles = BookeNeestUserRoles.ToSelectList()
@@ -58,7 +58,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             var user = new User
             {
                 Id = Guid.NewGuid(),
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email
             };
 
@@ -66,13 +66,15 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
             if (result.Succeeded)
             {
-                result = await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles
-                    //.Where(role => role.Selected)
-                    //.Select(role => role.Text)
-                    .ToArray());
+                result = await UserManager.AddToRolesAsync(user.Id, model.SelectedRoles.ToArray());
+                //.Where(role => role.Selected)
+                //.Select(role => role.Text)
 
                 if (result.Succeeded)
                 {
+                    await UserManager.AddClaimAsync(user.Id, new Claim ("Email", user.Email));
+                    await UserManager.AddClaimAsync(user.Id, new Claim ("About", "New user!"));
+
                     return RedirectToAction("Create");
                 }
             }

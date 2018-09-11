@@ -7,6 +7,8 @@ namespace BookeNeest.Web
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            // Scripts
+            //////////////////////////////////////////////////////////
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-{version}.js"));
 
@@ -20,15 +22,27 @@ namespace BookeNeest.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                 "~/Scripts/bootstrap.js"));
+            
+            // Custom Scripts:
+            //////////////////////////////////////////////////////////
+            bundles.Add(new ScriptBundle("~/bundles/select2").Include(
+                "~/Scripts/select2.js"));
 
+
+
+
+
+            // Styles
+            //////////////////////////////////////////////////////////
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css"));
 
-            // Custom bundles:
+            // Custom styles:
             //////////////////////////////
-            bundles.Add(new StyleBundle("~/Content/css/custom").Include(
-                "~/Content/Custom/book-styles.css"));
+            bundles.Add(new StyleBundle("~/Content/Custom").Include(
+                "~/Content/Custom/book-styles.css",
+                "~/Content/css/select2.css"));
         }
     }
 }

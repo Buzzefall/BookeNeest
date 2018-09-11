@@ -17,9 +17,20 @@ namespace BookeNeest.Web
                 LogicLayer.AutoMapperConfig.Configure(config);
                 // DTOs to View Models
                 // config.AllowNullCollections = true;
-                config.CreateMap<BookDto, BookViewModel>(MemberList.None).ReverseMap();
-                config.CreateMap<AuthorDto, AuthorCreateViewModel>(MemberList.None).ReverseMap();
-                config.CreateMap<UserDto, UserViewModel>(MemberList.None).ReverseMap();
+
+                config.CreateMap<AddBookViewModel, BookDto>(MemberList.None);
+
+                config.CreateMap<BookDto, BookViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
+
+                config.CreateMap<AuthorDto, AuthorCreateViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
+
+
+                config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
+
+                config.CreateMap<UserDto, UserViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
             });
 
             IsConfigured = true;
