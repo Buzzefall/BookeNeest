@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Protocols;
 using AutoMapper;
+using BookeNeest.Domain.Constants;
+using BookeNeest.Domain.DTOs;
+using BookeNeest.Domain.Models.Identity;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Areas.Admin.Models;
 using Microsoft.AspNet.Identity.Owin;
@@ -33,30 +36,36 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(CreateUserViewModel userModel)
+        public async Task<ActionResult> Create(CreateUserViewModel model)
         {
             // TODO: Add creation of user, then redirect..
-            if (!ModelState.IsValid) return View("CreateUser", userModel);
+            if (!ModelState.IsValid) return View("CreateUser", model);
 
-            var user = Mapper.Map<Domain.Models.Identity.User>(userModel);
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                UserName = model.UserName
+            };
 
-            user.Id = Guid.NewGuid();
-            user.About = "New user";
-
-            var result = await UserManager.CreateAsync(user);
+            var result = await UserManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
             {
-                UserManager.Addt
+                result = await UserManager.AddToRoleAsync(user.Id, BookeNeestUserRoles.Reader);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Create");
+                }
+
             }
 
             else
 
             {
                 ModelState.AddModelError("AccountService error", "Failed to create user.");
-                return View("CreateUser", userModel);
+                return View("CreateUser", model);
             }
-
 
             return RedirectToAction("Create");
         }

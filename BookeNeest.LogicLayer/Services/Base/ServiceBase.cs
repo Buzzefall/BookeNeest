@@ -13,8 +13,8 @@ namespace BookeNeest.LogicLayer.Services
     {
         protected readonly IUnitOfWork unitOfWork;
 
-        [InjectionConstructor]
-        protected ServiceBase(IUnitOfWork unitOfWork)
+        //[InjectionConstructor]
+        protected virtual ServiceBase(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }

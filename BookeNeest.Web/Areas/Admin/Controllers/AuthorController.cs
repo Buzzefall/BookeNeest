@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Areas.Admin.Models;
+using Unity.Attributes;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
     public class AuthorController : AdminAreaControllerBase
     {
-        // GET: Admin/Author
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private readonly IAuthorService authorService;
 
-        // GET: Admin/Author/Details/5
-        public ActionResult Details(int id)
+        private IAuthorService AuthorService { get; }
+        
+        [InjectionConstructor]
+        public AuthorController(IAuthorService authorService)
         {
-            return View();
+            this.authorService = authorService;
         }
 
         // GET: Admin/Author/Create
@@ -40,6 +40,23 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
             return RedirectToAction("Recents", "Book");
         }
+
+
+
+        // GET: Admin/Author
+        //public ActionResult Recents()
+        //{
+        //    return View();
+        //}
+
+        //// GET: Admin/Author/Details/5
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
+
+
+
 
         //// GET: Admin/Author/Edit/5
         //public ActionResult Edit(int id)

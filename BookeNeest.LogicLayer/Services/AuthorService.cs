@@ -9,11 +9,18 @@ using BookeNeest.Domain.Contracts;
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
+using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
     public class AuthorService : ServiceBase<AuthorDto>, IAuthorService
     {
+
+        [InjectionConstructor]
+        public AuthorService(IUnitOfWork unitOfWork) : base(unitOfWork)
+        {
+        }
+
         public void AddNew(AuthorDto authorDto)
         {
             var author = Mapper.Map<Author>(authorDto);
@@ -38,7 +45,10 @@ namespace BookeNeest.LogicLayer.Services
 
         public IList<AuthorDto> GetAuthorsOrdered(int amount)
         {
-            var authors = unitOfWork.AuthorRepository.
+            var authors = unitOfWork.AuthorRepository.GetAuthorsOrdered(amount);
+            var authorsDto = Mapper.Map<IList<AuthorDto>>(authors);
+
+            return authorsDto;
         }
     }
 }
