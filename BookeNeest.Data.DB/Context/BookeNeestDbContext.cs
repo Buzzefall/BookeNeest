@@ -18,7 +18,7 @@ namespace BookeNeest.Data.DB.Context
 
         public static BookeNeestDbContext Create() => new BookeNeestDbContext();
 
-        public BookeNeestDbContext() : base("BookeNeestDbConnection")
+        public BookeNeestDbContext() : base("BookeNeestDbHomeConnection")
         {
             // DO NOT DO this. This prevents process of migration, migration itself creates context instance.
             // Hence, if here database is created, either initial snapshot of DB model being created or something else goes wrong... 
@@ -31,11 +31,11 @@ namespace BookeNeest.Data.DB.Context
         {
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Role>().ToTable("Roles");
-            modelBuilder.Entity<UserClaim>().ToTable("UserClaims");
             modelBuilder.Entity<UserRole>().ToTable("UserRoles").HasKey(x => new { x.UserId, x.RoleId });
-            modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => x.UserId);
-
             modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => new { x.UserId, x.ProviderKey});
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaims");
+
+            //modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => x.UserId);
 
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new BookMap());

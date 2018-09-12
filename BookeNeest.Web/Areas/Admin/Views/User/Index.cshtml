@@ -1,11 +1,38 @@
-﻿@model IList<BookeNeest.Web.Areas.Admin.Models.UserDetailsViewModel>
+﻿@using System.Reflection
+@model IList<BookeNeest.Web.Models.UserViewModel>
 
-
-<p>
-    <div class="panel-group">
-        <span class="panel-heading custom-book-head"> </span>
-    </div>
-</p>
 @{
 
 }
+
+<p>
+    <table class="panel-group panel-primary col-lg-12">
+        <caption class="panel-heading custom-book-head"> BookeNeest Users</caption>
+        <tr class="panel panel-primary custom-book-head">
+            <th>Id</th>
+            <th>UserName</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>About</th>
+        </tr>
+        @foreach (var user in Model)
+        {
+            <tr class="panel panel-primary " style="font-family: Georgia, serif">
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Email</td>
+                <td>@user.About</td>
+            </tr>
+        }
+    </table>
+</p>
+
+
+<div style="font-family: sans-serif; font-weight: bold; text-align: center"> 1 — @Model.Count</div>
+
+<p>
+    @Html.ActionLink("Create New User", "Create", "User", null, new { type="button", @class="btn btn-primary"})
+</p>

@@ -2,7 +2,7 @@
 @model BookeNeest.Web.Areas.Admin.Models.CreateUserViewModel
 
 @{
-    Model.Roles = BookeNeestUserRoles.ToSelectList();
+    //Model.Roles = BookeNeestUserRoles.ToSelectList();
 }
 
 <h2 class="custom-book-head">Create new user</h2>
@@ -45,7 +45,7 @@
             @Html.LabelFor(model => model.SelectedRoles, "Roles", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.SelectedRoles, Model.Roles,
-                    "Choose role", new {@class = "form-control select2-dropdown", multiple = "true"})
+                    "Choose role", new {@class = "form-control", multiple = "true"})
                 @Html.ValidationMessageFor(model => model.Roles, "", new {@class = "text-danger"})
             </div>
                 @*@Html.LabelFor(model => model.Roles, htmlAttributes: new { @class = "control-label col-md-2" })

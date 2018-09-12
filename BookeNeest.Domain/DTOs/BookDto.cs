@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BookeNeest.Domain.DTOs
 {
@@ -22,14 +23,8 @@ namespace BookeNeest.Domain.DTOs
             var authors_parsed = authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries);
             var genres_parsed = genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries);
 
-            Authors = new List<AuthorDto>();
-            Genres = new List<GenreDto>();
-
-            foreach (var genre in genres_parsed)
-                Genres.Add(new GenreDto(genre));
-            
-            foreach (var author in authors_parsed)
-                Authors.Add(new AuthorDto(author));
+            Authors = authors_parsed.Select(a => new AuthorDto(a)).ToList();
+            Genres = genres_parsed.Select(g => new GenreDto(g)).ToList();
         }
 
         public override string ToString() => Name;
