@@ -51,5 +51,6 @@ namespace BookeNeest.LogicLayer.Services
             var genres = unitOfWork.GenreRepository.GetRecent(amount);
 
             return Mapper.Map<IList<GenreDto>>(genres);
+        }
     }
 }
