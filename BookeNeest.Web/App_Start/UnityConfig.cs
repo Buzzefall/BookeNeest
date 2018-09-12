@@ -43,7 +43,9 @@ namespace BookeNeest.Web
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IBookService, BookService>();
+            container.RegisterType<IGenreService, GenreService>();
             container.RegisterType<IAuthorService, AuthorService>();
+            container.RegisterType<IReviewService, ReviewService>();
 
             // TODO: To use these or not?
             // TODO: anyway, MOVE these to Data Access Level

@@ -14,16 +14,23 @@ namespace BookeNeest.LogicLayer
         public static void Configure(IMapperConfigurationExpression config)
         {
             config.CreateMap<string, AuthorDto>(MemberList.None).ConstructUsing(name => new AuthorDto(name));
-            config.CreateMap<Author, AuthorDto>(MemberList.None).ReverseMap();
+            config.CreateMap<Author, AuthorDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
 
-            config.CreateMap<Book, BookDto>(MemberList.None).ReverseMap();
+            config.CreateMap<Book, BookDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
 
-            config.CreateMap<Genre, GenreDto>(MemberList.None).ReverseMap();
+            config.CreateMap<Genre, GenreDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
+
             config.CreateMap<string, GenreDto>(MemberList.None).ConstructUsing(name => new GenreDto(name));
 
-            config.CreateMap<Review, ReviewDto>(MemberList.None).ReverseMap();
+            config.CreateMap<Review, ReviewDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
 
-            config.CreateMap<User, UserDto>(MemberList.None).ReverseMap();
+            config.CreateMap<User, UserDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
+
             //config.AddGlobalIgnore("Users");
             //config.AddGlobalIgnore("Reviews");
             IsConfigured = true;

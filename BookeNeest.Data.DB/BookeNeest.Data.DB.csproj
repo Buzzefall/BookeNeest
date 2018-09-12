@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201809051249474_TagCategories.Designer.cs">
       <DependentUpon>201809051249474_TagCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809121325340_TitlesForReviews.cs" />
+    <Compile Include="Migrations\201809121325340_TitlesForReviews.Designer.cs">
+      <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
@@ -100,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809051249474_TagCategories.resx">
       <DependentUpon>201809051249474_TagCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809121325340_TitlesForReviews.resx">
+      <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

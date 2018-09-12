@@ -5,6 +5,7 @@ namespace BookeNeest.Domain.Models
 {
     public class Review : EntityBase<Guid>
     {
+        public string Title { get; set; }
         public Guid UserId { get; set; }
         public Guid BookId { get; set; }
         public string Text { get; set; }

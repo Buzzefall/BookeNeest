@@ -16,8 +16,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
     {
         private readonly IAuthorService authorService;
 
-        private IAuthorService AuthorService { get; }
-        
         [InjectionConstructor]
         public AuthorController(IAuthorService authorService)
         {
@@ -32,22 +30,17 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         // POST: Admin/Author/Create
         [HttpPost]
-        public ActionResult Create(AuthorCreateViewModel model)
+        public ActionResult Create(CreateAuthorViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var authorDto = Mapper.Map<AuthorDto>(model);
-
-                authorService.AddNew(authorDto);
-
-                return RedirectToAction("Recents", "Book");
+                ModelState.AddModelError("Model Validation Errors", "Model validation error.");
+                return View("CreateAuthor", model);
             }
 
-            else
-            {
+            var authorDto = Mapper.Map<AuthorDto>(model);
 
-            }
-            
+            authorService.AddNew(authorDto);
 
             return RedirectToAction("Recents", "Book");
         }

@@ -28,6 +28,12 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             private set => _userManager = value;
         }
 
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public ActionResult Create()
         {
             var model = new CreateUserViewModel

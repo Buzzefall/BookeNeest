@@ -24,15 +24,6 @@ namespace BookeNeest.Data.DB.Repositories
             return book;
         }
 
-        public IList<Book> GetBooksOrdered(int amount)
-        {
-            var books = Entities
-                .Take(amount)
-                .ToList();
-
-            return books;
-        }
-
         //public IList<Book> FindByGenre(string name)
         //{
 

@@ -10,6 +10,6 @@ namespace BookeNeest.Domain.Contracts.Services
     {
         TEntityDto FindById(Guid entityId);
         IList<TEntityDto> FindByName(string entityName);
-        void AddNew(TEntityDto entityDto);
+        Guid AddNew(TEntityDto entityDto);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using BookeNeest.Data.DB.Context;
@@ -7,7 +8,7 @@ using BookeNeest.Domain.Models;
 
 namespace BookeNeest.Data.DB.Repositories
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
+    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         where TEntity : EntityBase<Guid>
     {
         private readonly BookeNeestDbContext _dbContext;
@@ -39,6 +40,15 @@ namespace BookeNeest.Data.DB.Repositories
         public TEntity FindById(Guid id)
         {
             return _dbSet.Find(id);
+        }
+
+        public  IList<TEntity> GetRecent(int amount)
+        {
+            var requested = Entities
+                .Take(amount)
+                .ToList();
+
+            return requested;
         }
     }
 }

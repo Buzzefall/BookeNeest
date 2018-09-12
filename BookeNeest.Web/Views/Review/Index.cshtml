@@ -1,0 +1,36 @@
+﻿@using System.Text
+@model IList<BookeNeest.Web.Models.ReviewViewModel>
+
+@{
+}
+
+<h2 class="custom-book-head"> Recent Reviews</h2>
+
+<hr/>
+
+<ul>
+    @foreach (var review in Model)
+    {
+        <li class="panel-body panel-primary" style="background-color: aliceblue;">
+
+            @Html.DisplayForModel(review)
+
+            @*<span class="custom-book-fld">
+                        ID:
+                    </span> @review.Id.ToString() <br />
+
+                    <span class="custom-book-fld">
+                        Name:
+                    </span> @review.Name <br />
+
+                    <span class="custom-book-fld">
+                        Authors:
+                    </span> @authors.ToString() <br />*@
+
+        </li>
+    }
+</ul>
+
+<hr/>
+
+@Html.ActionLink("Post Review", "PostReview", "Review", htmlAttributes: new { @class = "btn btn-default btn-primary"})

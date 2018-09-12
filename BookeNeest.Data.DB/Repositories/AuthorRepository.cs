@@ -22,15 +22,5 @@ namespace BookeNeest.Data.DB.Repositories
 
             return authors;
         }
-
-        public IList<Author> GetAuthorsOrdered(int amount)
-        {
-            var authors = Entities
-                .Take(amount)
-                .OrderBy( author => author.Name)
-                .ToList();
-
-            return authors;
-        }
     }
 }

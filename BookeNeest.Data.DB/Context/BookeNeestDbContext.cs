@@ -18,7 +18,7 @@ namespace BookeNeest.Data.DB.Context
 
         public static BookeNeestDbContext Create() => new BookeNeestDbContext();
 
-        public BookeNeestDbContext() : base("BookeNeestDbHomeConnection")
+        public BookeNeestDbContext() : base("BookeNeestDbConnection")
         {
             // DO NOT DO this. This prevents process of migration, migration itself creates context instance.
             // Hence, if here database is created, either initial snapshot of DB model being created or something else goes wrong... 

@@ -13,19 +13,23 @@ using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
-    public class AuthorService : ServiceBase<AuthorDto>, IAuthorService
+    public class AuthorService : ServiceBase, IAuthorService
     {
         [InjectionConstructor]
         public AuthorService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public void AddNew(AuthorDto authorDto)
+        public Guid AddNew(AuthorDto authorDto)
         {
             var author = Mapper.Map<Author>(authorDto);
 
+            author.Id = Guid.NewGuid();
+
             unitOfWork.AuthorRepository.Add(author);
             unitOfWork.CommitAsync();
+
+            return author.Id;
         }
 
         public IList<AuthorDto> FindByName(string name)
@@ -42,9 +46,9 @@ namespace BookeNeest.LogicLayer.Services
             return Mapper.Map<AuthorDto>(book);
         }
 
-        public IList<AuthorDto> GetAuthorsOrdered(int amount)
+        public IList<AuthorDto> TakeAuthorsOrdered(int amount)
         {
-            var authors = unitOfWork.AuthorRepository.GetAuthorsOrdered(amount);
+            var authors = unitOfWork.AuthorRepository.GetRecent(amount);
             var authorsDto = Mapper.Map<IList<AuthorDto>>(authors);
 
             return authorsDto;

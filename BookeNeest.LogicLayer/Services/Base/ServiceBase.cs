@@ -10,21 +10,14 @@ using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
-    public abstract class ServiceBase<TEntityDto> //: IServiceBase<TEntityDto>
+    public abstract class ServiceBase
     {
         protected readonly IUnitOfWork unitOfWork;
 
-        //[InjectionConstructor]
         protected ServiceBase(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
-
-        //public TEntityDto FindById(Guid entityId);
-        //public IList<TEntityDto> FindByName(string entityName);
-
-        //public void AddNew(TEntityDto entityDto);
-
 
     }
 }

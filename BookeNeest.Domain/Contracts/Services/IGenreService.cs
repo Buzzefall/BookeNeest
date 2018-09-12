@@ -9,6 +9,6 @@ namespace BookeNeest.Domain.Contracts.Services
 {
     public interface IGenreService : IServiceBase<GenreDto>
     {
-        List<AuthorDto> GetGenresOrdered(int amount);
+        IList<GenreDto> GetRecentGenres(int amount);
     }
 }

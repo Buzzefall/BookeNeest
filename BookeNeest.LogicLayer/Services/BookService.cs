@@ -12,19 +12,23 @@ using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
 {
-    public class BookService : ServiceBase<BookDto>, IBookService
+    public class BookService : ServiceBase, IBookService
     {
         [InjectionConstructor]
         public BookService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public void AddNew(BookDto bookDto)
+        public Guid AddNew(BookDto bookDto)
         {
             var book = Mapper.Map<Book>(bookDto);
 
+            book.Id = Guid.NewGuid();
+
             unitOfWork.BookRepository.Add(book);
             unitOfWork.CommitAsync();
+
+            return book.Id;
         }
 
         public BookDto FindById(Guid id)
@@ -43,7 +47,7 @@ namespace BookeNeest.LogicLayer.Services
 
         public IList<BookDto> GetRecentBooks(int amount)
         {
-            var books = unitOfWork.BookRepository.GetBooksOrdered(amount);
+            var books = unitOfWork.BookRepository.GetRecent(amount);
 
             return Mapper.Map<IList<BookDto>>(books);
         }

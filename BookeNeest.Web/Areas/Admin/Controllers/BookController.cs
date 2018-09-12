@@ -45,30 +45,29 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AddBookViewModel book)
+        public ActionResult Create(CreateBookViewModel book)
         {
-            // TODO: Add correct mapping
-            List<string> authors =
-                new List<string>(book.Authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
-
-            List<string> genres =
-                new List<string>(book.Genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
-
-            var bookVM = new BookViewModel
-            {
-                Id = Guid.NewGuid().ToString(),
-                ISBN = Guid.NewGuid().ToString(),
-                PublicationDate = DateTime.Today.ToLongTimeString(),
-                Authors = authors,
-                Genres = genres,
-                Name = book.Name
-            };
-
-            var bookDto = Mapper.Map<BookDto>(bookVM);
+            var bookDto = Mapper.Map<BookDto>(book);
 
             bookService.AddNew(bookDto);
 
-            return RedirectToAction("Recents", "Book", new {area = ""});
+            return RedirectToAction("Details", "Book", new {area = ""});
+
+            //List<string> authors =
+            //    new List<string>(book.Authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
+
+            //List<string> genres =
+            //    new List<string>(book.Genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
+
+            //var bookVM = new BookViewModel
+            //{
+            //    Id = Guid.NewGuid().ToString(),
+            //    ISBN = Guid.NewGuid().ToString(),
+            //    PublicationDate = DateTime.Today.ToLongTimeString(),
+            //    Authors = authors,
+            //    Genres = genres,
+            //    Name = book.Name
+            //};
         }
 
         // GET: Book/Edit/5

@@ -79,7 +79,7 @@
     <Compile Include="Contracts\Repositories\IGenreRepository.cs" />
     <Compile Include="Contracts\Repositories\IReviewRepository.cs" />
     <Compile Include="Contracts\Repositories\ITagRepository.cs" />
-    <Compile Include="Contracts\Services\IUserService.cs" />
+    <Compile Include="Contracts\Services\IReviewService.cs" />
     <Compile Include="Contracts\Services\IGenreService.cs" />
     <Compile Include="Contracts\Services\IAuthorService.cs" />
     <Compile Include="Contracts\Services\Base\IServiceBase.cs" />

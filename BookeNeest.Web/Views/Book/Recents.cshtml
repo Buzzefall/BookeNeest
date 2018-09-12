@@ -14,14 +14,15 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken();
+    @Html.AntiForgeryToken()
+    ;
 
     <div class="dropdown nav nav-tabs">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default btn-primary col-lg-12 col-md-1 "> Recents</a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu col-md-12">
             @foreach (var book in Model)
             {
-                <li class="custom-book-pre panel panel-primary panel-body" style="background-color: aliceblue;">
+                <li class="panel-body panel-primary" style="background-color: aliceblue;">
                     @{
                         StringBuilder authors = new StringBuilder();
 
@@ -51,19 +52,6 @@
             }
         </ul>
     </div>
-
-    <p>
-        <div class="form-horizontal">
-            <hr/>
-            @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Action("Details", new {bookName = "[Book LIX-DCCCXXXVIII]" })
-                </div>
-            </div>
-        </div>
-    </p>
-
 }
 @*<div>
     @Html.ActionLink("Back to List", "Index", "Home");

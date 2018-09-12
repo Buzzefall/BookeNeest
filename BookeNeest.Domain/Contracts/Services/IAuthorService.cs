@@ -6,6 +6,6 @@ namespace BookeNeest.Domain.Contracts.Services
 {
     public interface IAuthorService : IServiceBase<AuthorDto>
     {
-        IList<AuthorDto> GetAuthorsOrdered(int amount);
+        IList<AuthorDto> TakeAuthorsOrdered(int amount);
     }
 }
