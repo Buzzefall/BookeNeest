@@ -18,7 +18,7 @@
     ;
 
     <div class="dropdown nav nav-tabs">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default btn-primary col-lg-12 col-md-1 "> Recents</a>
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default btn-primary col-md-12"> Recents</a>
         <ul class="dropdown-menu col-md-12">
             @foreach (var book in Model)
             {
@@ -38,7 +38,7 @@
 
                     <span class="custom-book-fld">
                         ID:
-                    </span> @book.Id.ToString() <br/>
+                    </span> @book.Id <br/>
 
                     <span class="custom-book-fld">
                         Name:

@@ -16,7 +16,6 @@ namespace BookeNeest.Web.Models
         public int? PagesTotal { get; set; }
         public int? Rating { get; set; }
 
-
         public List<string> Authors { get; set; }
         public List<string> Genres { get; set; }
         public List<string> Tags { get; set; }
