@@ -11,6 +11,10 @@ namespace BookeNeest.Domain.DTOs
         public string Text { get; set; }
         public string Category { get; set; }
 
+        public TagDto()
+        {
+        }
+
         public TagDto(string text)
         {
             Text = text;

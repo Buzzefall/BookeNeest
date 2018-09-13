@@ -52,22 +52,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             bookService.AddNew(bookDto);
 
             return RedirectToAction("Details", "Book", new {area = ""});
-
-            //List<string> authors =
-            //    new List<string>(book.Authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
-
-            //List<string> genres =
-            //    new List<string>(book.Genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries));
-
-            //var bookVM = new BookViewModel
-            //{
-            //    Id = Guid.NewGuid().ToString(),
-            //    ISBN = Guid.NewGuid().ToString(),
-            //    PublicationDate = DateTime.Today.ToLongTimeString(),
-            //    Authors = authors,
-            //    Genres = genres,
-            //    Name = book.Name
-            //};
         }
 
         // GET: Book/Edit/5

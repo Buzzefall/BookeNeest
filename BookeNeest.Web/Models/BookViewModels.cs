@@ -16,8 +16,8 @@ namespace BookeNeest.Web.Models
         public int? PagesTotal { get; set; }
         public int? Rating { get; set; }
 
-        public List<string> Authors { get; set; }
-        public List<string> Genres { get; set; }
-        public List<string> Tags { get; set; }
+        public List<AuthorViewModel> Authors { get; set; }
+        public List<GenreViewModel> Genres { get; set; }
+        public List<TagViewModel> Tags { get; set; }
     }
 }

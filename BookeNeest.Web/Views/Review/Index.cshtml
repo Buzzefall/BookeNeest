@@ -26,11 +26,11 @@
                     <span class="custom-book-fld">
                         Authors:
                     </span> @authors.ToString() <br />*@
-
+            
+            @Html.ActionLink("Post Review", "PostReview", review.BookId, htmlAttributes: new { @class = "btn btn-default btn-primary"})
         </li>
     }
 </ul>
 
 <hr/>
 
-@Html.ActionLink("Post Review", "PostReview", "Review", htmlAttributes: new { @class = "btn btn-default btn-primary"})

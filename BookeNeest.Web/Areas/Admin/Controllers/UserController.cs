@@ -16,6 +16,8 @@ using BookeNeest.Web.Areas.Admin.Models;
 using BookeNeest.Web.Models;
 using Microsoft.AspNet.Identity.Owin;
 
+using ClaimTypes = BookeNeest.Domain.Constants.ClaimTypes;
+
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
     // TODO: CRUD(User) operations, etc.
@@ -83,8 +85,9 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
                 if (result.Succeeded)
                 {
-                    await UserManager.AddClaimAsync(user.Id, new Claim ("Email", user.Email));
-                    await UserManager.AddClaimAsync(user.Id, new Claim ("About", "New user!"));
+                    //await UserManager.AddClaimAsync(user.Id, new Claim (ClaimTypes.UserId, user.Id.ToString()));
+                    await UserManager.AddClaimAsync(user.Id, new Claim (ClaimTypes.Email, user.Email));
+                    await UserManager.AddClaimAsync(user.Id, new Claim (ClaimTypes.About, "New user!"));
 
                     return RedirectToAction("Create");
                 }

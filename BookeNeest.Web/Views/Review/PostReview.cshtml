@@ -1,17 +1,53 @@
-﻿@{
-    Layout = null;
+﻿@using System.Security.Claims
+@using System.Web.UI.WebControls
+@using Microsoft.AspNet.Identity
+@model BookeNeest.Web.Models.ReviewViewModel
+
+@{
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+<p>
+    @using (Html.BeginForm("PostReview", "Review", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        //Model.UserId = User.Identity as ClaimsIdentity);
+
+        <div class="panel panel-primary form-horizontal">
+            <div class="panel-heading custom-book-head"> Talk about this book</div>
+
+            <div class="panel-default panel-body custom-book">
+                
+                @Html.ValidationSummary(false)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title, new {@class = "control-label col-md-2"})
+                    <div class="col-md-2">
+                        @Html.EditorFor(m => m.Title, new {@class = "form-control col-md-10"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Rating, new {@class = "control-label col-md-2"})
+                    <div class="col-md-2">
+
+                        @Html.DropDownListFor(m => m.Rating,
+                            new SelectList(new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 5),
+                            new {@class = "form-control col-md-10"})
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    @Html.LabelFor(m => m.Text, "Review", new {@class = "control-label col-md-2"})
+                    <div class="col-md-4">
+                        @Html.TextAreaFor(m => m.Text, new {@class = "form-control col-md-10"})
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary form-control"> Post a review</button>
+            </div>
+        </div>
+    }
+
+</p>

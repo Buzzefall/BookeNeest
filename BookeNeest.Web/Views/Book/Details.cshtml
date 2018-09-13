@@ -20,7 +20,7 @@
                 StringBuilder authors = new StringBuilder();
                 foreach (var author in book.Authors)
                 {
-                    authors.Append(author).Append(", ");
+                    authors.Append(author.Name).Append(", ");
                 }
                 if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
                 {
@@ -29,7 +29,7 @@
 
                 <span class="custom-book-fld">
                     ID:
-                </span> @book.Id.ToString() <br/>
+                </span> @book.Id <br/>
 
                 <span class="custom-book-fld">
                     Name:
@@ -38,9 +38,11 @@
                 <span class="custom-book-fld">
                     Authors:
                 </span> @authors.ToString() <br/>
+
             }
         </div>
     }
+
     
 }
 

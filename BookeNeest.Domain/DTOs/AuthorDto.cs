@@ -11,6 +11,10 @@ namespace BookeNeest.Domain.DTOs
         public string Name { get; set; }
         public string About { get; set; }
 
+        public AuthorDto()
+        {
+        }
+
         public AuthorDto(string name)
         {
             Id = Guid.NewGuid();

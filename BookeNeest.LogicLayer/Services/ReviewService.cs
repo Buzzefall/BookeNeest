@@ -28,7 +28,7 @@ namespace BookeNeest.LogicLayer.Services
             review.Id = Guid.NewGuid();
 
             unitOfWork.ReviewRepository.Add(review);
-            unitOfWork.CommitAsync().Wait();
+            unitOfWork.CommitAsync();
 
             return review.Id;
         }

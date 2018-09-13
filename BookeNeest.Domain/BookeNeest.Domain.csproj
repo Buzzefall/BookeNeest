@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Constants\BookeNeestClaimTypes.cs" />
     <Compile Include="Constants\BookeNeestUserRoles.cs" />
     <Compile Include="Contracts\Repositories\IAuthorRepository.cs" />
     <Compile Include="Contracts\Repositories\IBookRepository.cs" />

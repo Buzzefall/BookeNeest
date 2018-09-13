@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
-using BookeNeest.Web.Areas.Admin.Controllers.Base;
-using BookeNeest.Web.Areas.Admin.Models;
 using BookeNeest.Web.Models;
+using Microsoft.AspNet.Identity;
 using Unity.Attributes;
-using Unity.Injection;
 
 namespace BookeNeest.Web.Controllers
 {
-    public class ReviewController : AdminAreaControllerBase
+    public class ReviewController : Controller
     {
         private readonly IReviewService reviewService;
 
@@ -34,24 +30,35 @@ namespace BookeNeest.Web.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin, Critic")]
-        public ActionResult PostReview()
+        [Authorize]
+        public ActionResult PostReview(string bookId)
         {
-            return View("PostReview");
+            var model = new ReviewViewModel
+            {
+                BookId = Guid.Parse(bookId),
+                UserId = Guid.Parse(User.Identity.GetUserId()),
+            };
+
+            return View("PostReview", model);
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin, Critic")]
+        [Authorize(Roles = "Admin, Critic, Reader")]
         [ValidateAntiForgeryToken]
         public ActionResult PostReview(ReviewViewModel model)
         {
             // TODO: Post Review Service
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Model Validation Errors", "Model Validation Error");
+                return View("PostReview", model);
+            }
 
             var reviewDto = Mapper.Map<ReviewDto>(model);
 
             var id = reviewService.AddNew(reviewDto);
 
-            return View("Details");
+            return RedirectToAction("Index");
         }
 
         

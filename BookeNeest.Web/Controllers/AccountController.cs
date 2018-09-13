@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BookeNeest.Domain.Constants;
 using BookeNeest.Domain.Models.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BookeNeest.Web.Models;
 using Unity.Attributes;
+
+using ClaimTypes = BookeNeest.Domain.Constants.ClaimTypes;
 
 namespace BookeNeest.Web.Controllers
 {
@@ -157,6 +161,7 @@ namespace BookeNeest.Web.Controllers
             var result = await UserManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                await UserManager.AddToRolesAsync(user.Id, BookeNeestUserRoles.Critic, BookeNeestUserRoles.Reader);
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookeNeest.Domain.DTOs;
+using BookeNeest.Domain.Models;
 using BookeNeest.Domain.Models.Identity;
 using BookeNeest.Web.Areas.Admin.Models;
 using BookeNeest.Web.Models;
@@ -16,18 +17,34 @@ namespace BookeNeest.Web
             {
                 // DAL Models to DTOs
                 LogicLayer.AutoMapperConfig.Configure(config);
-                // DTOs to View Models
-                // config.AllowNullCollections = true;
 
+                // DTOs to View Models
                 config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None);
                 config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
                 config.CreateMap<CreateAuthorViewModel, AuthorDto>(MemberList.None);
 
-                config.CreateMap<BookDto, BookViewModel>(MemberList.None)
+
+
+                config.CreateMap<AuthorDto, AuthorViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
+
+                config.CreateMap<GenreDto, GenreViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
+
+                config.CreateMap<TagDto, TagViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);
 
                 config.CreateMap<ReviewDto, ReviewViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);
+
+
+
+
+                config.CreateMap<BookDto, BookViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
+
+
+
 
                 config.CreateMap<UserDto, UserViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);

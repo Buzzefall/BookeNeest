@@ -18,6 +18,10 @@ namespace BookeNeest.Domain.DTOs
         public List<GenreDto> Genres { get; set; }
         public List<TagDto> Tags { get; set; }
 
+        public BookDto()
+        {
+        }
+
         public BookDto(string authors, string genres)
         {
             var authors_parsed = authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries);

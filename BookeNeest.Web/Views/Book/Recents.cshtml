@@ -6,11 +6,9 @@
     ViewBag.Title = "Book";
 }
 
-<h1>
-    <span class="custom-book-head">
-        Some recent books on site:
-    </span>
-</h1>
+<h1 class="custom-book-head">Some recent books on site:</h1>
+
+<hr/>
 
 @using (Html.BeginForm())
 {
@@ -28,7 +26,7 @@
 
                         foreach (var author in book.Authors)
                         {
-                            authors.Append(author).Append(", ");
+                            authors.Append(author.Name).Append(", ");
                         }
                         if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
                         {
@@ -47,6 +45,10 @@
                     <span class="custom-book-fld">
                         Authors:
                     </span> @authors.ToString() <br/>
+                    
+                    @Html.ActionLink("Post Review", "PostReview", "Review", 
+                        routeValues: new { bookId = book.Id },
+                        htmlAttributes: new { @class = "btn  btn-primary col-md-2"})
 
                 </li>
             }
