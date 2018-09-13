@@ -4,42 +4,42 @@
 @{
 }
 
-<h2 class="custom-book-head"> Recent Reviews</h2>
+<h2 class="custom-book-head"> Reviews</h2>
 
 <hr/>
 <p>
-    <div class="panel-group ">
+    <div class="panel-group form-horizontal ">
         @foreach (var review in Model)
         {
-            <div class="panel panel-primary panel-body form-horizontal" style="background-color: aliceblue;">
-            
-                <div class="row">
-                    <span class="custom-book-fld col-md-1">
-                        Book ID:
-                    </span> @review.BookId.ToString() <br />
+            <p class="row">
+                <div class="row panel panel-primary panel-body" style="background-color: aliceblue;">
 
-                    <span class="custom-book-fld col-md-1">
-                        User ID:
-                    </span> @review.UserId.ToString() <br />
+                    <div class="row">
+                        <div class="custom-book-fld col-md-1">
+                            Book ID:
+                        </div> @review.BookId.ToString() <br/>
+
+                        <div class="custom-book-fld col-md-1">
+                            User ID:
+                        </div> @review.UserId.ToString() <br/>
 
 
-                    <span class="custom-book-fld col-md-1">
-                        Title:
-                    </span> @review.Title <br />
+                        <span class="custom-book-fld col-md-1">
+                            Title:
+                        </span> @review.Title <br/>
 
-                    <span class="custom-book-fld col-md-1">
-                        Review:
-                    </span> @review.Text <br />
+                        <span class="custom-book-fld col-md-1">
+                            Review:
+                        </span> @review.Text <br/>
+                    </div>
+                    <div class="btn col-md-2">
+                        @Html.ActionLink("Details", "Details",
+                            routeValues: new {reviewId = review.BookId.ToString()},
+                            htmlAttributes: new {@class = "btn btn-default btn-primary form-control"})
+                    </div>
+
                 </div>
-
-            
-            </div>
-
-            <div class="panel  col-md-2">
-                @Html.ActionLink("Details", "Details",
-                    routeValues: new { reviewId = review.BookId.ToString() },
-                    htmlAttributes: new {@class = "btn btn-default btn-primary form-control"})
-            </div>
+            </p>
         }
     </div>
 

@@ -24,6 +24,13 @@ namespace BookeNeest.Web.Areas.Admin
             );
 
             context.MapRoute(
+                name: "Admin_Books_Details",
+                url: "Admin/Books/Details/{id}",
+                defaults: new {controller = "Book", action = "Details", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Controllers"}
+            );
+
+            context.MapRoute(
                 name: "Admin_Books_Manage",
                 url: "Admin/Books/{action}/{id}",
                 defaults: new {controller = "Book", id = UrlParameter.Optional},

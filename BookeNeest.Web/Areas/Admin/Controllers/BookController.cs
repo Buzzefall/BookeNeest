@@ -36,9 +36,9 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         {
             var bookDto = Mapper.Map<BookDto>(book);
 
-            bookService.AddNew(bookDto);
+            var id = bookService.AddNew(bookDto);
 
-            return RedirectToAction("Details", "Book", new {area = ""});
+            return RedirectToAction("Details", "Book", new { bookId = id, area = ""});
         }
 
         // GET: Book/Edit/5
