@@ -15,11 +15,19 @@ namespace BookeNeest.Web.Areas.Admin
                 namespaces: new [] {"BookeNeest.Web.Areas.Admin.Controllers"}
             );
 
+
             context.MapRoute(
                 name: "Admin_Books",
-                url: "Admin/Books/{action}/{id}",
+                url: "Admin/Books",
                 defaults: new {controller = "Book", action = "Recents", id = UrlParameter.Optional},
                 namespaces: new [] {"BookeNeest.Web.Controllers"}
+            );
+
+            context.MapRoute(
+                name: "Admin_Books_Manage",
+                url: "Admin/Books/{action}/{id}",
+                defaults: new {controller = "Book", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Areas.Admin.Controllers"}
             );
 
             context.MapRoute(

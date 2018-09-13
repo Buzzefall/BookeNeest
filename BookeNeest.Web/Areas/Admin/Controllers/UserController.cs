@@ -13,6 +13,7 @@ using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models.Identity;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
 using BookeNeest.Web.Areas.Admin.Models;
+using BookeNeest.Web.Models;
 using Microsoft.AspNet.Identity.Owin;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers
@@ -31,7 +32,11 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var users = UserManager.Users.Take(15).ToList();
+
+            var model = Mapper.Map<IList<UserViewModel>>(users);
+            
+            return View(model);
         }
 
         public ActionResult Create()
@@ -41,7 +46,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
                 UserName = "",
                 Email = "",
                 Password = "",
-                //Roles = BookeNeestUserRoles.ToSelectList()
+                Roles = BookeNeestUserRoles.ToSelectList()
             };
 
             //(ViewBag.RoleSelectList as SelectList).

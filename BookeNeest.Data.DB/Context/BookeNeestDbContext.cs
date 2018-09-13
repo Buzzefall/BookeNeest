@@ -31,11 +31,11 @@ namespace BookeNeest.Data.DB.Context
         {
             modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<Role>().ToTable("Roles");
-            modelBuilder.Entity<UserClaim>().ToTable("UserClaims");
             modelBuilder.Entity<UserRole>().ToTable("UserRoles").HasKey(x => new { x.UserId, x.RoleId });
-            modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => x.UserId);
-
             modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => new { x.UserId, x.ProviderKey});
+            modelBuilder.Entity<UserClaim>().ToTable("UserClaims");
+
+            //modelBuilder.Entity<UserLogin>().ToTable("UserLogins").HasKey(x => x.UserId);
 
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new BookMap());
