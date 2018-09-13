@@ -10,6 +10,9 @@
 <p>
     @using (Html.BeginForm("PostReview", "Review", FormMethod.Post))
     {
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.BookId)
+
         @Html.AntiForgeryToken()
 
         //Model.UserId = User.Identity as ClaimsIdentity);
@@ -18,7 +21,7 @@
             <div class="panel-heading custom-book-head"> Talk about this book</div>
 
             <div class="panel-default panel-body custom-book">
-                
+
                 @Html.ValidationSummary(false)
 
                 <div class="form-group">

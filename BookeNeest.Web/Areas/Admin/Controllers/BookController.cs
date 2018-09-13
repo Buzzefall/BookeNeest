@@ -23,19 +23,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             this.bookService = bookService;
         }
 
-        // GET: Book/Details/5
-        public ActionResult Details(string bookName)
-        {
-            // TODO: Use services here?
-            //var container = new Unity.UnityContainer();
-            //var bookService = ;
-            var book = bookService.FindByName(bookName);
-
-            var model = Mapper.Map<IList<BookViewModel>>(book);
-
-            return View(model);
-        }
-
         // GET: Book/Create
         public ActionResult Create()
         {

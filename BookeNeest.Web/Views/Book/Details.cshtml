@@ -1,9 +1,8 @@
 ﻿@using System.Text
-@model IList<BookeNeest.Web.Models.BookViewModel>
+@model BookeNeest.Web.Models.BookViewModel
 
 @{
     ViewBag.Title = "Details";
-    Layout = null;
 }
 
 
@@ -13,12 +12,10 @@
         <span class="custom-book-pre">Book details:</span>
     </h2>
 
-    foreach (var book in Model)
-    {
         <div class="custom-book-pre panel panel-primary panel-body panel-title" style="background-color: aliceblue">
             @{
                 StringBuilder authors = new StringBuilder();
-                foreach (var author in book.Authors)
+                foreach (var author in Model.Authors)
                 {
                     authors.Append(author.Name).Append(", ");
                 }
@@ -29,11 +26,11 @@
 
                 <span class="custom-book-fld">
                     ID:
-                </span> @book.Id <br/>
+                </span> @Model.Id <br/>
 
                 <span class="custom-book-fld">
                     Name:
-                </span> @book.Name <br/>
+                </span> @Model.Name <br/>
 
                 <span class="custom-book-fld">
                     Authors:
@@ -41,8 +38,6 @@
 
             }
         </div>
-    }
-
     
 }
 
@@ -50,6 +45,6 @@ else
 
 {
     <h2>
-        <span class="custom-book-pre text-danger">[Details] Such books doesn't exist.</span>
+        <span class="custom-book-pre text-danger"> [Details] Such book doesn't exist.</span>
     </h2>
 }

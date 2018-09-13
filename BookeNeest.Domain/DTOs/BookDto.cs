@@ -14,12 +14,13 @@ namespace BookeNeest.Domain.DTOs
         public int? Rating { get; set; }
 
 
-        public List<AuthorDto> Authors { get; set; }
-        public List<GenreDto> Genres { get; set; }
-        public List<TagDto> Tags { get; set; }
+        public IList<AuthorDto> Authors { get; set; }
+        public IList<GenreDto> Genres { get; set; }
+        public IList<TagDto> Tags { get; set; }
 
         public BookDto()
         {
+
         }
 
         public BookDto(string authors, string genres)

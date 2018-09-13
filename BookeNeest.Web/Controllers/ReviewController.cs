@@ -30,6 +30,16 @@ namespace BookeNeest.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult Details(string reviewId)
+        {
+            var reviewDto = reviewService.FindById(Guid.Parse(reviewId));
+
+            var review = Mapper.Map<ReviewViewModel>(reviewDto);
+
+            return View("Details", review);
+        }
+
+        [HttpGet]
         [Authorize]
         public ActionResult PostReview(string bookId)
         {

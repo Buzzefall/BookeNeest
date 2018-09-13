@@ -15,12 +15,12 @@
     @Html.AntiForgeryToken()
     ;
 
-    <div class="dropdown nav nav-tabs">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-default btn-primary col-md-12"> Recents</a>
-        <ul class="dropdown-menu col-md-12">
-            @foreach (var book in Model)
+    @*<div class="dropdown nav nav-tabs">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-primary col-md-12"> Recents</a>
+        <div class="panel-group dropdown-menu col-md-12">*@
+            foreach (var book in Model)
             {
-                <li class="panel-body panel-primary" style="background-color: aliceblue;">
+                <div class="panel panel-body panel-primary" style="background-color: aliceblue;">
                     @{
                         StringBuilder authors = new StringBuilder();
 
@@ -45,19 +45,26 @@
                     <span class="custom-book-fld">
                         Authors:
                     </span> @authors.ToString() <br/>
-                    
-                    @Html.ActionLink("Post Review", "PostReview", "Review", 
-                        routeValues: new { bookId = book.Id },
-                        htmlAttributes: new { @class = "btn  btn-primary col-md-2"})
 
-                </li>
+                    <div class="btn-group ">
+
+                        @Html.ActionLink("Details", "Details", "Book",
+                            routeValues: new {bookId = book.Id},
+                            htmlAttributes: new {@class = "btn  btn-primary "})
+
+                        @Html.ActionLink("Post Review", "PostReview", "Review",
+                            routeValues: new {bookId = book.Id},
+                            htmlAttributes: new {@class = "btn  btn-primary " })
+                    </div>
+
+
+                </div>
             }
-        </ul>
-    </div>
+        @*</div>
+    </div>*@
 }
-@*<div>
-    @Html.ActionLink("Back to List", "Index", "Home");
-</div>*@
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

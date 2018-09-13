@@ -7,30 +7,40 @@
 <h2 class="custom-book-head"> Recent Reviews</h2>
 
 <hr/>
-
-<ul>
-    @foreach (var review in Model)
-    {
-        <li class="panel-body panel-primary" style="background-color: aliceblue;">
-
-            @Html.DisplayForModel(review)
-
-            @*<span class="custom-book-fld">
-                        ID:
-                    </span> @review.Id.ToString() <br />
-
-                    <span class="custom-book-fld">
-                        Name:
-                    </span> @review.Name <br />
-
-                    <span class="custom-book-fld">
-                        Authors:
-                    </span> @authors.ToString() <br />*@
+<p>
+    <div class="panel-group ">
+        @foreach (var review in Model)
+        {
+            <div class="panel panel-primary panel-body form-horizontal" style="background-color: aliceblue;">
             
-            @Html.ActionLink("Post Review", "PostReview", review.BookId, htmlAttributes: new { @class = "btn btn-default btn-primary"})
-        </li>
-    }
-</ul>
+                <div class="row">
+                    <span class="custom-book-fld col-md-1">
+                        Book ID:
+                    </span> @review.BookId.ToString() <br />
 
-<hr/>
+                    <span class="custom-book-fld col-md-1">
+                        User ID:
+                    </span> @review.UserId.ToString() <br />
 
+
+                    <span class="custom-book-fld col-md-1">
+                        Title:
+                    </span> @review.Title <br />
+
+                    <span class="custom-book-fld col-md-1">
+                        Review:
+                    </span> @review.Text <br />
+                </div>
+
+            
+            </div>
+
+            <div class="panel  col-md-2">
+                @Html.ActionLink("Details", "Details",
+                    routeValues: new { reviewId = review.BookId.ToString() },
+                    htmlAttributes: new {@class = "btn btn-default btn-primary form-control"})
+            </div>
+        }
+    </div>
+
+</p>

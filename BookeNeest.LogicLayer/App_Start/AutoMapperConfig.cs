@@ -13,9 +13,10 @@ namespace BookeNeest.LogicLayer
         // Called from BookeNest.Web at application start
         public static void Configure(IMapperConfigurationExpression config)
         {
-            config.CreateMap<string, AuthorDto>(MemberList.None).ConstructUsing(name => new AuthorDto(name));
             config.CreateMap<Author, AuthorDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
+            
+            config.CreateMap<string, AuthorDto>(MemberList.None).ConstructUsing(name => new AuthorDto(name));
 
             config.CreateMap<Book, BookDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);

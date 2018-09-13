@@ -37,14 +37,14 @@ namespace BookeNeest.Web.Controllers
         }
 
         // GET: Books/Details/5
-        public ActionResult Details(string bookName)
+        public ActionResult Details(string bookId)
         {
             // TODO: Use services here?
             //var container = new Unity.UnityContainer();
             //var bookService = ;
-            var book = bookService.FindByName(bookName);
+            var book = bookService.FindById(Guid.Parse(bookId));
 
-            var model = Mapper.Map<IList<BookViewModel>>(book);
+            var model = Mapper.Map<BookViewModel>(book);
 
             return View(model);
         }
