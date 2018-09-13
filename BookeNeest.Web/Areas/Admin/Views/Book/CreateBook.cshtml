@@ -1,17 +1,13 @@
 ﻿@model BookeNeest.Web.Models.CreateBookViewModel
 
 @{
-    ViewBag.Title = "Book control panel";
-    //Layout = null;
 }
 
-<h1>
-    <span class="custom-book-head">
-        @ViewBag.Title
-    </span>
-</h1>
+<h2 class="custom-book-head">Book Managment</h2>
 
-<hr/>
+<h4>Create new book</h4>
+
+<hr />
 
 @using (Html.BeginForm("Create", "Book", FormMethod.Post))
 {
@@ -20,39 +16,39 @@
     <div class="form-horizontal custom-book-pre">
 
         <div class="form-group">
-            @Html.LabelFor(b => b.Name, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.Name, new { @class = "col-md-1 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(b => b.Authors, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.Authors, new { @class = "col-md-1 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Authors, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Authors, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(b => b.Genres, new {@class = "col-md-1 control-label" })
+            @Html.LabelFor(b => b.Genres, new { @class = "col-md-1 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Genres, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Genres, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(b => b.Description, new {@class = "col-md-1 control-label" })
+            @Html.LabelFor(b => b.Description, new { @class = "col-md-1 control-label" })
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Description, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
             </div>
         </div>
 
 
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             <div class="col-md-10">
-                <input type="submit" value="Add Book" class="btn btn-default form-control"/>
+                <input type="submit" value="Add Book" class="btn btn-default form-control" />
             </div>
         </div>
     </div>
