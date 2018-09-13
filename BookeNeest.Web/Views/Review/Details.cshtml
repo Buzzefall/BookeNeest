@@ -5,30 +5,38 @@
 
 <h2 class="custom-book-head"> Review Details</h2>
 
-<hr/>
+<hr />
+@if (Model != null)
+{
+    <div style="font-family: Georgia, serif">
+        <div class="panel panel-primary panel-body form-horizontal" style="background-color: aliceblue;">
 
-<div style="font-family: Georgia, serif">
-    <div class="panel panel-primary panel-body form-horizontal" style="background-color: aliceblue;">
-            
-        <div class="row">
-            <span class="custom-book-fld col-md-1">
-                Book ID:
-            </span> @Model.BookId.ToString() <br />
+            <div class="row">
+                <span class="custom-book-fld col-md-1">
+                    Book ID:
+                </span> @Model.BookId.ToString() <br />
 
-            <span class="custom-book-fld col-md-1">
-                User ID:
-            </span> @Model.UserId.ToString() <br />
+                <span class="custom-book-fld col-md-1">
+                    User ID:
+                </span> @Model.UserId.ToString() <br />
 
 
-            <span class="custom-book-fld col-md-1">
-                Title:
-            </span> @Model.Title <br />
+                <span class="custom-book-fld col-md-1">
+                    Title:
+                </span> @Model.Title <br />
 
-            <span class="custom-book-fld col-md-1">
-                Review:
-            </span> @Model.Text <br />
+                <span class="custom-book-fld col-md-1">
+                    Review:
+                </span> @Model.Text <br />
+            </div>
+
+
         </div>
-
-            
     </div>
-</div>
+}
+else
+{
+    <h4>
+        <span class="custom-book-head text-danger"> [Details] NULL found or bug? </span>
+    </h4>
+}

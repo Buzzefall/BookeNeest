@@ -2,19 +2,21 @@
 
 @{
     ViewBag.Title = "Home Page";
-    
 }
 
 <h1>@ViewBag.Title (test)</h1>
-<div class="jumbotron custom-book-pre">
+<div class="jumbotron custom-book-head">
     <h1>BookeNeest</h1>
     <nav>
-        <ul dir="ltr">
-            <li> <a href="/">Home</a> </li>
-            <li> <a href="/Books/Recents">Recents</a> </li>
-            <li> <a href="/Contacts">Contacts</a> </li>
-            <li> <a href="/About">About</a> </li>
-        </ul>
+        <div class="btn-group col-md-12">
+            @Html.ActionLink("Books", "Recents", "Book", null,
+                new {type = "button", @class = "btn btn-primary"})
+            @Html.ActionLink("Home", "Index", null,
+                new {type = "button", @class = "btn btn-primary"})
+            @Html.ActionLink("Contacts", "Contact", null,
+                new {type = "button", @class = "btn btn-primary"})
+            @Html.ActionLink("About", "About", null,
+                new {type = "button", @class = "btn btn-primary"})
+        </div>
     </nav>
-    <p><a href="Books/Recents" class="btn btn-primary btn-lg">Check our newest books</a></p>
 </div>
