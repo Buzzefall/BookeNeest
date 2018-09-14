@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Linq;
+using AutoMapper;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
 using BookeNeest.Domain.Models.Identity;
@@ -19,7 +21,17 @@ namespace BookeNeest.Web
                 LogicLayer.AutoMapperConfig.Configure(config);
 
                 // DTOs to View Models
-                config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None);
+                config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None)
+                    .ConstructUsing(b => new BookDto
+                    {
+                        Authors = b.Authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(author => new AuthorDto { Name = author }).ToList(),
+
+                        Genres = b.Genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(genre => new GenreDto { Name = genre}).ToList()
+
+                    });
+
                 config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
                 config.CreateMap<CreateAuthorViewModel, AuthorDto>(MemberList.None);
 

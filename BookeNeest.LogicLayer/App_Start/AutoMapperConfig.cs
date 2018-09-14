@@ -16,12 +16,11 @@ namespace BookeNeest.LogicLayer
             config.CreateMap<Author, AuthorDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
             
-            config.CreateMap<string, AuthorDto>(MemberList.None).ConstructUsing(name => new AuthorDto(name));
+            config.CreateMap<string, AuthorDto>(MemberList.None)
+                .ConstructUsing(name => new AuthorDto { Name = name });
 
             config.CreateMap<Genre, GenreDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
-
-            config.CreateMap<string, GenreDto>(MemberList.None).ConstructUsing(name => new GenreDto(name));
 
             config.CreateMap<Review, ReviewDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);

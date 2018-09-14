@@ -12,17 +12,6 @@ namespace BookeNeest.Domain.DTOs
         public string About { get; set; }
         public DateTime BirthDate { get; set; }
 
-
-        public AuthorDto()
-        {
-        }
-
-        public AuthorDto(string name)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-        }
-
         public override string ToString() => Name;
     }
 }

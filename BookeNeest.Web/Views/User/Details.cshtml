@@ -4,12 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 class="custom-book-head">User Info</h2>
 
 <div>
-    <h4>UserViewModel</h4>
+    <h4 class="custom-book">@Model.UserName</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal custom-book">
         <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
