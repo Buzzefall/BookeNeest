@@ -23,7 +23,7 @@
         {
             <tr class="panel panel-primary " style="font-family: Georgia, serif">
                 <td>@user.Id</td>
-                <td>@Html.ActionLink(user.UserName, "Details", "User", new { area = "", userId = user.Id}, null)</td>
+                <td>@Html.ActionLink(user.UserName, "Details", "User", new {userId = user.Id}, new {style = "color: blue" })</td>
                 <td>@user.Email</td>
                 <td>@user.FirstName</td>
                 <td>@user.LastName</td>

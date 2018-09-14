@@ -7,13 +7,13 @@ namespace BookeNeest.Data.DB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class BirthDateForAuthors : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(BirthDateForAuthors));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809141227592_BirthDateForAuthors"; }
+            get { return "201809141939239_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

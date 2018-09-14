@@ -62,21 +62,13 @@
     <Compile Include="Maps\BookMap.cs" />
     <Compile Include="Maps\ReviewMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
-    <Compile Include="Migrations\201808291421402_Initial.cs" />
-    <Compile Include="Migrations\201808291421402_Initial.Designer.cs">
-      <DependentUpon>201808291421402_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201809141939239_InitialCreate.cs" />
+    <Compile Include="Migrations\201809141939239_InitialCreate.Designer.cs">
+      <DependentUpon>201809141939239_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809051249474_TagCategories.cs" />
-    <Compile Include="Migrations\201809051249474_TagCategories.Designer.cs">
-      <DependentUpon>201809051249474_TagCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809121325340_TitlesForReviews.cs" />
-    <Compile Include="Migrations\201809121325340_TitlesForReviews.Designer.cs">
-      <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809141227592_BirthDateForAuthors.cs" />
-    <Compile Include="Migrations\201809141227592_BirthDateForAuthors.Designer.cs">
-      <DependentUpon>201809141227592_BirthDateForAuthors.cs</DependentUpon>
+    <Compile Include="Migrations\201809141952037_StringsToDateTime.cs" />
+    <Compile Include="Migrations\201809141952037_StringsToDateTime.Designer.cs">
+      <DependentUpon>201809141952037_StringsToDateTime.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
@@ -103,19 +95,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808291421402_Initial.resx">
-      <DependentUpon>201808291421402_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809141939239_InitialCreate.resx">
+      <DependentUpon>201809141939239_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809051249474_TagCategories.resx">
-      <DependentUpon>201809051249474_TagCategories.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809121325340_TitlesForReviews.resx">
-      <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809141227592_BirthDateForAuthors.resx">
-      <DependentUpon>201809141227592_BirthDateForAuthors.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809141952037_StringsToDateTime.resx">
+      <DependentUpon>201809141952037_StringsToDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

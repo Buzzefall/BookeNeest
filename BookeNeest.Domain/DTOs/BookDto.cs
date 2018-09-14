@@ -9,7 +9,7 @@ namespace BookeNeest.Domain.DTOs
         public string ISBN { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; }
         public int? PagesTotal { get; set; }
         public int? Rating { get; set; }
 

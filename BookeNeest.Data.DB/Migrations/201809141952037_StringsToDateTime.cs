@@ -3,16 +3,16 @@ namespace BookeNeest.Data.DB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class TagCategories : DbMigration
+    public partial class StringsToDateTime : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Tags", "Category", c => c.String());
+            AlterColumn("dbo.Books", "PublicationDate", c => c.DateTime(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Tags", "Category");
+            AlterColumn("dbo.Books", "PublicationDate", c => c.String());
         }
     }
 }

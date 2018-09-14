@@ -8,34 +8,46 @@
 <hr/>
 @if (Model != null)
 {
-    <div style="font-family: Georgia, serif">
-        <div class="panel panel-primary panel-body row" style="background-color: aliceblue;">
+    <div class="custom-book">
+        <div class="panel panel-primary panel-body row" style="background-color: rgb(255, 251, 230);">
+
             <div class="row">
                 <div class="col-md-2 custom-book-fld "> Review ID: </div>
-                <a href="Details?reviewId=@Model.Id" class="col-md-10"> @Model.Id </a>
+                <a href="~/Review/Details?reviewId=@Model.Id"
+                   style="position: relative; left: -80px; color: blue">
+                   @Model.Id
+                </a>
             </div>
 
             <div class="row">
                 <div class="col-md-2 custom-book-fld "> User ID: </div>
-                <div class="col-md-10"> @Model.UserId </div>
+                <a href="~/User/Details?userId=@Model.UserId"
+                   style="position: relative; left: -80px; color: blue">
+                   @Model.UserId
+                </a>
             </div>
 
             <div class="row">
                 <div class="col-md-2 custom-book-fld "> Book ID: </div>
-                <a href="~/Book/Details?bookId=@Model.BookId" class="col-md-10"> @Model.BookId </a>
+                <a href="~/Book/Details?bookId=@Model.BookId"
+                   style="position: relative; left: -80px; color: blue">
+                   @Model.BookId
+                </a>
             </div>
 
             <div class="row">
                 <div class="col-md-2 custom-book-fld "> Title: </div>
-                <div class="col-md-10"> @Model.Title </div>
+                <div style="position: relative; left: -80px"> @Model.Title </div>
             </div>
 
             <div class="row">
                 <div class="col-md-2 custom-book-fld "> Rating: </div>
-                <div class="col-md-10"> @(Model.Rating ?? 0) </div>
+                <div style="position: relative; left: -80px"> @(Model.Rating ?? 0) </div>
             </div>
 
-            <hr />
+
+
+            <hr/>
 
             <h3 class="row col-md-12 custom-book-head" style="font-size: ; text-align: center; white-space: normal">
                 Review

@@ -28,7 +28,7 @@ namespace BookeNeest.Data.DB.Migrations
                     Name = $"[Book {RomanNumEx.ToRoman(randomizer.Next(10, 99))}-{RomanNumEx.ToRoman(randomizer.Next(100, 999))}]",
                     Rating = randomizer.Next(11),
                     PagesTotal = randomizer.Next(1500),
-                    PublicationDate = DateTime.Today.ToLongDateString(),
+                    PublicationDate = DateTime.Today,
                     Description = "This book is amazing!!! Bla bla bla-a-a...",
                     Genres = new List<Genre>()
                     {
@@ -38,6 +38,7 @@ namespace BookeNeest.Data.DB.Migrations
                             Name = $"Weirdo Genro",
                             Description = "Something re-e-ally weirdo!"
                         },
+
                         new Genre
                         {
                             Id = Guid.NewGuid(),
@@ -51,13 +52,14 @@ namespace BookeNeest.Data.DB.Migrations
 
                 for (int j = 0; j < book.Rating; j++)
                 {
-                    var name = $"Charles {RomanNumEx.ToRoman(randomizer.Next(10, 99))}";
+                    var name = $"Dionis Pompey {RomanNumEx.ToRoman(randomizer.Next(10, 99))}";
                     var existing = dbContext.Authors.FirstOrDefault(a => a.Name == name);
                     book.Authors.Add(existing ?? new Author()
                     {
                         Id = Guid.NewGuid(),
                         Name = name,
-                        About = "Almighty king of... what country?"
+                        About = "Almighty king of... what country?",
+                        BirthDate = DateTime.Today.Subtract(TimeSpan.FromDays(31))
                     });
                 }
 

@@ -7,13 +7,13 @@ namespace BookeNeest.Data.DB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class StringsToDateTime : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(StringsToDateTime));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808291421402_Initial"; }
+            get { return "201809141952037_StringsToDateTime"; }
         }
         
         string IMigrationMetadata.Source

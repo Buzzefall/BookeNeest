@@ -20,7 +20,7 @@
         <div class="panel-group dropdown-menu col-md-12">*@
             foreach (var book in Model)
             {
-                <div class="panel panel-body panel-primary" style="background-color: aliceblue;">
+                <div class="row panel panel-body panel-primary" style="background-color: aliceblue;">
                     @{
                         StringBuilder authors = new StringBuilder();
 
@@ -34,23 +34,37 @@
                         }
                     }
 
-                    <span class="custom-book-fld">
-                        ID:
-                    </span> @book.Id <br/>
+                    <div class="row custom-book">
+                        <div class="col-md-1 custom-book-fld"> ID: </div>
+                        <div class="col-md-11"> @book.Id </div>
+                    </div> 
+                    
+                    <div class="row custom-book">
+                        <div class="col-md-1 custom-book-fld"> Name: </div>
+                        <div class="col-md-11">
+                             @Html.ActionLink(book.Name, "Details", "Book",
+                                      new {bookId = book.Id},
+                                      new {style = "color: blue"})
+                        </div>
+                    </div> 
 
-                    <span class="custom-book-fld">
-                        Name:
-                    </span> @book.Name <br/>
+                    <div class="row custom-book">
+                        <div class="col-md-1 custom-book-fld"> Rating:</div>
+                        <div class="col-md-11"> @book.Rating </div>
+                    </div> 
 
-                    <span class="custom-book-fld">
-                        Authors:
-                    </span> @authors.ToString() <br/>
+                    <div class="row custom-book">
+                        <div class="col-md-1 custom-book-fld"> Authors:</div>
+                        <div class="col-md-11"> @authors.ToString() </div>
+                    </div> 
+                    
+                    <hr/>
 
                     <div class="btn-group ">
 
                         @Html.ActionLink("Details", "Details", "Book",
                             routeValues: new {bookId = book.Id},
-                            htmlAttributes: new {@class = "btn  btn-primary "})
+                            htmlAttributes: new {@class = "btn  btn-primary"})
 
                         @Html.ActionLink("Post Review", "PostReview", "Review",
                             routeValues: new {bookId = book.Id},

@@ -13,25 +13,40 @@
         {
             <p class="row">
                 <div class="row panel panel-primary panel-body" style="background-color: aliceblue;">
+                    <div class="row">
+                        <div class="col-md-2 custom-book-fld "> Review ID: </div>
+                        <a href="~/Review/Details?reviewId=@review.Id"
+                           style="position: relative; left: -80px; color: blue">
+                            @review.Id
+                        </a>
+                    </div>
 
                     <div class="row">
-                        <div class="custom-book-fld col-md-1">
-                            Book ID:
-                        </div> @review.BookId.ToString() <br/>
-
-                        <div class="custom-book-fld col-md-1">
-                            User ID:
-                        </div> @review.UserId.ToString() <br/>
-
-
-                        <div class="custom-book-fld col-md-1">
-                            Title:
-                        </div> @review.Title <br/>
-
-                        <div class="custom-book-fld col-md-1">
-                            Review:
-                        </div> @review.Text <br/>
+                        <div class="col-md-2 custom-book-fld "> User ID: </div>
+                        <a href="~/User/Details?userId=@review.UserId"
+                           style="position: relative; left: -80px; color: blue">
+                           @review.UserId
+                        </a>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-2 custom-book-fld "> Book ID: </div>
+                        <a href="~/Book/Details?bookId=@review.BookId"
+                           style="position: relative; left: -80px; color: blue">
+                           @review.BookId
+                        </a>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 custom-book-fld "> Title: </div>
+                        <div style="position: relative; left: -80px"> @review.Title </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2 custom-book-fld "> Rating: </div>
+                        <div style="position: relative; left: -80px"> @(review.Rating ?? 0) </div>
+                    </div>
+
                     <div class="btn col-md-2">
                         @Html.ActionLink("Details", "Details",
                             routeValues: new {reviewId = review.Id},

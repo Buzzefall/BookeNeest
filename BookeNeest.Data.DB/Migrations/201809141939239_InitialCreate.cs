@@ -1,8 +1,9 @@
 namespace BookeNeest.Data.DB.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +14,7 @@ namespace BookeNeest.Data.DB.Migrations
                         Id = c.Guid(nullable: false),
                         Name = c.String(),
                         About = c.String(),
+                        BirthDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -45,6 +47,7 @@ namespace BookeNeest.Data.DB.Migrations
                 c => new
                     {
                         Id = c.Guid(nullable: false),
+                        Title = c.String(),
                         UserId = c.Guid(nullable: false),
                         BookId = c.Guid(nullable: false),
                         Text = c.String(nullable: false),
@@ -122,6 +125,7 @@ namespace BookeNeest.Data.DB.Migrations
                     {
                         Id = c.Guid(nullable: false),
                         Text = c.String(),
+                        Category = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             

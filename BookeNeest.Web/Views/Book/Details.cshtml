@@ -6,41 +6,53 @@
 }
 
 
-@if (Model != null ) 
+@if (Model != null)
 {
     <h2>
         <span class="custom-book-pre">Book details:</span>
     </h2>
 
-        <div class="row panel panel-primary panel-body form-horizontal" style="background-color: aliceblue">
-            @{
-                StringBuilder authors = new StringBuilder();
-                foreach (var author in Model.Authors)
-                {
-                    authors.Append(author.Name).Append(", ");
-                }
-                if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
-                {
-                    authors.Remove(authors.Length - 2, 2).Append(".");
-                }
+    <hr/>
 
-                <div class="row">
-                    <div class="custom-book-fld col-md-1">
-                        Book ID:
-                    </div> @Model.Id <br/>
-
-                    <div class="custom-book-fld col-md-1">
-                        Name:
-                    </div> @Model.Name <br/>
-
-                    <div class="custom-book-fld col-md-1">
-                        Authors:
-                    </div> @authors.ToString() <br/>
-                </div>
-
+    <div class="row panel panel-body panel-primary" style="background-color: aliceblue">
+        @{
+            StringBuilder authors = new StringBuilder();
+            foreach (var author in Model.Authors)
+            {
+                authors.Append(author.Name).Append(", ");
             }
+            if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+            {
+                authors.Remove(authors.Length - 2, 2).Append(".");
+            }
+        }
+
+        <div class="row custom-book">
+            <div class="col-md-1 custom-book-fld"> ID: </div>
+            <div class="col-md-11"> @Model.Id </div>
         </div>
-    
+
+        <div class="row custom-book">
+            <div class="col-md-1 custom-book-fld"> Name: </div>
+            <div class="col-md-11"> @Model.Name </div>
+        </div>
+
+        <div class="row custom-book">
+            <div class="col-md-1 custom-book-fld"> Rating:</div>
+            <div class="col-md-11"> @Model.Rating </div>
+        </div>
+
+        <div class="row custom-book">
+            <div class="col-md-1 custom-book-fld"> Authors:</div>
+            <div class="col-md-11"> @authors.ToString() </div>
+        </div>
+
+        <hr/>
+
+        @Html.ActionLink("Post Review", "PostReview", "Review",
+            routeValues: new {bookId = Model.Id},
+            htmlAttributes: new {@class = "btn  btn-primary "})
+    </div>
 }
 
 else
