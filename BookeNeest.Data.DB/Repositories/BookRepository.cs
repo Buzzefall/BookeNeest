@@ -11,17 +11,16 @@ namespace BookeNeest.Data.DB.Repositories
     {
         public BookRepository(BookeNeestDbContext dbContext) : base(dbContext)
         {
-
         }
 
         public IList<Book> FindByName(string name)
         {
-            var book = Entities
+            var books = Entities
                 .Where(x => x.Name.Contains(name))
                 .OrderBy(x => x.Name)
                 .ToList();
 
-            return book;
+            return books;
         }
 
         //public IList<Book> FindByGenre(string name)

@@ -54,6 +54,7 @@ namespace BookeNeest.LogicLayer.Services
         public IList<BookDto> FindByName(string name)
         {
             var books = unitOfWork.BookRepository.FindByName(name);
+            
             var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
             return bookDtos;
