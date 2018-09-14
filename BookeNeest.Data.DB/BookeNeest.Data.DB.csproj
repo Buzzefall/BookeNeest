@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201809121325340_TitlesForReviews.Designer.cs">
       <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809140946127_BirthDateForAuthors.cs" />
+    <Compile Include="Migrations\201809140946127_BirthDateForAuthors.Designer.cs">
+      <DependentUpon>201809140946127_BirthDateForAuthors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809121325340_TitlesForReviews.resx">
       <DependentUpon>201809121325340_TitlesForReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809140946127_BirthDateForAuthors.resx">
+      <DependentUpon>201809140946127_BirthDateForAuthors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

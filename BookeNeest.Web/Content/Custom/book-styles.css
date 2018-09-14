@@ -1,13 +1,13 @@
-﻿.custom-book-fld,
-.custom-book {
+﻿.custom-book {
     font-family: Georgia, serif, sans-serif;
     font-kerning: auto;
     text-rendering: geometricPrecision;
     text-shadow: black;
-    font-weight: bold;
+
 }
 
 .custom-book-pre,
+.custom-book-fld,
 .custom-book-head {
     font-family: Georgia, serif, sans-serif;
     font-kerning: auto;

@@ -26,7 +26,19 @@ namespace BookeNeest.LogicLayer.Services
             book.Id = Guid.NewGuid();
 
             unitOfWork.BookRepository.Add(book);
-            unitOfWork.CommitAsync();
+            unitOfWork.Commit();
+
+            return book.Id;
+        }
+
+        public async Task<Guid> AddNewAsync(BookDto bookDto)
+        {
+            var book = Mapper.Map<Book>(bookDto);
+
+            book.Id = Guid.NewGuid();
+
+            unitOfWork.BookRepository.Add(book);
+            await unitOfWork.CommitAsync();
 
             return book.Id;
         }
@@ -34,22 +46,25 @@ namespace BookeNeest.LogicLayer.Services
         public BookDto FindById(Guid id)
         {
             var book = unitOfWork.BookRepository.FindById(id);
+            var bookDto = Mapper.Map<BookDto>(book);
 
-            return Mapper.Map<BookDto>(book);
+            return bookDto;
         }
 
         public IList<BookDto> FindByName(string name)
         {
-            var book = unitOfWork.BookRepository.FindByName(name);
+            var books = unitOfWork.BookRepository.FindByName(name);
+            var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
-            return Mapper.Map<IList<BookDto>>(book);
+            return bookDtos;
         }
 
         public IList<BookDto> GetRecentBooks(int amount)
         {
             var books = unitOfWork.BookRepository.GetRecent(amount);
+            var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
-            return Mapper.Map<IList<BookDto>>(books);
+            return bookDtos;
         }
     }
 }

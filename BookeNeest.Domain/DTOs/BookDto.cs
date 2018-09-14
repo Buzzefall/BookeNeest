@@ -25,8 +25,8 @@ namespace BookeNeest.Domain.DTOs
 
         public BookDto(string authors, string genres)
         {
-            var authors_parsed = authors.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries);
-            var genres_parsed = genres.Split(new[] {',', ' ', '.'}, StringSplitOptions.RemoveEmptyEntries);
+            var authors_parsed = authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries);
+            var genres_parsed = genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries);
 
             Authors = authors_parsed.Select(a => new AuthorDto(a)).ToList();
             Genres = genres_parsed.Select(g => new GenreDto(g)).ToList();

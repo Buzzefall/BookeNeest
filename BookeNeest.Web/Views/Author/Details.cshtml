@@ -1,0 +1,33 @@
+﻿@model BookeNeest.Web.Models.AuthorViewModel
+
+@{
+}
+
+@if (Model != null ) 
+{
+    <h2>
+        <span class="custom-book-pre">Book details:</span>
+    </h2>
+
+    <div class="custom-book-pre panel panel-primary panel-body panel-title row" style="background-color: aliceblue">
+        @{
+            <div class="custom-book-fld col-md-1">
+                ID:
+            </div> @Model.Id <br/>
+
+            <div class="custom-book-fld col-md-1">
+                Name:
+            </div> @Model.Name <br/>
+
+
+        }
+    </div>
+    
+}
+
+else
+{
+    <h4>
+        <span class="custom-book-head text-danger"> [Details] Such author doesn't exist.</span>
+    </h4>
+}

@@ -4,7 +4,7 @@
 
 }
 
-<h2 class="custom-book-head">User Managment</h2>
+<h2 class="custom-book-head">BookeNeest Community</h2>
 
 <hr />
 
@@ -19,16 +19,17 @@
             <th>LastName</th>
             <th>About</th>
         </tr>
+
         @foreach (var user in Model)
         {
-            <tr class="panel panel-primary " style="font-family: Georgia, serif">
-                <td>@user.Id</td>
-                <td>@Html.ActionLink(user.UserName, "Details", "User", new { area = "", userId = user.Id}, null)</td>
-                <td>@user.Email</td>
-                <td>@user.FirstName</td>
-                <td>@user.LastName</td>
-                <td>@user.About</td>
-            </tr>
+        <tr class="panel panel-primary " style="font-family: Georgia, serif">
+            <td>@user.Id</td>
+            <td>@Html.ActionLink(user.UserName, "Details", "User", new {userId = user.Id}, null)</td>
+            <td>@user.Email</td>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.About</td>
+        </tr>
         }
     </table>
 </p>

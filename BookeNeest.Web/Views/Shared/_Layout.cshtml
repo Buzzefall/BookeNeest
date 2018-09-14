@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application!!!</title>
+    <title> BookeNeest Review Service</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/Custom")
     @Scripts.Render("~/bundles/modernizr")
@@ -15,15 +15,17 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            </button>
-            @Html.ActionLink("BookeNeest", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse custom-book">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Recent Books", "Recents", "Book")</li>
+                <li>@Html.ActionLink("BookeNeest", "Index", "Home", 
+                        new { area = "" }, 
+                        new { @class = "navbar-brand custom-book-head" })</li>
+                <li>@Html.ActionLink("Books", "Recents", "Book")</li>
                 <li>@Html.ActionLink("Reviews", "Index", "Review")</li>
-
+                <li>@Html.ActionLink("Users", "Index", "User")</li>
+                
                 @Html.Partial("_AdminPartial")
 
                 <li>@Html.ActionLink("About", "About", "Home")</li>

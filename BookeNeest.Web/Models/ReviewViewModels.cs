@@ -8,6 +8,9 @@ namespace BookeNeest.Web.Models
 {
     public class ReviewViewModel
     {
+        [Display(Name = "Id")]
+        public string Id { get; set; }
+
         [Display(Name = "Text")]
         public string Text { get; set; }
 
@@ -18,9 +21,11 @@ namespace BookeNeest.Web.Models
         public int? Rating { get; set; }
         
         [Display(Name = "User ID")]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [Display(Name = "Book ID")]
-        public Guid BookId { get; set; }
+        public string BookId { get; set; }
+
+        public string BookName { get; set; }
     }
 }

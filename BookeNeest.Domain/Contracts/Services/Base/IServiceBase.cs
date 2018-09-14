@@ -11,5 +11,6 @@ namespace BookeNeest.Domain.Contracts.Services
         TEntityDto FindById(Guid entityId);
         IList<TEntityDto> FindByName(string entityName);
         Guid AddNew(TEntityDto entityDto);
+        Task<Guid> AddNewAsync(TEntityDto entityDto);
     }
 }

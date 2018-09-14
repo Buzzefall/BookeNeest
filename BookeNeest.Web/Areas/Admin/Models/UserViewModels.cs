@@ -19,13 +19,20 @@ namespace BookeNeest.Web.Areas.Admin.Models
         [Required]
         public string Password { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
         [Required]
         public List<string> SelectedRoles { get; set; }
 
-        //public Dictionary<string, bool> SelectedRoles { get; set; }
 
         public IEnumerable<SelectListItem> Roles { get; set; }
+
         //[Required]
         //public IEnumerable<SelectListItem> Roles { get; set; }
+
+        //public Dictionary<string, bool> SelectedRoles { get; set; }
+
     }
 }

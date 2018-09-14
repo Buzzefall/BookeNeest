@@ -16,7 +16,7 @@ namespace BookeNeest.Data.DB.Repositories
         private IDbSet<TEntity> _dbSet => _dbContext.Set<TEntity>();
         public IQueryable<TEntity> Entities => _dbSet;
 
-        public RepositoryBase(BookeNeestDbContext dbContext)
+        protected RepositoryBase(BookeNeestDbContext dbContext)
         {
             _dbContext = dbContext;
         }

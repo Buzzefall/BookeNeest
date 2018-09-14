@@ -28,10 +28,23 @@ namespace BookeNeest.LogicLayer.Services
             review.Id = Guid.NewGuid();
 
             unitOfWork.ReviewRepository.Add(review);
-            unitOfWork.CommitAsync();
+            unitOfWork.Commit();
 
             return review.Id;
         }
+
+        public async Task<Guid> AddNewAsync(ReviewDto reviewDto)
+        {
+            var review = Mapper.Map<Review>(reviewDto);
+
+            review.Id = Guid.NewGuid();
+
+            unitOfWork.ReviewRepository.Add(review);
+            await unitOfWork.CommitAsync();
+
+            return review.Id;
+        }
+
 
         public ReviewDto FindById(Guid id)
         {

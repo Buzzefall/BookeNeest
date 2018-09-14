@@ -13,16 +13,18 @@ namespace BookeNeest.Web.Controllers
     public class ReviewController : Controller
     {
         private readonly IReviewService reviewService;
+        private readonly IBookService bookService;
 
         [InjectionConstructor]
-        public ReviewController(IReviewService reviewService)
+        public ReviewController(IReviewService reviewService, IBookService bookService)
         {
             this.reviewService = reviewService;
+            this.bookService = bookService;
         }
         // GET Review/
         public ActionResult Index()
         {
-            var reviewDtos = reviewService.GetRecentReviews(5);
+            var reviewDtos = reviewService.GetRecentReviews(10);
 
             var recents = Mapper.Map<IList<ReviewViewModel>>(reviewDtos);
 
@@ -43,10 +45,13 @@ namespace BookeNeest.Web.Controllers
         [Authorize]
         public ActionResult PostReview(string bookId)
         {
+            var bookDto = bookService.FindById(Guid.Parse(bookId));
+
             var model = new ReviewViewModel
             {
-                BookId = Guid.Parse(bookId),
-                UserId = Guid.Parse(User.Identity.GetUserId()),
+                BookName = bookDto.Name,
+                BookId = bookId,
+                UserId = User.Identity.GetUserId(),
             };
 
             return View("PostReview", model);

@@ -228,6 +228,7 @@
     <Compile Include="Areas\Admin\Controllers\Base\AdminControllerBase.cs" />
     <Compile Include="Areas\Admin\Controllers\BookController.cs" />
     <Compile Include="Areas\Admin\Models\CreateAuthorViewModels.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\AuthorViewModels.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\ReviewViewModels.cs" />
@@ -348,6 +349,7 @@
     <Content Include="Areas\Admin\Views\Manage\Index.cshtml" />
     <Content Include="libman.json" />
     <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Author\Details.cshtml" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -420,6 +422,8 @@
     <Content Include="Areas\Admin\Views\Book\CreateBook.cshtml" />
     <Content Include="Views\Review\PostReview.cshtml" />
     <Content Include="Views\Review\Details.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

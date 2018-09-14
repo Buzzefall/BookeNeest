@@ -27,7 +27,19 @@ namespace BookeNeest.LogicLayer.Services
             author.Id = Guid.NewGuid();
 
             unitOfWork.AuthorRepository.Add(author);
-            unitOfWork.CommitAsync();
+            unitOfWork.Commit();
+
+            return author.Id;
+        }
+
+        public async Task<Guid> AddNewAsync(AuthorDto authorDto)
+        {
+            var author = Mapper.Map<Author>(authorDto);
+
+            author.Id = Guid.NewGuid();
+
+            unitOfWork.AuthorRepository.Add(author);
+            await unitOfWork.CommitAsync();
 
             return author.Id;
         }

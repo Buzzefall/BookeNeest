@@ -24,7 +24,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
     public class UserController : AdminAreaControllerBase
     {
         private BookeNeestUserManager _userManager;
-
         public BookeNeestUserManager UserManager
         {
             get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<BookeNeestUserManager>();
@@ -32,9 +31,10 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         }
 
 
+
         public ActionResult Index()
         {
-            var users = UserManager.Users.Take(15).ToList();
+            var users = UserManager.Users.Take(20).ToList();
 
             var model = Mapper.Map<IList<UserViewModel>>(users);
             
@@ -50,9 +50,6 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
                 Password = "",
                 Roles = BookeNeestUserRoles.ToSelectList()
             };
-
-            //(ViewBag.RoleSelectList as SelectList).
-
             return View("CreateUser", model);
         }
 
@@ -94,12 +91,11 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             }
 
             else
-
             {
                 ModelState.AddModelError("AccountService error", String.Join(", ", result.Errors));
                 return View("CreateUser", model);
             }
-
+            
             return RedirectToAction("Create");
         }
     }

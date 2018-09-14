@@ -27,7 +27,19 @@ namespace BookeNeest.LogicLayer.Services
             genre.Id = Guid.NewGuid();
 
             unitOfWork.GenreRepository.Add(genre);
-            unitOfWork.CommitAsync();
+            unitOfWork.Commit();
+
+            return genre.Id;
+        }
+
+        public async Task<Guid> AddNewAsync(GenreDto genreDto)
+        {
+            var genre = Mapper.Map<Genre>(genreDto);
+
+            genre.Id = Guid.NewGuid();
+
+            unitOfWork.GenreRepository.Add(genre);
+            await unitOfWork.CommitAsync();
 
             return genre.Id;
         }

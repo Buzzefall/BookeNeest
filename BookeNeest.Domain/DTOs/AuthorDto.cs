@@ -10,6 +10,8 @@ namespace BookeNeest.Domain.DTOs
     {
         public string Name { get; set; }
         public string About { get; set; }
+        public DateTime BirthDate { get; set; }
+
 
         public AuthorDto()
         {

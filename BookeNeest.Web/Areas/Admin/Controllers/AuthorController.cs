@@ -22,7 +22,18 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
             this.authorService = authorService;
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public ActionResult Details(string authorId)
+        {
+            var authorDto = authorService.FindById(Guid.Parse(authorId));
+
+
+            return View("Details");
+        }
+
         // GET: Admin/Author/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View("CreateAuthor");
@@ -30,6 +41,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
         // POST: Admin/Author/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CreateAuthorViewModel model)
         {
             if (!ModelState.IsValid)
