@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using BookeNeest.Data.DB.Context;
 using BookeNeest.Domain.Contracts.Repositories;
@@ -45,10 +46,17 @@ namespace BookeNeest.Data.DB.Repositories
         public  IList<TEntity> GetRecent(int amount)
         {
             var requested = Entities
+                .AsNoTracking()
                 .Take(amount)
+                .OrderBy(x => x.Id)
                 .ToList();
 
             return requested;
         }
+
+        //protected TEntity UnwrapProxies(TEntity possibleProxyObject)
+        //{
+
+        //}
     }
 }

@@ -42,45 +42,45 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         }
 
         // GET: Book/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return RedirectToAction("Recents", "Book", new {area = ""});
-        }
+        //public ActionResult Edit(int id)
+        //{
+        //    return RedirectToAction("Recents", "Book", new {area = ""});
+        //}
 
         // POST: Book/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-                return RedirectToAction("Recents", "Book", new {area = ""});
-            }
-            catch
-            {
-                return RedirectToAction("Recents", "Book", new {area = ""});
-            }
-        }
+        //[HttpPost]
+        //public ActionResult Edit(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add update logic here
+        //        return RedirectToAction("Recents", "Book", new {area = ""});
+        //    }
+        //    catch
+        //    {
+        //        return RedirectToAction("Recents", "Book", new {area = ""});
+        //    }
+        //}
 
-        // GET: Book/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return RedirectToAction("Recents", "Book", new {area = ""});
-        }
+        //// GET: Book/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    return RedirectToAction("Recents", "Book", new {area = ""});
+        //}
 
-        // POST: Book/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-                return RedirectToAction("Recents", "Book", new {area = ""});
-            }
-            catch
-            {
-                return RedirectToAction("Recents", "Book", new {area = ""});
-            }
-        }
+        //// POST: Book/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(int id, FormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
+        //        return RedirectToAction("Recents", "Book", new {area = ""});
+        //    }
+        //    catch
+        //    {
+        //        return RedirectToAction("Recents", "Book", new {area = ""});
+        //    }
+        //}
     }
 }

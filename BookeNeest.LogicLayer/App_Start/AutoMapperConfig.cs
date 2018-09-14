@@ -18,9 +18,6 @@ namespace BookeNeest.LogicLayer
             
             config.CreateMap<string, AuthorDto>(MemberList.None).ConstructUsing(name => new AuthorDto(name));
 
-            config.CreateMap<Book, BookDto>(MemberList.None)
-                .ReverseMap().ValidateMemberList(MemberList.None);
-
             config.CreateMap<Genre, GenreDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
 
@@ -29,11 +26,16 @@ namespace BookeNeest.LogicLayer
             config.CreateMap<Review, ReviewDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
 
+
+
+            config.CreateMap<Book, BookDto>(MemberList.None)
+                .ReverseMap().ValidateMemberList(MemberList.None);
+
+
+
             config.CreateMap<User, UserDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
 
-            //config.AddGlobalIgnore("Users");
-            //config.AddGlobalIgnore("Reviews");
             IsConfigured = true;
         }
     }

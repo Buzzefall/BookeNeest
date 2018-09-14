@@ -6,5 +6,10 @@ namespace BookeNeest.Domain.Models
     {
         [Key]
         public TKey Id { get; set; }
+
+        public EntityBase()
+        {
+            
+        }
     }
 }
