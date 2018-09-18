@@ -62,13 +62,9 @@
     <Compile Include="Maps\BookMap.cs" />
     <Compile Include="Maps\ReviewMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
-    <Compile Include="Migrations\201809141939239_InitialCreate.cs" />
-    <Compile Include="Migrations\201809141939239_InitialCreate.Designer.cs">
-      <DependentUpon>201809141939239_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809141952037_StringsToDateTime.cs" />
-    <Compile Include="Migrations\201809141952037_StringsToDateTime.Designer.cs">
-      <DependentUpon>201809141952037_StringsToDateTime.cs</DependentUpon>
+    <Compile Include="Migrations\201809180443543_InitialCreate.cs" />
+    <Compile Include="Migrations\201809180443543_InitialCreate.Designer.cs">
+      <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
@@ -95,11 +91,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809141939239_InitialCreate.resx">
-      <DependentUpon>201809141939239_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809141952037_StringsToDateTime.resx">
-      <DependentUpon>201809141952037_StringsToDateTime.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809180443543_InitialCreate.resx">
+      <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

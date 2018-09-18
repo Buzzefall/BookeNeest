@@ -18,7 +18,7 @@ namespace BookeNeest.Data.DB.Context
 
         public static BookeNeestDbContext Create() => new BookeNeestDbContext();
 
-        public BookeNeestDbContext() : base("BookeNeestDbHomeConnection")
+        public BookeNeestDbContext() : base("BookeNeestDbConnection")
         {
             Configuration.LazyLoadingEnabled = true;
             Configuration.AutoDetectChangesEnabled= true;

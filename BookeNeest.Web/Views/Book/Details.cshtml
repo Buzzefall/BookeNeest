@@ -2,19 +2,19 @@
 @model BookeNeest.Web.Models.BookViewModel
 
 @{
-    ViewBag.Title = "Details";
 }
 
 
 @if (Model != null)
 {
-    <h2>
-        <span class="custom-book-pre">Book details:</span>
-    </h2>
+    <h2 class="custom-book-pre"> Book details: </h2>
 
     <hr/>
 
     <div class="row panel panel-body panel-primary" style="background-color: aliceblue">
+        
+        <img src=@Url.Action("GetImageFor", "Book", new { bookId = Model.Id }))/>
+
         @{
             StringBuilder authors = new StringBuilder();
             foreach (var author in Model.Authors)

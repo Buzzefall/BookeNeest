@@ -61,6 +61,7 @@
     <Compile Include="Services\BookService.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="Services\GenreService.cs" />
+    <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\ReviewService.cs" />
   </ItemGroup>
   <ItemGroup>

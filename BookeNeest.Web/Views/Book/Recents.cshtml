@@ -3,79 +3,85 @@
 @model IList<BookeNeest.Web.Models.BookViewModel>
 
 @{
-    ViewBag.Title = "Book";
 }
 
 <h1 class="custom-book-head">Some recent books on site:</h1>
 
-<hr/>
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    ;
 
     @*<div class="dropdown nav nav-tabs">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-primary col-md-12"> Recents</a>
-        <div class="panel-group dropdown-menu col-md-12">*@
-            foreach (var book in Model)
-            {
-                <div class="row panel panel-body panel-primary" style="background-color: aliceblue;">
-                    @{
-                        StringBuilder authors = new StringBuilder();
+        <div class="panel-group dropdown-menu col-md-12">
 
-                        foreach (var author in book.Authors)
-                        {
-                            authors.Append(author.Name).Append(", ");
-                        }
-                        if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
-                        {
-                            authors.Remove(authors.Length - 2, 2).Append(".");
-                        }
-                    }
-
-                    <div class="row custom-book">
-                        <div class="col-md-1 custom-book-fld"> ID: </div>
-                        <div class="col-md-11"> @book.Id </div>
-                    </div> 
-                    
-                    <div class="row custom-book">
-                        <div class="col-md-1 custom-book-fld"> Name: </div>
-                        <div class="col-md-11">
-                             @Html.ActionLink(book.Name, "Details", "Book",
-                                      new {bookId = book.Id},
-                                      new {style = "color: blue"})
-                        </div>
-                    </div> 
-
-                    <div class="row custom-book">
-                        <div class="col-md-1 custom-book-fld"> Rating:</div>
-                        <div class="col-md-11"> @book.Rating </div>
-                    </div> 
-
-                    <div class="row custom-book">
-                        <div class="col-md-1 custom-book-fld"> Authors:</div>
-                        <div class="col-md-11"> @authors.ToString() </div>
-                    </div> 
-                    
-                    <hr/>
-
-                    <div class="btn-group ">
-
-                        @Html.ActionLink("Details", "Details", "Book",
-                            routeValues: new {bookId = book.Id},
-                            htmlAttributes: new {@class = "btn  btn-primary"})
-
-                        @Html.ActionLink("Post Review", "PostReview", "Review",
-                            routeValues: new {bookId = book.Id},
-                            htmlAttributes: new {@class = "btn  btn-primary " })
-                    </div>
-
-
-                </div>
-            }
-        @*</div>
+        </div>
     </div>*@
+
+    foreach (var book in Model)
+    {
+        <div class="row panel panel-body panel-primary" style="background-color: aliceblue;">
+            @{
+                StringBuilder authors = new StringBuilder();
+
+                foreach (var author in book.Authors)
+                {
+                    authors.Append(author.Name).Append(", ");
+                }
+                if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+                {
+                    authors.Remove(authors.Length - 2, 2).Append(".");
+                }
+            }
+
+            @*<div class="row col-md-4">
+
+            </div>
+
+            <hr />*@
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> ID: </div>
+                <div class="col-md-11"> @book.Id </div>
+            </div>
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Name: </div>
+                <div class="col-md-11">
+                    @Html.ActionLink(book.Name, "Details", "Book",
+                             new {bookId = book.Id},
+                             new {style = "color: blue"})
+                </div>
+            </div>
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Rating:</div>
+                <div class="col-md-11"> @book.Rating </div>
+            </div>
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Authors:</div>
+                <div class="col-md-11"> @authors.ToString() </div>
+            </div>
+
+            <hr />
+
+            <div class="btn-group ">
+
+                @Html.ActionLink("Details", "Details", "Book",
+                    routeValues: new {bookId = book.Id},
+                    htmlAttributes: new {@class = "btn  btn-primary"})
+
+                @Html.ActionLink("Post Review", "PostReview", "Review",
+                    routeValues: new {bookId = book.Id},
+                    htmlAttributes: new {@class = "btn  btn-primary " })
+            </div>
+
+        </div>
+    }
+
 }
 
 

@@ -32,13 +32,15 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
         // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateBookViewModel book)
+        public ActionResult Create(CreateBookViewModel book, HttpPostedFileBase bookImage)
         {
             var bookDto = Mapper.Map<BookDto>(book);
 
-            
+            //var image = Request.Files?.Count > 0 ? Request.Files[0] : null;
 
             var id = bookService.AddNew(bookDto);
+
+            bookImage.SaveAs(Server.MapPath("~/Content/Images/Books") + id);
 
             return RedirectToAction("Details", "Book", new { bookId = id, area = ""});
         }

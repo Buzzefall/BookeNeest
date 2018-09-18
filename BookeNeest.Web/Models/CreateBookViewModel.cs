@@ -15,8 +15,8 @@ namespace BookeNeest.Web.Models
         [Display(Name = "Name", Order = 2)]
         public string Name { get; set; }
 
-        [Display(Name = "PublicationDate", Order = 3)]
-        public string PublicationDate { get; set; }
+        [Display(Name = "Publication Date", Order = 3)]
+        public DateTime PublicationDate { get; set; }
 
         [Display(Name = "PagesTotal", Order = 4)]
         public int? PagesTotal { get; set; }

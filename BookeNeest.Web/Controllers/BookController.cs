@@ -31,6 +31,8 @@ namespace BookeNeest.Web.Controllers
             // Dto
             var books = bookService.GetRecentBooks(10);
 
+
+
             var model = Mapper.Map<IList<BookViewModel>>(books);
             
             return View(model);
@@ -47,6 +49,15 @@ namespace BookeNeest.Web.Controllers
             var model = Mapper.Map<BookViewModel>(book);
 
             return View(model);
+        }
+
+        public FilePathResult GetImageFor(string bookId)
+        {
+            var imagePath = Server.MapPath("~/Content/Images/Books/") + bookId;
+
+            var image = File(imagePath, "image/jpeg");
+            
+            return image;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
@@ -13,11 +14,16 @@ namespace BookeNeest.LogicLayer
         // Called from BookeNest.Web at application start
         public static void Configure(IMapperConfigurationExpression config)
         {
+            config.CreateMap<string, AuthorDto>(MemberList.None)
+                .ConstructUsing(name => new AuthorDto
+                {
+                    Name = name,
+                    BirthDate = new DateTime(2000, 1, 1)
+                });
+
             config.CreateMap<Author, AuthorDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
             
-            config.CreateMap<string, AuthorDto>(MemberList.None)
-                .ConstructUsing(name => new AuthorDto { Name = name });
 
             config.CreateMap<Genre, GenreDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);

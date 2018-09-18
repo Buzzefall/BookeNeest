@@ -14,7 +14,6 @@ namespace BookeNeest.Web.Models
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
-
         [Display(Name = "Username")]
         public string UserName { get; set; }
 

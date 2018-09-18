@@ -11,7 +11,7 @@ namespace BookeNeest.Domain.Contracts
         IReviewRepository ReviewRepository { get; }
         ITagRepository TagRepository { get; }
 
-        IRepository GetRepository<IRepository>();
+        //IRepository GetRepository<IRepository>();
         void Commit();
         Task CommitAsync();
         void Discard();

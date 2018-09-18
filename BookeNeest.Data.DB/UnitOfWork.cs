@@ -33,14 +33,14 @@ namespace BookeNeest.Data.DB
             _dbContext = new BookeNeestDbContext();
         }
 
-        public IRepository GetRepository<IRepository>()
-        {
-            var propertyInfo = GetType()
-                .GetProperties(BindingFlags.Public)
-                .FirstOrDefault(p => p.PropertyType == typeof(IRepository));
+        //public IRepository GetRepository<IRepository>()
+        //{
+        //    var propertyInfo = GetType()
+        //        .GetProperties(BindingFlags.Public)
+        //        .FirstOrDefault(p => p.PropertyType == typeof(IRepository));
 
-            return (IRepository) propertyInfo.GetValue(this);
-        }
+        //    return (IRepository) propertyInfo.GetValue(this);
+        //}
 
 
         public void Commit()

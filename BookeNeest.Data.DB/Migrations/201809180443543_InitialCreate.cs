@@ -26,7 +26,7 @@ namespace BookeNeest.Data.DB.Migrations
                         ISBN = c.String(),
                         Name = c.String(nullable: false),
                         Description = c.String(),
-                        PublicationDate = c.String(),
+                        PublicationDate = c.DateTime(nullable: false),
                         PagesTotal = c.Int(),
                         Rating = c.Int(),
                     })

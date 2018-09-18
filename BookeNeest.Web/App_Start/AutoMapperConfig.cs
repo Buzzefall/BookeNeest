@@ -22,19 +22,41 @@ namespace BookeNeest.Web
 
                 // DTOs to View Models
                 config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None)
-                    .ConstructUsing(b => new BookDto
-                    {
-                        Authors = b.Authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(author => new AuthorDto { Name = author }).ToList(),
+                    
+                    .ForMember(dto => dto.Authors, opt => opt.MapFrom(model =>
+                            model.Authors
+                            .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(author => new AuthorDto
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Name = author,
+                                    BirthDate = new DateTime(2000, 1, 1)
+                                }).ToList()))
 
-                        Genres = b.Genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(genre => new GenreDto { Name = genre}).ToList()
+                    .ForMember(dto => dto.Genres, opt => opt.MapFrom(model =>
+                            model.Genres
+                            .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                            .Select(genre => new GenreDto
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Name = genre
+                                }).ToList()));
 
-                    });
+                //    .ConstructUsing(b => new BookDto
+                //{
+                //    Authors = b.Authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                //        .Select(author => new AuthorDto { Name = author }).ToList(),
+
+                //    Genres = b.Genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                //        .Select(genre => new GenreDto { Name = genre}).ToList(),
+
+                //    Name = b.Name,
+                //    Description = b.Description,
+                //    PublicationDate = b.PublicationDate
+                //});
 
                 config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
                 config.CreateMap<CreateAuthorViewModel, AuthorDto>(MemberList.None);
-
 
 
                 config.CreateMap<AuthorDto, AuthorViewModel>(MemberList.None)
@@ -50,12 +72,8 @@ namespace BookeNeest.Web
                     .ReverseMap().ValidateMemberList(MemberList.None);
 
 
-
-
                 config.CreateMap<BookDto, BookViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);
-
-
 
 
                 config.CreateMap<UserDto, UserViewModel>(MemberList.None)
