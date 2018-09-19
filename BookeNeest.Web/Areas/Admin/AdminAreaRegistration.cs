@@ -31,6 +31,13 @@ namespace BookeNeest.Web.Areas.Admin
             );
 
             context.MapRoute(
+                name: "Admin_Books_ImageFor",
+                url: "Admin/Books/ImageFor/{id}",
+                defaults: new {controller = "Book", action = "ImageFor", id = UrlParameter.Optional},
+                namespaces: new [] {"BookeNeest.Web.Controllers"}
+            );
+
+            context.MapRoute(
                 name: "Admin_Books_Manage",
                 url: "Admin/Books/{action}/{id}",
                 defaults: new {controller = "Book", id = UrlParameter.Optional},

@@ -43,6 +43,7 @@ namespace BookeNeest.Web
         public static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IBookService, BookService>();
+            container.RegisterType<IImageService, ImageService>();
             container.RegisterType<IGenreService, GenreService>();
             container.RegisterType<IAuthorService, AuthorService>();
             container.RegisterType<IReviewService, ReviewService>();

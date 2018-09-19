@@ -10,10 +10,14 @@ namespace BookeNeest.LogicLayer.Services
         {
         }
 
-        public string GetFilePath(Guid id)
+        public string GetImageFilePath(Guid id)
         {
             // TODO: Create EntityId-based access to associated files 
-            return new Guid().ToString();
+            
+            var path = $"~/Content/Images/Books/{id}.jpg";
+            
+
+            return path;
         }
     }
 }

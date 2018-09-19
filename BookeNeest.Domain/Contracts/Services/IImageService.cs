@@ -8,6 +8,6 @@ namespace BookeNeest.Domain.Contracts.Services
 {
     public interface IImageService
     {
-        string GetFilePath(Guid id);
+        string GetImageFilePath(Guid id);
     }
 }

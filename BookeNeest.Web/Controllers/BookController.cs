@@ -16,11 +16,13 @@ namespace BookeNeest.Web.Controllers
     public class BookController : Controller
     {
         private readonly IBookService bookService;
+        private readonly IImageService imageService;
 
         [InjectionConstructor]
-        public BookController(IBookService bookService)
+        public BookController(IBookService bookService, IImageService imageService)
         {
             this.bookService = bookService;
+            this.imageService = imageService;
         }
 
         // GET: Books
@@ -51,11 +53,13 @@ namespace BookeNeest.Web.Controllers
             return View(model);
         }
 
-        public FilePathResult GetImageFor(string bookId)
+        public FilePathResult ImageFor(string bookId)
         {
-            var imagePath = Server.MapPath("~/Content/Images/Books/") + bookId;
+            var virtualPath = imageService.GetImageFilePath(Guid.Parse(bookId));
 
-            var image = File(imagePath, "image/jpeg");
+            var actualPath = Server.MapPath(virtualPath);
+
+            var image = File(actualPath, "image/jpeg");
             
             return image;
         }

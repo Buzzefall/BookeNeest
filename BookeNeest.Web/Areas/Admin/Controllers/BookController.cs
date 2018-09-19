@@ -40,7 +40,7 @@ namespace BookeNeest.Web.Areas.Admin.Controllers
 
             var id = bookService.AddNew(bookDto);
 
-            bookImage.SaveAs(Server.MapPath("~/Content/Images/Books") + id);
+            bookImage.SaveAs(Server.MapPath($"~/Content/Images/Books/{id}.jpg"));
 
             return RedirectToAction("Details", "Book", new { bookId = id, area = ""});
         }
