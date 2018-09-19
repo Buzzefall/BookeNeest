@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookeNeest.Domain.Models
 {
@@ -7,9 +8,11 @@ namespace BookeNeest.Domain.Models
         [Key]
         public TKey Id { get; set; }
 
-        public EntityBase()
+        public DateTime CreationDate { get; set; }
+
+        protected EntityBase()
         {
-            
+
         }
     }
 }

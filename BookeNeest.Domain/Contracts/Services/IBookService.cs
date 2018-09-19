@@ -10,6 +10,8 @@ namespace BookeNeest.Domain.Contracts.Services
 {
     public interface IBookService : IServiceBase<BookDto>
     {
-        IList<BookDto> GetRecentBooks(int amount);
+        IList<BookDto> GetBooksRecent(int amount);
+
+        IList<BookDto> GetBooksFiltered(int amount);
     }
 }

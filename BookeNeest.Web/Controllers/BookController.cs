@@ -6,10 +6,10 @@ using System.Web.Mvc;
 using AutoMapper;
 using Unity;
 using Unity.Attributes;
-
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.LogicLayer.Services;
 using BookeNeest.Web.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace BookeNeest.Web.Controllers
 {
@@ -29,14 +29,31 @@ namespace BookeNeest.Web.Controllers
         public ActionResult Recents()
         {
             // TODO: Autommaper dto -> view model - DONE
-            
-            // Dto
-            var books = bookService.GetRecentBooks(10);
 
+            // Dto
+            var books = bookService.GetBooksRecent(15);
 
 
             var model = Mapper.Map<IList<BookViewModel>>(books);
-            
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Recents(BookFilterViewModel filter)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("Model Validation Errors", "Model Validation Error");
+                return View("Recents");
+            }
+
+            // TODO: rework
+            var books = bookService.GetBooksRecent(15);
+
+            var model = Mapper.Map<IList<BookViewModel>>(books);
+
             return View(model);
         }
 
@@ -59,8 +76,10 @@ namespace BookeNeest.Web.Controllers
 
             var actualPath = Server.MapPath(virtualPath);
 
-            var image = File(actualPath, "image/jpeg");
-            
+            var image = File(Server.MapPath("~Content/Images/Books/no-image.jpg"), "image/jpeg")
+                        ??
+                        File("~Content/Images/Books/no-image.jpg", "image/jpeg");
+
             return image;
         }
     }

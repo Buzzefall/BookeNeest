@@ -16,7 +16,6 @@ namespace BookeNeest.LogicLayer.Services
             
             var path = $"~/Content/Images/Books/{id}.jpg";
             
-
             return path;
         }
     }

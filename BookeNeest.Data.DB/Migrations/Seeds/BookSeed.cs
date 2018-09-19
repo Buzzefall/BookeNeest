@@ -13,7 +13,9 @@ namespace BookeNeest.Data.DB.Migrations
     {
         private void SeedBooks(BookeNeestDbContext dbContext, int amount)
         {
-            var available = dbContext.Books.Count();
+            var unitOfWork = new UnitOfWork(dbContext);
+
+            var available = unitOfWork.BookRepository.Entities.Count();
 
             if (available >= amount) return;
 
@@ -36,14 +38,16 @@ namespace BookeNeest.Data.DB.Migrations
                         {
                             Id = Guid.NewGuid(),
                             Name = $"Weirdo Genro",
-                            Description = "Something re-e-ally weirdo!"
+                            Description = "Something re-e-ally weirdo!",
+                            CreationDate = DateTime.Now
                         },
 
                         new Genre
                         {
                             Id = Guid.NewGuid(),
                             Name = $"Mainstream Genre",
-                            Description = "Don't you know???"
+                            Description = "Don't you know???",
+                            CreationDate = DateTime.Now
                         },
                     },
 
@@ -56,14 +60,15 @@ namespace BookeNeest.Data.DB.Migrations
                     var existing = dbContext.Authors.FirstOrDefault(a => a.Name == name);
                     book.Authors.Add(existing ?? new Author()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = Guid.NewGuid(), 
                         Name = name,
                         About = "Almighty king of... what country?",
-                        BirthDate = DateTime.Today.Subtract(TimeSpan.FromDays(31))
+                        BirthDate = DateTime.Today.Subtract(TimeSpan.FromDays(31)), //else SQL-db won't accept null value
+                        CreationDate = DateTime.Now
                     });
                 }
 
-                dbContext.Books.Add(book);
+                unitOfWork.BookRepository.Add(book);
             }
 
             dbContext.SaveChanges();

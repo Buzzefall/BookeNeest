@@ -9,6 +9,7 @@ using BookeNeest.Data.DB;
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Web.Areas.Admin.Controllers.Base;
+using BookeNeest.Web.Areas.Admin.Models;
 using BookeNeest.Web.Models;
 
 namespace BookeNeest.Web.Areas.Admin.Controllers

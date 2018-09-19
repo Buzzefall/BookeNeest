@@ -24,18 +24,17 @@ namespace BookeNeest.Data.DB.Repositories
 
         public void Add(TEntity entity)
         {
-            if (entity != null)
-            {
-                _dbSet.Add(entity);
-            }
+            if (entity == null) return;
+            
+            entity.CreationDate = DateTime.Now;
+            _dbSet.Add(entity);
         }
 
         public void Remove(TEntity entity)
         {
-            if (entity != null)
-            {
-                _dbSet.Remove(entity);
-            }
+            if (entity == null) return;
+            
+            _dbSet.Remove(entity);
         }
 
         public TEntity FindById(Guid id)
@@ -46,9 +45,8 @@ namespace BookeNeest.Data.DB.Repositories
         public  IList<TEntity> GetRecent(int amount)
         {
             var requested = Entities
-                .AsNoTracking()
+                .OrderBy(x => x.CreationDate)
                 .Take(amount)
-                .OrderBy(x => x.Id)
                 .ToList();
 
             return requested;

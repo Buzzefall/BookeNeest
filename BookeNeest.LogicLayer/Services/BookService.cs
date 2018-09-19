@@ -60,13 +60,18 @@ namespace BookeNeest.LogicLayer.Services
             return bookDtos;
         }
 
-        public IList<BookDto> GetRecentBooks(int amount)
+        public IList<BookDto> GetBooksRecent(int amount)
         {
             var books = unitOfWork.BookRepository.GetRecent(amount);
             
             var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
             return bookDtos;
+        }
+
+        public IList<BookDto> GetBooksFiltered(int amount)
+        {
+            return new List<BookDto>();
         }
     }
 }

@@ -33,6 +33,11 @@ namespace BookeNeest.Data.DB
             _dbContext = new BookeNeestDbContext();
         }
 
+        public UnitOfWork(BookeNeestDbContext context)
+        {
+            _dbContext = context;
+        }
+
         //public IRepository GetRepository<IRepository>()
         //{
         //    var propertyInfo = GetType()

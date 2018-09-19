@@ -1,4 +1,4 @@
-﻿@model BookeNeest.Web.Models.CreateBookViewModel
+﻿@model BookeNeest.Web.Areas.Admin.Models.CreateBookViewModel
 
 @{
 }
@@ -6,63 +6,63 @@
 <h2 class="custom-book-head">Book Managment</h2>
 
 <legend>Create new book</legend>
-    
-@using (Html.BeginForm("Create", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+@using (Html.BeginForm("Create", "Book", FormMethod.Post, new {enctype = "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal custom-book-pre row">
+    <div class="form-horizontal custom-book-pre row">
 
-    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(false, "", new {@class = "text-danger"})
 
-    <div class="form-group row">
-        @Html.LabelFor(b => b.Name, new { @class = "col-md-1 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        <div class="form-group row">
+            @Html.LabelFor(b => b.Name, new {@class = "col-md-1 control-label"})
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(b => b.Authors, new {@class = "col-md-1 control-label"})
+            <div class="col-md-11">
+                @Html.TextBoxFor(m => m.Authors, new {@class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(b => b.Genres, new {@class = "col-md-1 control-label"})
+            <div class="col-md-11">
+                @Html.TextBoxFor(m => m.Genres, new {@class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(b => b.PublicationDate, new {@class = "col-md-1 control-label"})
+            <div class="col-md-11">
+                @Html.TextBoxFor(m => m.PublicationDate, new {@class = "form-control", type = "date"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(b => b.Description, new {@class = "col-md-1 control-label"})
+            <div class="col-md-11">
+                @Html.TextBoxFor(m => m.Description, new {@class = "form-control"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                Обложка книги:
+                <input type="file" name="bookImage" class="btn btn-default"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Add Book" class="btn btn-primary form-control"/>
+            </div>
         </div>
     </div>
-
-    <div class="form-group row">
-        @Html.LabelFor(b => b.Authors, new { @class = "col-md-1 control-label" })
-        <div class="col-md-11">
-            @Html.TextBoxFor(m => m.Authors, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group row">
-        @Html.LabelFor(b => b.Genres, new { @class = "col-md-1 control-label" })
-        <div class="col-md-11">
-            @Html.TextBoxFor(m => m.Genres, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group row">
-        @Html.LabelFor(b => b.PublicationDate, new { @class = "col-md-1 control-label" })
-        <div class="col-md-11">
-            @Html.TextBoxFor(m => m.PublicationDate, new { @class = "form-control" , type="date"})
-        </div>
-    </div>
-
-    <div class="form-group row">
-        @Html.LabelFor(b => b.Description, new { @class = "col-md-1 control-label" })
-        <div class="col-md-11">
-            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <div class="col-md-12">
-            Обложка книги:
-            <input type="file" name="bookImage" class="btn btn-default" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-10">
-            <input type="submit" value="Add Book" class="btn btn-primary form-control" />
-        </div>
-    </div>
-</div>
 }
 
 <div>

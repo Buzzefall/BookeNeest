@@ -66,8 +66,13 @@
     <Compile Include="Migrations\201809180443543_InitialCreate.Designer.cs">
       <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809190854213_EntityCreationDateAdded.cs" />
+    <Compile Include="Migrations\201809190854213_EntityCreationDateAdded.Designer.cs">
+      <DependentUpon>201809190854213_EntityCreationDateAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
+    <Compile Include="Models\FilterModel.cs" />
     <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\TagRepository.cs" />
     <Compile Include="Repositories\BookRepository.cs" />
@@ -93,6 +98,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809180443543_InitialCreate.resx">
       <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190854213_EntityCreationDateAdded.resx">
+      <DependentUpon>201809190854213_EntityCreationDateAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
