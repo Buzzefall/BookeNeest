@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace BookeNeest.Web.Models
+﻿namespace BookeNeest.Domain.Models
 {
-    public class BookFilterViewModel
+    public class BookFilter
     {
         public string Name { get; set; }
         public string Genres { get; set; }

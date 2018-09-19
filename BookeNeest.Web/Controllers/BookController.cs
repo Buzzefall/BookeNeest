@@ -7,6 +7,7 @@ using AutoMapper;
 using Unity;
 using Unity.Attributes;
 using BookeNeest.Domain.Contracts.Services;
+using BookeNeest.Domain.Models;
 using BookeNeest.LogicLayer.Services;
 using BookeNeest.Web.Models;
 using Microsoft.Ajax.Utilities;
@@ -41,18 +42,24 @@ namespace BookeNeest.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Recents(BookFilterViewModel filter)
+        public ActionResult Recents(BookFilterViewModel filterViewModel)
         {
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("Model Validation Errors", "Model Validation Error");
-                return View("Recents");
+                return PartialView("_BookFilterPartial");
             }
 
-            // TODO: rework
-            var books = bookService.GetBooksRecent(15);
+            // TODO: rework (currently no diff from GET Books/Recents)
 
-            var model = Mapper.Map<IList<BookViewModel>>(books);
+            //Map filter
+            var filter = Mapper.Map<BookFilter>(filterViewModel);
+
+            //Achieve bookDtos
+            var booksDtos = bookService.GetBooksFiltered(filter);
+
+            //Map dtos to model
+            var model = Mapper.Map<IList<BookViewModel>>(booksDtos);
 
             return View(model);
         }

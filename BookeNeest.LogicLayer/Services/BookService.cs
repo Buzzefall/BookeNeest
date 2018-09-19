@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using BookeNeest.Domain.Contracts;
 using BookeNeest.Domain.Contracts.Services;
 using BookeNeest.Domain.DTOs;
 using BookeNeest.Domain.Models;
-using BookeNeest.Data.DB;
 using Unity.Attributes;
 
 namespace BookeNeest.LogicLayer.Services
@@ -54,7 +54,7 @@ namespace BookeNeest.LogicLayer.Services
         public IList<BookDto> FindByName(string name)
         {
             var books = unitOfWork.BookRepository.FindByName(name);
-            
+
             var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
             return bookDtos;
@@ -63,15 +63,57 @@ namespace BookeNeest.LogicLayer.Services
         public IList<BookDto> GetBooksRecent(int amount)
         {
             var books = unitOfWork.BookRepository.GetRecent(amount);
-            
+
             var bookDtos = Mapper.Map<IList<BookDto>>(books);
 
             return bookDtos;
         }
 
-        public IList<BookDto> GetBooksFiltered(int amount)
+        public IList<BookDto> GetBooksFiltered(BookFilter filter)
         {
-            return new List<BookDto>();
+            if (filter == null)
+            {
+                throw new Exception("BookFilter is null");
+            }
+
+            var books = unitOfWork.BookRepository.Entities
+                .Where(book => book.Rating >= filter.MinRating);
+            
+            books = books
+                .Where(book => book.Rating <= filter.MaxRating);
+
+            if (filter.Name != null)
+            {
+                books = books.Where(book => book.Name.Contains(filter.Name));
+            }
+
+            if (filter.Authors != null)
+            {
+                var authorNames = filter.Authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries);
+
+                var authors = unitOfWork.AuthorRepository.Entities.Where(x => authorNames.Contains(x.Name));
+
+                foreach (var author in authors)
+                {
+                    books = books.Where(book => book.Authors.Contains(author));
+                }
+            }
+
+            if (filter.Genres != null)
+            {
+                var genreNames = filter.Genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries);
+
+                var genres = unitOfWork.GenreRepository.Entities.Where(x => genreNames.Contains(x.Name));
+
+                foreach (var genre in genres)
+                {
+                    books = books.Where(book => book.Genres.Contains(genre));
+                }
+            }
+
+            var bookDtos = Mapper.Map<IList<BookDto>>(books);
+
+            return bookDtos;
         }
     }
 }

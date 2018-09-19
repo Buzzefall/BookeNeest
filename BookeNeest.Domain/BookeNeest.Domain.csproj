@@ -101,6 +101,7 @@
     <Compile Include="DTOs\ReviewDto.cs" />
     <Compile Include="DTOs\TagDto.cs" />
     <Compile Include="DTOs\UserDto.cs" />
+    <Compile Include="Models\BookFilter.cs" />
     <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
     <Compile Include="Models\Identity\UserClaim.cs" />

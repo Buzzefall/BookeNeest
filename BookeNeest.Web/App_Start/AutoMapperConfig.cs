@@ -2,10 +2,10 @@
 using System.Linq;
 using AutoMapper;
 using BookeNeest.Domain.DTOs;
-using BookeNeest.Domain.Models;
 using BookeNeest.Domain.Models.Identity;
 using BookeNeest.Web.Areas.Admin.Models;
 using BookeNeest.Web.Models;
+using BookFilter = BookeNeest.Domain.Models.BookFilter;
 
 namespace BookeNeest.Web
 {
@@ -22,7 +22,6 @@ namespace BookeNeest.Web
 
                 // DTOs to View Models
                 config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None)
-                    
                     .ForMember(dto => dto.Authors, opt => opt.MapFrom(model =>
                             model.Authors
                             .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
@@ -42,22 +41,13 @@ namespace BookeNeest.Web
                                     Name = genre
                                 }).ToList()));
 
-                //    .ConstructUsing(b => new BookDto
-                //{
-                //    Authors = b.Authors.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                //        .Select(author => new AuthorDto { Name = author }).ToList(),
-
-                //    Genres = b.Genres.Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                //        .Select(genre => new GenreDto { Name = genre}).ToList(),
-
-                //    Name = b.Name,
-                //    Description = b.Description,
-                //    PublicationDate = b.PublicationDate
-                //});
-
                 config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
                 config.CreateMap<CreateAuthorViewModel, AuthorDto>(MemberList.None);
 
+                config.CreateMap<BookFilterViewModel, BookFilter>(MemberList.None);
+
+                config.CreateMap<BookDto, BookViewModel>(MemberList.None)
+                    .ReverseMap().ValidateMemberList(MemberList.None);
 
                 config.CreateMap<AuthorDto, AuthorViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);
@@ -72,8 +62,6 @@ namespace BookeNeest.Web
                     .ReverseMap().ValidateMemberList(MemberList.None);
 
 
-                config.CreateMap<BookDto, BookViewModel>(MemberList.None)
-                    .ReverseMap().ValidateMemberList(MemberList.None);
 
 
                 config.CreateMap<UserDto, UserViewModel>(MemberList.None)

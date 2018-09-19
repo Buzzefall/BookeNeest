@@ -12,6 +12,6 @@ namespace BookeNeest.Domain.Contracts.Services
     {
         IList<BookDto> GetBooksRecent(int amount);
 
-        IList<BookDto> GetBooksFiltered(int amount);
+        IList<BookDto> GetBooksFiltered(BookFilter filter);
     }
 }
