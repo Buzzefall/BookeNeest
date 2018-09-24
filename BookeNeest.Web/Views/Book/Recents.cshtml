@@ -21,67 +21,70 @@
     Html.RenderPartial("_BookFilterPartial", new BookFilterViewModel());
 }
 
-@foreach (var book in Model)
-{
-    <div class="row panel panel-body panel-primary" style="background-color: aliceblue;">
-        @{
-            StringBuilder authors = new StringBuilder();
+<div id="bookList"> 
+    @foreach (var book in Model)
+    {
+        <div class="row panel panel-body panel-primary" style="background-color: aliceblue;">
+            @{
+                StringBuilder authors = new StringBuilder();
 
-            foreach (var author in book.Authors)
-            {
-                authors.Append(author.Name).Append(", ");
+                foreach (var author in book.Authors)
+                {
+                    authors.Append(author.Name).Append(", ");
+                }
+                if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
+                {
+                    authors.Remove(authors.Length - 2, 2).Append(".");
+                }
             }
-            if (authors.Length > 2 && authors[authors.Length - 1] == ' ')
-            {
-                authors.Remove(authors.Length - 2, 2).Append(".");
-            }
-        }
 
-        @*<div class="row col-md-4">
-
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> ID: </div>
+                <div class="col-md-11"> 
+                    @book.Id 
+                </div>
             </div>
 
-            <hr />*@
-
-        <div class="row custom-book">
-            <div class="col-md-1 custom-book-fld"> ID: </div>
-            <div class="col-md-11"> @book.Id </div>
-        </div>
-
-        <div class="row custom-book">
-            <div class="col-md-1 custom-book-fld"> Name: </div>
-            <div class="col-md-11">
-                @Html.ActionLink(book.Name, "Details", "Book",
-                    new {bookId = book.Id},
-                    new {style = "color: blue"})
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Name: </div>
+                <div class="col-md-11">
+                    @Html.ActionLink(book.Name, "Details", "Book",
+                        new {bookId = book.Id},
+                        new {style = "color: blue"})
+                </div>
             </div>
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Rating:</div>
+                <div class="col-md-11"> 
+                    @book.Rating 
+                </div>
+            </div>
+
+            <div class="row custom-book">
+                <div class="col-md-1 custom-book-fld"> Authors:</div>
+                <div class="col-md-11"> 
+                    @authors.ToString()
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="btn-group ">
+
+                @Html.ActionLink("Details", "Details", "Book",
+                    routeValues: new {bookId = book.Id},
+                    htmlAttributes: new {@class = "btn  btn-primary"})
+
+                @Html.ActionLink("Post Review", "PostReview", "Review",
+                    routeValues: new {bookId = book.Id},
+                    htmlAttributes: new {@class = "btn  btn-primary "})
+            </div>
+
         </div>
+    }
+</div>
 
-        <div class="row custom-book">
-            <div class="col-md-1 custom-book-fld"> Rating:</div>
-            <div class="col-md-11"> @book.Rating </div>
-        </div>
-
-        <div class="row custom-book">
-            <div class="col-md-1 custom-book-fld"> Authors:</div>
-            <div class="col-md-11"> @authors.ToString() </div>
-        </div>
-
-        <hr/>
-
-        <div class="btn-group ">
-
-            @Html.ActionLink("Details", "Details", "Book",
-                routeValues: new {bookId = book.Id},
-                htmlAttributes: new {@class = "btn  btn-primary"})
-
-            @Html.ActionLink("Post Review", "PostReview", "Review",
-                routeValues: new {bookId = book.Id},
-                htmlAttributes: new {@class = "btn  btn-primary "})
-        </div>
-
-    </div>
-}
 
 
 

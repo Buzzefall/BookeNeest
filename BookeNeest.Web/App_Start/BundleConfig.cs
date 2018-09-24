@@ -34,15 +34,15 @@ namespace BookeNeest.Web
 
             // Styles
             //////////////////////////////////////////////////////////
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/Styles").Include(
                 "~/Content/bootstrap.css",
-                "~/Content/site.css"));
+                "~/Content/site.css",
+                "~/Content/css/select2.css"));
 
             // Custom styles:
             //////////////////////////////
-            bundles.Add(new StyleBundle("~/Content/Custom").Include(
-                "~/Content/Custom/book-styles.css",
-                "~/Content/css/select2.css"));
+            bundles.Add(new StyleBundle("~/Content/Styles/Custom").Include(
+                "~/Content/Custom/book-styles.css"));
         }
     }
 }
