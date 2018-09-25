@@ -18,7 +18,7 @@
     </div>*@
 
 @{
-    Html.RenderPartial("_BookFilterPartial", new BookFilterViewModel());
+    Html.RenderPartial("_BookFilterPartial", new BookFilterViewModel { MinRating = 1; MaxRating = 10 };
 }
 
 <div id="bookList"> 

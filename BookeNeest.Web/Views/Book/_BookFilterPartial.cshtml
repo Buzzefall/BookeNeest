@@ -2,6 +2,9 @@
 
 @{
     Layout = null;
+    Model.MinRating = 1;
+    Model.MaxRating = 10;
+    //if MaxRating == null, SelectList set it to selectedValue, if not - the last is ignored!!!!!!!!!!!!!!!!!
 }
 
 <h4 class="custom-book-head" style="text-align: center"> Filters: </h4>
@@ -19,15 +22,21 @@
         </div>
 
         <div class="row form-group">
-            @Html.LabelFor(model => model.MinRating, "Min Rating", new { @class = "control-label col-md-2" })
-            @Html.DropDownListFor(model => model.MinRating,
-                new SelectList(new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 1),
-                new {@class = "form-control col-md-10"})
+            @{
+                var selectList = new SelectList(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 1);
 
-            @Html.LabelFor(model => model.MaxRating, "Max Rating", new { @class = "control-label col-md-2" })
-            @Html.DropDownListFor(model => model.MaxRating,
-                new SelectList(new[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 10),
-                new {@class = "form-control col-md-10"})
+                @Html.LabelFor(model => model.MinRating, "Min Rating", new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.MinRating,
+                    selectList,
+                    new {@class = "form-control col-md-10"})
+
+                selectList = new SelectList(new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 10);
+
+                @Html.LabelFor(model => model.MaxRating, "Max Rating", new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.MaxRating,
+                    selectList,
+                    new {@class = "form-control col-md-10"})
+            }
         </div>
 
         <div class="row form-group">
