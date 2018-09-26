@@ -23,15 +23,12 @@ namespace BookeNeest.LogicLayer
 
             config.CreateMap<Author, AuthorDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
-            
 
             config.CreateMap<Genre, GenreDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
 
             config.CreateMap<Review, ReviewDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);
-
-
 
             config.CreateMap<Book, BookDto>(MemberList.None)
                 .ReverseMap().ValidateMemberList(MemberList.None);

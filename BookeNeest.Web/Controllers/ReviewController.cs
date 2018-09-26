@@ -24,7 +24,7 @@ namespace BookeNeest.Web.Controllers
         // GET Review/
         public ActionResult Index()
         {
-            var reviewDtos = reviewService.GetRecentReviews(10);
+            var reviewDtos = reviewService.GetRecentReviews(25);
 
             var recents = Mapper.Map<IList<ReviewViewModel>>(reviewDtos);
 

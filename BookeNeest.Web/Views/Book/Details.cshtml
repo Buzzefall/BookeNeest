@@ -12,13 +12,12 @@
     <hr/>
 
     <div class="row panel panel-body panel-primary" style="background-color: aliceblue">
-        
         <img src=@Url.Action("ImageFor", "Book", new { bookId = Model.Id }) 
-             alt ="[image] @Model.Name"
-             class ="panel panel-body panel-primary"
+             alt="[image] @Model.Name"
+             class ="panel panel-primary" 
              style="width: 240px; height: 320px;"
-             />
-
+        />
+        
         @{
             StringBuilder authors = new StringBuilder();
             foreach (var author in Model.Authors)

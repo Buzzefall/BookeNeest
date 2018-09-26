@@ -62,13 +62,9 @@
     <Compile Include="Maps\BookMap.cs" />
     <Compile Include="Maps\ReviewMap.cs" />
     <Compile Include="Maps\UserMap.cs" />
-    <Compile Include="Migrations\201809180443543_InitialCreate.cs" />
-    <Compile Include="Migrations\201809180443543_InitialCreate.Designer.cs">
-      <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809190854213_EntityCreationDateAdded.cs" />
-    <Compile Include="Migrations\201809190854213_EntityCreationDateAdded.Designer.cs">
-      <DependentUpon>201809190854213_EntityCreationDateAdded.cs</DependentUpon>
+    <Compile Include="Migrations\201809261842150_InitialCreate.cs" />
+    <Compile Include="Migrations\201809261842150_InitialCreate.Designer.cs">
+      <DependentUpon>201809261842150_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
@@ -96,11 +92,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809180443543_InitialCreate.resx">
-      <DependentUpon>201809180443543_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809190854213_EntityCreationDateAdded.resx">
-      <DependentUpon>201809190854213_EntityCreationDateAdded.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809261842150_InitialCreate.resx">
+      <DependentUpon>201809261842150_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

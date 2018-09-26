@@ -12,9 +12,11 @@ namespace BookeNeest.Web.Areas.Admin.Models
         public string Name { get; set; }
         
         [Required]
-        public string About { get; set; }
-        
-        [Required]
         public string BirthDate { get; set; }
+
+        [Required]
+        public string DeathDate { get; set; }
+        
+        public string About { get; set; }
     }
 }

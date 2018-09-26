@@ -15,6 +15,8 @@ namespace BookeNeest.Data.DB.Migrations
                         Name = c.String(),
                         About = c.String(),
                         BirthDate = c.DateTime(nullable: false),
+                        DeathDate = c.DateTime(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -27,8 +29,9 @@ namespace BookeNeest.Data.DB.Migrations
                         Name = c.String(nullable: false),
                         Description = c.String(),
                         PublicationDate = c.DateTime(nullable: false),
-                        PagesTotal = c.Int(),
-                        Rating = c.Int(),
+                        PagesTotal = c.Int(nullable: false),
+                        Rating = c.Int(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -39,6 +42,7 @@ namespace BookeNeest.Data.DB.Migrations
                         Id = c.Guid(nullable: false),
                         Name = c.String(),
                         Description = c.String(),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -51,7 +55,8 @@ namespace BookeNeest.Data.DB.Migrations
                         UserId = c.Guid(nullable: false),
                         BookId = c.Guid(nullable: false),
                         Text = c.String(nullable: false),
-                        Rating = c.Int(),
+                        Rating = c.Int(nullable: false),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
@@ -126,6 +131,7 @@ namespace BookeNeest.Data.DB.Migrations
                         Id = c.Guid(nullable: false),
                         Text = c.String(),
                         Category = c.String(),
+                        CreationDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -6,19 +6,12 @@
 @{
 }
 
-<h1 class="custom-book-head">Some recent books on site:</h1>
+<h1 class="custom-book-head">Library</h1>
 
 <hr/>
 
-@*<div class="dropdown nav nav-tabs">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-primary col-md-12"> Recents</a>
-        <div class="panel-group dropdown-menu col-md-12">
-
-        </div>
-    </div>*@
-
 @{
-    Html.RenderPartial("_BookFilterPartial", new BookFilterViewModel { MinRating = 1; MaxRating = 10 };
+    Html.RenderPartial("_BookFilterPartial", new BookFilterViewModel());
 }
 
 <div id="bookList"> 

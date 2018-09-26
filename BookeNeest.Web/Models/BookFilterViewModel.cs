@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
-namespace BookeNeest.Web.Models
+﻿namespace BookeNeest.Web.Models
 {
     //if MinRating is not nullable, it is initialized with 0;
     //hence SelectList takes that value as initial selected one and ignores selectedValue parameter of new SelectList() => useless constructor parameter;

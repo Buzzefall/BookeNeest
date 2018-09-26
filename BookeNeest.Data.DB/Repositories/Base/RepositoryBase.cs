@@ -26,7 +26,6 @@ namespace BookeNeest.Data.DB.Repositories
         {
             if (entity == null) return;
             
-            entity.CreationDate = DateTime.Now;
             _dbSet.Add(entity);
         }
 

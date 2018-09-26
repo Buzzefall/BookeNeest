@@ -22,26 +22,26 @@ namespace BookeNeest.Web
 
                 // DTOs to View Models
                 config.CreateMap<CreateBookViewModel, BookDto>(MemberList.None)
-                    .ForMember(dto => dto.Authors, opt => opt.MapFrom(model =>
-                            model.Authors
-                            .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(author => new AuthorDto
-                                {
-                                    Id = Guid.NewGuid(),
-                                    Name = author,
-                                    BirthDate = new DateTime(2000, 1, 1)
-                                }).ToList()))
+                    .ForMember(dto => dto.Authors, opt => opt.MapFrom(model => model.Authors
+                        .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(author => new AuthorDto
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = author,
+                            BirthDate = new DateTime(2000, 1, 1)
+                        }).ToList()))
 
-                    .ForMember(dto => dto.Genres, opt => opt.MapFrom(model =>
-                            model.Genres
-                            .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
-                            .Select(genre => new GenreDto
-                                {
-                                    Id = Guid.NewGuid(),
-                                    Name = genre
-                                }).ToList()));
+                    .ForMember(dto => dto.Genres, opt => opt.MapFrom(model => model.Genres
+                        .Split(new[] {',', '.'}, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(genre => new GenreDto
+                        {
+                            Id = Guid.NewGuid(),
+                            Name = genre,
+                            Description = "Unknown"
+                        }).ToList()));
 
                 config.CreateMap<CreateUserViewModel, UserDto>(MemberList.None);
+
                 config.CreateMap<CreateAuthorViewModel, AuthorDto>(MemberList.None);
 
                 config.CreateMap<BookFilterViewModel, BookFilter>(MemberList.None);
@@ -60,8 +60,6 @@ namespace BookeNeest.Web
 
                 config.CreateMap<ReviewDto, ReviewViewModel>(MemberList.None)
                     .ReverseMap().ValidateMemberList(MemberList.None);
-
-
 
 
                 config.CreateMap<UserDto, UserViewModel>(MemberList.None)

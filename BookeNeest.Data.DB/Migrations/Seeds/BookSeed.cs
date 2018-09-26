@@ -39,7 +39,6 @@ namespace BookeNeest.Data.DB.Migrations
                             Id = Guid.NewGuid(),
                             Name = $"Weirdo Genro",
                             Description = "Something re-e-ally weirdo!",
-                            CreationDate = DateTime.Now
                         },
 
                         new Genre
@@ -47,7 +46,6 @@ namespace BookeNeest.Data.DB.Migrations
                             Id = Guid.NewGuid(),
                             Name = $"Mainstream Genre",
                             Description = "Don't you know???",
-                            CreationDate = DateTime.Now
                         },
                     },
 
@@ -56,15 +54,15 @@ namespace BookeNeest.Data.DB.Migrations
 
                 for (int j = 0; j < book.Rating; j++)
                 {
-                    var name = $"Dionis Pompey {RomanNumEx.ToRoman(randomizer.Next(10, 99))}";
+                    var name = $"Lucius Aurelius {RomanNumEx.ToRoman(randomizer.Next(10, 99))}";
                     var existing = dbContext.Authors.FirstOrDefault(a => a.Name == name);
                     book.Authors.Add(existing ?? new Author()
                     {
                         Id = Guid.NewGuid(), 
                         Name = name,
                         About = "Almighty king of... what country?",
-                        BirthDate = DateTime.Today.Subtract(TimeSpan.FromDays(31)), //else SQL-db won't accept null value
-                        CreationDate = DateTime.Now
+                        BirthDate = DateTime.Today.Subtract(TimeSpan.FromDays(13337)), //else SQL-db won't accept null value
+                        DeathDate = DateTime.Today, //else SQL-db won't accept null value
                     });
                 }
 

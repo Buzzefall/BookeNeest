@@ -12,7 +12,7 @@ namespace BookeNeest.Domain.Models
 
         protected EntityBase()
         {
-
+            CreationDate = DateTime.Now;
         }
     }
 }

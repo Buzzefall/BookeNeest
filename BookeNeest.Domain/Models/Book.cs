@@ -10,8 +10,8 @@ namespace BookeNeest.Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime PublicationDate { get; set; }
-        public int? PagesTotal { get; set; }
-        public int? Rating { get; set; }
+        public int PagesTotal { get; set; }
+        public int Rating { get; set; }
         
         public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<Author> Authors { get; set; }

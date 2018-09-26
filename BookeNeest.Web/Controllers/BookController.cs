@@ -32,7 +32,7 @@ namespace BookeNeest.Web.Controllers
             // TODO: Autommaper dto -> view model - DONE
 
             // Dto
-            var books = bookService.GetBooksRecent(15);
+            var books = bookService.GetBooksRecent(25);
 
 
             var model = Mapper.Map<IList<BookViewModel>>(books);
@@ -79,14 +79,16 @@ namespace BookeNeest.Web.Controllers
 
         public FilePathResult ImageFor(string bookId)
         {
+            var noImagePath = Server.MapPath("~/Content/Images/Books/no-image.jpg");
+
             var virtualPath = imageService.GetImageFilePath(Guid.Parse(bookId));
 
             var actualPath = Server.MapPath(virtualPath);
 
-            var image = File(Server.MapPath("~Content/Images/Books/no-image.jpg"), "image/jpeg")
-                        ??
-                        File("~Content/Images/Books/no-image.jpg", "image/jpeg");
 
+            var image = (System.IO.File.Exists(actualPath) ? File(actualPath, "image/jpeg") : null)
+                        ??
+                        File(noImagePath, "image/jpeg");
             return image;
         }
     }
