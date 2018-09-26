@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201809261842150_InitialCreate.Designer.cs">
       <DependentUpon>201809261842150_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809261901527_NullableDatesForModels.cs" />
+    <Compile Include="Migrations\201809261901527_NullableDatesForModels.Designer.cs">
+      <DependentUpon>201809261901527_NullableDatesForModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\Seeds\BookSeed.cs" />
     <Compile Include="Models\FilterModel.cs" />
@@ -94,6 +98,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809261842150_InitialCreate.resx">
       <DependentUpon>201809261842150_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809261901527_NullableDatesForModels.resx">
+      <DependentUpon>201809261901527_NullableDatesForModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

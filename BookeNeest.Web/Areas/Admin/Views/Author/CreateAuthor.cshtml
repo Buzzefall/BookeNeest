@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls
-@model BookeNeest.Web.Areas.Admin.Models.CreateAuthorViewModel
+﻿@model BookeNeest.Web.Areas.Admin.Models.CreateAuthorViewModel
 
 @{
     ViewBag.Title = "";
@@ -7,15 +6,13 @@
 
 <h2 class="custom-book-head">Author Managment</h2>
 
-<h4>Create new author</h4>
-
-<hr/>
+<legend class="custom-book">Create new author</legend>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+    <div class="form-horizontal custom-book">
         @Html.ValidationSummary(false, "", new {@class = "text-danger"})
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "control-label col-md-2"})

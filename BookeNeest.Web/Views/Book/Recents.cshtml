@@ -30,6 +30,12 @@
                     authors.Remove(authors.Length - 2, 2).Append(".");
                 }
             }
+            
+            <img src=@Url.Action("ImageFor", "Book", new { bookId = book.Id }) 
+                 alt="[image] @book.Name"
+                 class ="panel panel-primary" 
+                 style="width: 240px; height: 320px;"
+            />
 
             <div class="row custom-book">
                 <div class="col-md-1 custom-book-fld"> ID: </div>

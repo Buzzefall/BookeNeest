@@ -10,8 +10,8 @@ namespace BookeNeest.Domain.DTOs
     {
         public string Name { get; set; }
         public string About { get; set; }
-        public DateTime BirthDate { get; set; }
-        public DateTime DeathDate { get; set; }
+        public DateTime? BirthDate { get; set; }
+        public DateTime? DeathDate { get; set; }
 
         public override string ToString() => Name;
     }

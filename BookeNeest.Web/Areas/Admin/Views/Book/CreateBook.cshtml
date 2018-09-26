@@ -5,39 +5,42 @@
 
 <h2 class="custom-book-head">Book Managment</h2>
 
-<legend>Create new book</legend>
+<legend class="custom-book">Create new book</legend>
 
-@using (Html.BeginForm("Create", "Book", FormMethod.Post, new {enctype = "multipart/form-data"}))
+@using (Html.BeginForm("Create", "Book", FormMethod.Post, 
+        new {enctype = "multipart/form-data", @class="form-horizontal custom-book-pre row"}))
 {
     @Html.AntiForgeryToken()
-
-    <div class="form-horizontal custom-book-pre row">
 
         @Html.ValidationSummary(false, "", new {@class = "text-danger"})
 
         <div class="form-group row">
-            @Html.LabelFor(b => b.Name, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.Name,
+                new {@class = "col-md-1 control-label", style = "text-align: center"})
             <div class="col-md-10">
-                @Html.TextBoxFor(m => m.Name, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(b => b.Authors, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.Authors,
+                new {@class = "col-md-1 control-label", style = "text-align: center"})
             <div class="col-md-11">
-                @Html.TextBoxFor(m => m.Authors, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Authors, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(b => b.Genres, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.Genres,
+                new {@class = "col-md-1 control-label", style = "text-align: center"})
             <div class="col-md-11">
-                @Html.TextBoxFor(m => m.Genres, new {@class = "form-control"})
+                @Html.TextBoxFor(m => m.Genres, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group row">
-            @Html.LabelFor(b => b.PublicationDate, new {@class = "col-md-1 control-label"})
+            @Html.LabelFor(b => b.PublicationDate, "Publication Date", 
+                new {@class = "col-md-1 control-label", style = "text-align: center"})
             <div class="col-md-11">
                 @Html.TextBoxFor(m => m.PublicationDate, new {@class = "form-control", type = "date"})
             </div>
@@ -52,22 +55,21 @@
 
         <div class="form-group row">
             <div class="col-md-12">
-                Обложка книги:
-                <input type="file" name="bookImage" class="btn btn-default"/>
+                <label>
+                    Обложка книги:
+                    <input type="file" name="bookImage" class="btn btn-default"/>
+                </label>
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <input type="submit" value="Add Book" class="btn btn-primary form-control"/>
             </div>
         </div>
-    </div>
 }
 
-<div>
-    @Html.ActionLink("Back to the list", "Recents")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
