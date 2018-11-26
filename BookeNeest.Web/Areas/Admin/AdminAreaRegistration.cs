@@ -19,21 +19,21 @@ namespace BookeNeest.Web.Areas.Admin
             context.MapRoute(
                 name: "Admin_Books",
                 url: "Admin/Books",
-                defaults: new {controller = "Book", action = "Recents", id = UrlParameter.Optional},
+                defaults: new {controller = "Book", action = "Recents"},
                 namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
 
             context.MapRoute(
                 name: "Admin_Books_Details",
                 url: "Admin/Books/Details/{id}",
-                defaults: new {controller = "Book", action = "Details", id = UrlParameter.Optional},
+                defaults: new {controller = "Book", action = "Details"},
                 namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
 
             context.MapRoute(
                 name: "Admin_Books_ImageFor",
                 url: "Admin/Books/ImageFor/{id}",
-                defaults: new {controller = "Book", action = "ImageFor", id = UrlParameter.Optional},
+                defaults: new {controller = "Book", action = "ImageFor"},
                 namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
 
@@ -47,7 +47,7 @@ namespace BookeNeest.Web.Areas.Admin
             context.MapRoute(
                 name: "Admin_User_Details",
                 url: "Admin/User/Details/{id}",
-                defaults: new {controller = "User", action = "Index", id = UrlParameter.Optional},
+                defaults: new {controller = "User", action = "Details"},
                 namespaces: new [] {"BookeNeest.Web.Controllers"}
             );
 

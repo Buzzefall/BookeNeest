@@ -90,4 +90,32 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    
+    @*
+    @Scripts.Render("~/bundles/select2")
+    
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $('#MinRating').select2({
+                placeholder: 'Lowest rating',
+                selectOnClose: false
+                //adaptDropdownCssClass: function(c) {
+                //    // Pass the select's classes through to the dropdown.
+                //    return c;
+                //}
+            });
+
+            $('#MaxRating').select2({
+                placeholder: 'Highest rating',
+                selectOnClose: false
+                //adaptDropdownCssClass: function(c) {
+                //    // Pass the select's classes through to the dropdown.
+                //    return c;
+                //}
+            });
+
+            $('.select2').removeClass('select2-container--above').addClass('select2-container--below');
+        });
+    </script>
+    *@
 }

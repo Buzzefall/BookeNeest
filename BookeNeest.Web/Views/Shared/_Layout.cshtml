@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> BookeNeest Review Service</title>
     @Styles.Render("~/Content/Styles")
@@ -19,13 +19,14 @@
         </div>
         <div class="navbar-collapse collapse custom-book">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("BookeNeest", "Index", "Home", 
-                        new { area = "" }, 
-                        new { @class = "navbar-brand custom-book-head" })</li>
+                <li>
+                    @Html.ActionLink("BookeNeest", "Index", "Home",
+                        new {area = ""},
+                        new {@class = "navbar-brand custom-book-head"})</li>
                 <li>@Html.ActionLink("Books", "Recents", "Book")</li>
                 <li>@Html.ActionLink("Reviews", "Index", "Review")</li>
                 <li>@Html.ActionLink("Users", "Index", "User")</li>
-                
+
                 @Html.Partial("_AdminPartial")
 
                 <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -39,12 +40,12 @@
     @RenderBody()
     <hr/>
     <footer dir="rtl">
-        <p>&copy; @DateTime.Now.Year - BookeNeest</p>
+        <p>&copy; @DateTime.Now.Year - BookeNeestCo</p>
     </footer>
 </div>
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-@Scripts.Render("~/bundles/select2")
+
 @RenderSection("Scripts", required: false)
 </body>
 

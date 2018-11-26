@@ -28,7 +28,7 @@ namespace BookeNeest.Web
                         {
                             Id = Guid.NewGuid(),
                             Name = author,
-                            BirthDate = new DateTime(2000, 1, 1)
+                            BirthDate = new DateTime(1999, 9, 9)
                         }).ToList()))
 
                     .ForMember(dto => dto.Genres, opt => opt.MapFrom(model => model.Genres

@@ -12,9 +12,10 @@ namespace BookeNeest.Web.Areas.Admin.Models
         [Display(Name = "Name", Order = 2)]
         public string Name { get; set; }
 
+        [Display(Name = "Publication Date", Order = 4)]
         public DateTime PublicationDate { get; set; }
 
-        [Display(Name = "PagesTotal", Order = 4)]
+        [Display(Name = "Pages Total", Order = 4)]
         public int? PagesTotal { get; set; }
 
         [Display(Name = "Rating", Order = 5)]

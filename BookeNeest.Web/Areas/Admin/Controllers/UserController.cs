@@ -21,6 +21,7 @@ using ClaimTypes = BookeNeest.Domain.Constants.ClaimTypes;
 namespace BookeNeest.Web.Areas.Admin.Controllers
 {
     // TODO: CRUD(User) operations, etc.
+    
     public class UserController : AdminAreaControllerBase
     {
         private BookeNeestUserManager _userManager;

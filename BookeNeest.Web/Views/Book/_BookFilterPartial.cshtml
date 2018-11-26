@@ -7,48 +7,56 @@
     //if MaxRating == null, SelectList set it to selectedValue, if not - the last is ignored!!!!!!!!!!!!!!!!!
 }
 
-<h4 class="custom-book-head" style="text-align: center"> Filters: </h4>
+<h3 class="custom-book"> Filters: </h3>
 
-@using (Html.BeginForm("Recents", "Book", FormMethod.Post, new {id = "bookFilterForm", @class = "form-horizontal custom-book"}))
+@using (Html.BeginForm("Recents", "Book", FormMethod.Post, new {id = "bookFilterForm", @class = "custom-book"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
+
+
     <div class="row form-group">
         @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
-        @Html.TextBoxFor(model => model.Name, new {@class = "form-control col-md-10"})
+        @Html.TextBoxFor(model => model.Name, new {@class = "form-control col-md-6"})
     </div>
+
+
+
+    var selectList = new SelectList(new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 0);
 
     <div class="row form-group">
-        @{
-            var selectList = new SelectList(new [] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 0);
-
-            @Html.LabelFor(model => model.MinRating, "Min Rating", new {@class = "control-label col-md-2"})
-            @Html.DropDownListFor(model => model.MinRating,
-                selectList,
-                new {@class = "form-control col-md-10"})
-
-            selectList = new SelectList(new [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 10);
-
-            @Html.LabelFor(model => model.MaxRating, "Max Rating", new {@class = "control-label col-md-2"})
-            @Html.DropDownListFor(model => model.MaxRating,
-                selectList,
-                new {@class = "form-control col-md-10"})
-        }
+        @Html.LabelFor(model => model.MinRating, "Min Rating", new {@class = "control-label col-md-2"})
+        @Html.DropDownListFor(model => model.MinRating,
+            selectList,
+            new {@class = "form-control col-md-6"})
     </div>
+
+    selectList = new SelectList(new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, selectedValue: 10);
+
+    <div class="row form-group">
+        @Html.LabelFor(model => model.MaxRating, "Max Rating", new {@class = "control-label col-md-2"})
+        @Html.DropDownListFor(model => model.MaxRating,
+            selectList,
+            new {@class = "form-control col-md-6"})
+    </div>
+
+
 
     <div class="row form-group">
         @Html.LabelFor(model => model.Authors, new {@class = "control-label col-md-2"})
-        @Html.TextBoxFor(model => model.Authors, new {@class = "form-control col-md-10"})
+        @Html.TextBoxFor(model => model.Authors, new {@class = "form-control col-md-6"})
     </div>
 
     <div class="row form-group">
         @Html.LabelFor(model => model.Genres, new {@class = "control-label col-md-2"})
-        @Html.TextBoxFor(model => model.Genres, new {@class = "form-control col-md-10"})
+        @Html.TextBoxFor(model => model.Genres, new {@class = "form-control col-md-6"})
     </div>
 
+
+
     <div class="row">
-        <input type="button" class="form-control col-md-offset-1 col-md-11 btn btn-primary " value="Apply Filters" onclick="javascript: { var msg = $('#bookFilterForm').serialize();$.ajax({ type: 'POST', url: '/Books', data: msg, success: function(data) { $('#bookList').fadeOut(333, function() { $('#bookList').html($(data).find('#bookList').html()).fadeIn(333); }); }, error: function(xhr, str) { alert('Book list request failed: ' + xhr.responseCode); } }); }">
+        <input type="button" class="form-control col-md-offset-2 col-md-6 btn btn-primary " value="Apply Filters" onclick="javascript: { var msg = $('#bookFilterForm').serialize();$.ajax({ type: 'POST', url: '/Books', data: msg, success: function(data) { $('#bookList').fadeOut(333, function() { $('#bookList').html($(data).find('#bookList').html()).fadeIn(333); }); }, error: function(xhr, str) { alert('Book list request failed: ' + xhr.responseCode); } }); }">
     </div>
 }
 
