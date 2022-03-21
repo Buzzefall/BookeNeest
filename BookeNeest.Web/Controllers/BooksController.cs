@@ -38,7 +38,7 @@ namespace BookeNeest.Web.Controllers
         // GET: Books/Details/5
         public ActionResult Details(string bookName)
         {
-            // TODO: Use services here?
+            // TODO: 
             //var container = new Unity.UnityContainer();
             //var bookService = ;
             var book = bookService.FindByName(bookName);
